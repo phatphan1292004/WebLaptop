@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet" />
+<link href="~/Content/css/reset.css" rel="stylesheet" />
+<link href="~/Content/css/header-footer.css" rel="stylesheet" />
+<div class="wrapper">
+    <header class="header">
+        <div class="header-top">
+            <div class="header-left">
+                <!-- Hamburger icon for opening sidebar -->
+                <div style="display: flex; align-items: center">
+                    <a href="index.html" class="logo">
+                        <img src="./img/laptopback/logo1.png" alt="" />
+                    </a>
+                </div>
+                <div class="search-bar">
+                    <form action="/Detail.html" method="GET" id="search-form">
+                        <input placeholder="Bạn cần tìm gì?" type="text" name="query" />
+                        <button type="submit" aria-label="Search" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="mobile-search-bar" id="mobile-search-bar">
+                    <form action="/search" method="GET">
+                        <input type="text" name="query" placeholder="Bạn cần tìm gì?" />
+                        <button type="submit" aria-label="mobile-search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <button type="button" id="close-search-button" aria-label="Close Search">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <div class="info">
+                    <div class="info-item">
+                        <i class="fas fa-headphones-alt"></i>
+                        <span>Hotline 1900.5301</span>
+                    </div>
+
+                    <a class="info-item" href="support.html">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <span>Hỗ trợ</span>
+                    </a>
+
+                    <a class="info-item" href="cart.html">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Giỏ hàng</span>
+                        <p>(<span class="quantity-product">0</span>)</p>
+                    </a>
+
+                    <div class="header-user">
+                        <img src="https://images.unsplash.com/photo-1636041282694-aa4e52370419?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="" class="avt-user" />
+
+                        <div class="user-info-dropdown">
+                            <div class="dropdown-header">
+                                <img src="./img/icon-dropdownuser.png" alt="" />
+                                <p>Xin chào <span>Phat Phan.</span></p>
+                            </div>
+                            <div class="dropdown-content">
+                                <div class="dropdown-item">
+                                    <i class="fa fa-user"></i>
+                                    <a href="user.html">Thông tin cá nhân</a>
+                                </div>
+
+                                <div class="dropdown-item">
+                                    <i class="fa-regular fa-eye"></i>
+                                    <a href="user.html">Đơn hàng gần đây</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                <a href="index.html">Đăng xuất</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="login.html" id="login-header-btn">
+                        <button class="login" id="login-btn">
+                            <i class="fas fa-user"></i>
+                            <span>Đăng nhập</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar">
+            <ul class="navbar-list">
+                <li><a href="index.html">TRANG CHỦ</a></li>
+                <li class="dropdown">
+                    <a href="Detail.html">
+                        LAPTOP MỚI
+                        <i class="fa-solid fa-caret-down"></i>
+                    </a>
+                    <div class="submenu">
+                        <ul id="category-list">
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="Detail.html">
+                        LAPTOP CŨ
+                        <i class="fa-solid fa-caret-down"></i>
+                    </a>
+                    <div class="submenu">
+                        <ul id="category-list">
+                            <li class="category">
+                                <p class="category-header">Danh Mục 1</p>
+                                <ul class="category-products">
+                                    <li class="category-item"><a href="Detail.html" class="category-link">Sản phẩm con 1</a></li>
+                                    <li class="category-item"><a href="Detail.html" class="category-link">Sản phẩm con 2</a></li>
+                                </ul>
+                            </li>
+                            <li class="category">
+                                <p class="category-header">Danh Mục 2</p>
+                                <ul class="category-products">
+                                    <li class="category-item"><a href="Detail.html" class="category-link">Sản phẩm con 3</a></li>
+                                    <li class="category-item"><a href="Detail.html" class="category-link">Sản phẩm con 4</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="Detail.html">
+                        PHỤ KIỆN
+                        <i class="fa-solid fa-caret-down"></i>
+                    </a>
+                    <div class="submenu">
+                        <ul id="category-list">
+                            <li class="category">
+                                <p class="category-header">Danh Mục 1</p>
+                                <ul class="category-products">
+                                    <li class="category-item"><a href="Detail.html" class="category-link">Sản phẩm con 1</a></li>
+                                    <li class="category-item"><a href="Detail.html" class="category-link">Sản phẩm con 2</a></li>
+                                </ul>
+                            </li>
+                            <li class="category">
+                                <p class="category-header">Danh Mục 2</p>
+                                <ul class="category-products">
+                                    <li class="category-item"><a href="Detail.html" class="category-link">Sản phẩm con 3</a></li>
+                                    <li class="category-item"><a href="Detail.html" class="category-link">Sản phẩm con 4</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="News.html">TIN TỨC</a></li>
+                <li><a href="Contact.html">LIÊN HỆ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div style="padding-top: 200px">
+        @RenderBody()
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-item">
+                    <div class="tittle">LIÊN HỆ</div>
+                    <div class="location">375 Man Thiện, TNPA, Thủ Đức, TPHCM</div>
+                    <div class="phone-number">Điện thoại: 0973038104</div>
+                    <div class="email">Email: 22130206@st.hcmuaf.edu.vn</div>
+                </div>
+
+                <div class="footer-item">
+                    <h2 class="tittle">CHÍNH SÁCH</h2>
+                    <p class="policy-return">Chính sách đổi trả hàng</p>
+                    <p class="policy-payment">Hình thức thanh toán</p>
+                    <p class="policy-shipping">Chính sách vận chuyển</p>
+                    <p class="policy-shipping">Chính sách bảo mật</p>
+                </div>
+
+                <div class="footer-item">
+                    <h2 class="tittle">GIỚI THIỆU</h2>
+                    <p class="policy-return">Giới thiệu về chúng tôi</p>
+                    <p class="policy-payment">Tư vấn sản phẩm</p>
+                    <p class="policy-shipping">Tin tức và tư vấn</p>
+                    <p class="policy-shipping">Liên hệ hỗ trợ</p>
+                </div>
+
+                <div class="footer-item">
+                    <h2 class="tittle">ĐƠN VỊ VẬN CHUYỂN</h2>
+                    <ul class="list-ship">
+                        <li>
+                            <img src="https://theme.hstatic.net/200000722513/1001090675/14/ship_1.png?v=6635" alt="" />
+                        </li>
+                        <li>
+                            <img src="https://theme.hstatic.net/200000722513/1001090675/14/ship_2.png?v=6635" alt="" />
+                        </li>
+                        <li>
+                            <img src="https://theme.hstatic.net/200000722513/1001090675/14/ship_3.png?v=6635" alt="" />
+                        </li>
+                        <li>
+                            <img src="https://theme.hstatic.net/200000722513/1001090675/14/ship_4.png?v=6635" alt="" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tmp">
+            <div class="container">
+                <div class="footer-bottom">
+                    <a href="index.html" class="logo">
+                        <img src="./img/logo2.png" alt="" />
+                    </a>
+                    <div class="social-media">
+                        <p>CONTACT</p>
+                        <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.youtube.com" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+</html>

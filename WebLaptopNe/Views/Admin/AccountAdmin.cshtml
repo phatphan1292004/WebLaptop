@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "AccountAdmin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="tab-content"
+     id="account-management"
+     >
+    <h2>QUẢN LÝ TÀI KHOẢN</h2>
+    <p>
+        Đây là phần quản lý tài khoản. Bạn có thể thêm, chỉnh sửa hoặc
+        phân quyền tài khoản tại đây.
+    </p>
+
+    <!-- Khu vực thêm tài khoản -->
+    <div class="account-management">
+        <!-- Form thêm tài khoản mới -->
+        <div class="account-form">
+            <h3>THÊM TÀI KHOẢN MỚI</h3>
+            <form id="add-account-form">
+                <!-- Tên đăng nhập -->
+                <div class="form-group">
+                    <label for="username">Tên đăng nhập:</label>
+                    <input type="text"
+                           id="username"
+                           name="username"
+                           placeholder="Nhập tên đăng nhập"
+                           required />
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email"
+                           id="email"
+                           name="email"
+                           placeholder="Nhập email"
+                           required />
+                </div>
+
+                <!-- Mật khẩu -->
+                <div class="form-group">
+                    <label for="password">Mật khẩu:</label>
+                    <input type="password"
+                           id="password"
+                           name="password"
+                           placeholder="Nhập mật khẩu"
+                           required />
+                </div>
+
+                <!-- Xác nhận mật khẩu -->
+                <div class="form-group">
+                    <label for="confirm-password">Xác nhận mật khẩu:</label>
+                    <input type="password"
+                           id="confirm-password"
+                           name="confirm-password"
+                           placeholder="Xác nhận mật khẩu"
+                           required />
+                </div>
+
+                <!-- Vai trò -->
+                <div class="form-group">
+                    <label for="role">Phân quyền:</label>
+                    <select id="role" name="role" required>
+                        <option value="" disabled selected>Chọn vai trò</option>
+                        <option value="admin">Quản trị viên</option>
+                        <option value="editor">Người chỉnh sửa</option>
+                        <option value="customer">Khách hàng</option>
+                    </select>
+                </div>
+
+                <!-- Nút thêm tài khoản -->
+                <button type="submit"
+                        id="add-account-btn"
+                        class="primary-button">
+                    Thêm tài khoản
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="header-tab">
+        <div class="search-container">
+            <input type="text"
+                   id="account-search"
+                   placeholder="Tìm kiếm tài khoản..." />
+            <button id="search-btn-account">Tìm kiếm</button>
+        </div>
+    </div>
+
+    <!-- Danh sách tài khoản -->
+    <div id="account-list">
+        <h3>DANH SÁCH TÀI KHOẢN</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên đăng nhập</th>
+                    <th>Email</th>
+                    <th>Phân quyền</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+

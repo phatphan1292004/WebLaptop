@@ -1,0 +1,488 @@
+﻿
+@{
+    ViewBag.Title = "ProductAdmin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="tab-content" id="product-management-content">
+    <div class="product-stats">
+        <div class="stat-card">
+            <div class="card-image">
+                <img src="./img/adminpage/product.png" alt="" />
+            </div>
+            <div class="card-content">
+                <h3>Tổng sản phẩm trong kho</h3>
+                <p id="total-stock">0</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="card-image">
+                <img src="./img/adminpage/category.png" alt="" />
+            </div>
+            <div class="card-content">
+                <h3>Số loại sản phẩm</h3>
+                <p id="total-categories">0</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="card-image">
+                <img src="./img/adminpage/out-of-stock.png" alt="" />
+            </div>
+            <div class="card-content">
+                <h3>Sản phẩm hết hàng</h3>
+                <p id="out-of-stock">0</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="card-image">
+                <img src="./img/adminpage/new-product.png" alt="" />
+            </div>
+            <div class="card-content">
+                <h3>Sản phẩm mới nhất</h3>
+                <p id="latest-product">Chưa có</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content-container">
+        <div class="header-tab">
+            <div class="search-container">
+                <input type="text"
+                       id="product-search"
+                       placeholder="Tìm kiếm sản phẩm..." />
+                <button id="search-btn-product">Tìm kiếm</button>
+            </div>
+            <button class="add-category">
+                <i class="fa-solid fa-plus"></i>
+                Thêm loại sản phẩm
+            </button>
+
+            <button class="add-product">
+                <i class="fa-solid fa-plus"></i>
+                Thêm sản phẩm
+            </button>
+        </div>
+
+        <!-- Overlay và Form thêm sản phẩm -->
+        <div class="overlay" id="overlay" data-index="0">
+            <div class="add-product-form" id="add-product-form">
+                <div class="form-header">
+                    <p>Thêm sản phẩm mới</p>
+                    <button class="close-btn" id="close-form">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <form id="product-form">
+                    <div class="form-grid">
+                        <!-- Cột 1 -->
+                        <div class="form-column">
+                            <!-- ID sản phẩm -->
+                            <div class="form-group">
+                                <label for="product-id">ID Sản phẩm:</label>
+                                <input type="text"
+                                       id="product-id"
+                                       placeholder="Nhập ID sản phẩm"
+                                       required />
+                            </div>
+
+                            <!-- Hình ảnh sản phẩm -->
+                            <div class="form-group">
+                                <label for="product-image">Link Hình ảnh:</label>
+                                <input type="text"
+                                       id="product-image"
+                                       placeholder="Nhập link hình ảnh"
+                                       required />
+                            </div>
+
+                            <!-- Tên sản phẩm -->
+                            <div class="form-group">
+                                <label for="product-name">Tên sản phẩm:</label>
+                                <input type="text"
+                                       id="product-name"
+                                       placeholder="Nhập tên sản phẩm"
+                                       required />
+                            </div>
+
+                            <!-- Giá sản phẩm -->
+                            <div class="form-group">
+                                <label for="product-price">Giá sản phẩm:</label>
+                                <input type="number"
+                                       id="product-price"
+                                       placeholder="Nhập giá sản phẩm"
+                                       required />
+                            </div>
+                        </div>
+
+                        <!-- Cột 2 -->
+                        <div class="form-column">
+                            <!-- Loại sản phẩm -->
+                            <div class="form-group">
+                                <label for="product-category">Danh mục sản phẩm:</label>
+                                <select id="product-category" required>
+                                    <option value="">Chọn danh mục</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product-subcategory">Tên loại sản phẩm:</label>
+                                <input type="text"
+                                       id="product-subcategory"
+                                       placeholder="Nhập tên loại sản phẩm chính xác"
+                                       required />
+                            </div>
+
+                            <!-- Ngày thêm sản phẩm -->
+                            <div class="form-group">
+                                <label for="product-date">Ngày thêm:</label>
+                                <input type="date" id="product-date" required />
+                            </div>
+
+                            <!-- Mô tả sản phẩm -->
+                            <div class="form-group">
+                                <label for="product-desc">Mô tả sản phẩm:</label>
+                                <textarea id="product-desc"
+                                          placeholder="Nhập mô tả sản phẩm"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nút lưu -->
+                    <div class="form-group">
+                        <button type="button" id="save-product" class="save-btn">
+                            Lưu sản phẩm
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="overlay" id="overlay" data-index="1">
+            <div class="categories-container">
+                <!-- Nút Đóng lại -->
+                <div class="top-actions">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+
+                <div class="categories-content">
+                    <!-- Danh sách danh mục -->
+                    <div class="categories-list">
+                        <h3>Danh sách danh mục</h3>
+                        <ul id="category-list">
+                            <!-- Các danh mục -->
+                        </ul>
+                    </div>
+
+                    <!-- Form thêm danh mục -->
+                    <div class="add-category-form">
+                        <h3>Thêm danh mục mới</h3>
+                        <form id="category-form">
+                            <label for="category-id">ID:</label>
+                            <input type="text"
+                                   id="category-id"
+                                   class="form-input"
+                                   required />
+
+                            <label for="category-name">Tên danh mục:</label>
+                            <input type="text"
+                                   id="category-name"
+                                   class="form-input"
+                                   required />
+
+                            <label for="parent-category">Danh mục cha:</label>
+                            <input type="text"
+                                   id="parent-category"
+                                   class="form-input" />
+
+                            <label for="stock-quantity">Số lượng tồn:</label>
+                            <input type="number"
+                                   id="stock-quantity"
+                                   class="form-input"
+                                   required />
+
+                            <label for="category-desc">Mô tả:</label>
+                            <textarea id="category-desc"
+                                      class="form-textarea"
+                                      rows="3"></textarea>
+
+                            <button type="button"
+                                    id="add-category-btn"
+                                    class="add-category-button">
+                                Thêm danh mục
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bảng danh sách sản phẩm -->
+        <div class="tab-container">
+            <table class="product-table" id="product-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Hình ảnh</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Loại sản phẩm</th>
+                        <th>Ngày thêm</th>
+                        <th>Thao tác</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="product-table-body">
+                    <!-- <tr>
+                       <td>001</td>
+                       <td>
+                         <a href="https://via.placeholder.com/50" target="_blank"
+                           >https://via.placeholder.com/50</a
+                         >
+                       </td>
+                       <td>Sản phẩm 1</td>
+                       <td>200.000 VNĐ</td>
+                       <td>Đèn LED</td>
+                       <td>01/12/2024</td>
+                       <td><button class="view-details">Xem chi tiết</button></td>
+                       <td>
+                         <button class="edit-product">
+                           <i class="fa-regular fa-pen-to-square"></i>
+                         </button>
+                       </td>
+                       <td>
+                         <button class="delete-product">
+                           <i class="fa-regular fa-trash-can"></i>
+                         </button>
+                       </td>
+                     </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Khung chi tiết sản phẩm -->
+    <div class="product-details"
+         id="product-details"
+         style="display: none">
+        <button id="close-details-btn">
+            <i class="fa-solid fa-arrow-left"></i> Quay lại
+        </button>
+        <!-- Phần tiêu đề và thông tin cơ bản -->
+        <div class="details-header">
+            <div class="product-info">
+                <div class="product-info-left">
+                    <div class="product-image">
+                        <img id="product-image"
+                             src="https://denhoamy.vn/upload/attachment/5647den-chum-trang-tri-noi-that-phong-cach-my-dc03812-01.jpg"
+                             alt="Hình ảnh sản phẩm" />
+                    </div>
+                    <div class="basic-details">
+                        <p>
+                            <strong>Tên sản phẩm:</strong>
+                            <span id="product-name">Skinny Men Blazer</span>
+                        </p>
+                        <p>
+                            <strong>Mã sản phẩm:</strong>
+                            <span id="product-id-details">#5353</span>
+                        </p>
+                    </div>
+                </div>
+                <button id="save-product-btn"
+                        class="save-button"
+                        style="display: none">
+                    <i class="fa-solid fa-pen"></i> Lưu
+                </button>
+
+                <button id="edit-product-btn" class="edit-button">
+                    <i class="fa-solid fa-pen"></i> Chỉnh sửa
+                </button>
+            </div>
+        </div>
+
+        <div class="details-main">
+            <!-- Phần thông tin thống kê -->
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="stat-image">
+                        <img src="./img/adminpage/sales.png" alt="" />
+                    </div>
+                    <div class="stat-text">
+                        <p>Số lượng bán được</p>
+                        <span id="sold-quantity">0</span>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-image">
+                        <img src="./img/adminpage/inventory.png" alt="" />
+                    </div>
+                    <div class="stat-text">
+                        <p>Số lượng tồn kho</p>
+                        <span id="stock-quantity">0</span>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-image">
+                        <img src="./img/adminpage/star.png" alt="" />
+                    </div>
+                    <div class="stat-text">
+                        <p>Rating</p>
+                        <span id="product-rating">0/5</span>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-image">
+                        <img src="./img/adminpage/chat.png" alt="" />
+                    </div>
+                    <div class="stat-text">
+                        <p>Đánh giá</p>
+                        <span id="product-reviews">0 đánh giá</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phần chi tiết sản phẩm -->
+            <div class="details-content">
+                <div>
+                    <strong>Id:</strong>
+                    <span id="product-id-view">5353</span>
+                    <input type="text"
+                           id="edit-product-id"
+                           value="5353"
+                           style="display: none"
+                           readonly />
+                </div>
+
+                <div>
+                    <strong>Hình ảnh:</strong>
+                    <span id="product-image-view">https://denhoamy.vn/upload/attachment/5647den-chum-trang-tri-noi-that-phong-cach-my-dc03812-01.jpg</span>
+                    <input type="text"
+                           id="edit-product-image"
+                           style="display: none"
+                           accept="image/*" />
+                </div>
+
+                <div>
+                    <strong>Tên sản phẩm:</strong>
+                    <span id="product-name-view">Skinny Men Blazer</span>
+                    <input type="text"
+                           id="edit-product-name"
+                           value="Skinny Men Blazer"
+                           style="display: none" />
+                </div>
+
+                <div>
+                    <strong>Giá:</strong>
+                    <span id="product-price-view">200,000 VNĐ</span>
+                    <input type="text"
+                           id="edit-product-price"
+                           value="200,000 VNĐ"
+                           style="display: none" />
+                </div>
+
+                <div>
+                    <strong>Loại sản phẩm:</strong>
+                    <span id="product-category-view">Thời trang nam</span>
+                    <input type="text"
+                           id="edit-product-category"
+                           value="Thời trang nam"
+                           style="display: none" />
+                </div>
+
+                <div>
+                    <strong>Tình trạng:</strong>
+                    <span id="product-status-view">Còn hàng</span>
+                    <input type="text"
+                           id="edit-product-status"
+                           value="Còn hàng"
+                           style="display: none" />
+                </div>
+
+                <div>
+                    <strong>Mô tả:</strong>
+                    <span id="product-description-view">
+                        Blazer phong cách trẻ trung, phù hợp cho các sự
+                        kiện.
+                    </span>
+                    <textarea id="edit-product-description"
+                              style="display: none">
+Blazer phong cách trẻ trung, phù hợp cho các sự kiện.</textarea>
+                </div>
+
+                <div>
+                    <strong>Ngày thêm:</strong>
+                    <span id="product-date-view">2024-11-15</span>
+                    <input type="date"
+                           id="edit-product-date"
+                           value="2024-11-15"
+                           style="display: none" />
+                </div>
+
+                <div>
+                    <strong>Giảm giá:</strong>
+                    <span id="product-discount-view">10%</span>
+                    <input type="text"
+                           id="edit-product-discount"
+                           value="10%"
+                           style="display: none" />
+                </div>
+                <div>
+                    <strong>Số lượng tồn kho:</strong>
+                    <span id="product-stock-view">213</span>
+                    <input type="text"
+                           id="edit-product-stock"
+                           value="213"
+                           style="display: none" />
+                </div>
+                <div>
+                    <strong>Đánh giá:</strong>
+                    <span id="product-rating-view">5</span>
+                    <input type="text"
+                           id="edit-product-rating"
+                           value="5"
+                           style="display: none" />
+                </div>
+                <div>
+                    <strong>Thời gian bảo hành:</strong>
+                    <span id="product-warranty-view">12 tháng</span>
+                    <input type="text"
+                           id="edit-product-warranty"
+                           value="12 tháng"
+                           style="display: none" />
+                </div>
+                <div>
+                    <strong>Chất liệu:</strong>
+                    <span id="product-material-view">Nhôm</span>
+                    <input type="text"
+                           id="edit-product-material"
+                           value="Nhôm"
+                           style="display: none" />
+                </div>
+                <div>
+                    <strong>Màu sắc:</strong>
+                    <span id="product-color-view">Trắng</span>
+                    <input type="text"
+                           id="edit-product-color"
+                           value="Trắng"
+                           style="display: none" />
+                </div>
+                <div>
+                    <strong>Tuổi thọ:</strong>
+                    <span id="product-lifespan-view">5 năm</span>
+                    <input type="text"
+                           id="edit-product-lifespan"
+                           value="5 năm"
+                           style="display: none" />
+                </div>
+                <div>
+                    <strong>Công suất:</strong>
+                    <span id="product-power-view">60W</span>
+                    <input type="text"
+                           id="edit-product-power"
+                           value="60W"
+                           style="display: none" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

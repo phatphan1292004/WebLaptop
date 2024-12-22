@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @*<title>@Page.Title</title>
+        @RenderSection("head", required: false)*@
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./img/logo-fold.png" sizes="180x180" />
+    <title>Admin</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link href="~/Content/css/reset.css" rel="stylesheet" />
+    <link href="~/Content/css/admin.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header-left">
+                <i class="fa-solid fa-bars"></i>
+                <a href="index.html" class="header-logo">
+                    <img src="./img/logo-fold.png" alt="" />
+                </a>
+            </div>
+            <div class="header-right">
+                <div class="noti-icon">
+                    <i class="fa-regular fa-bell notification-bell shake"></i>
+                </div>
+                <div class="account">
+                    <img src="https://images.unsplash.com/photo-1726554881162-ceeb7d68be8c?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                         alt="" />
+                </div>
+            </div>
+        </header>
+        <div class="main">
+            <div class="sidebar">
+                <div class="nav">
+                    <div class="nav-item" data-index="0">
+                        <div class="nav-item-left">
+                            <i class="fa-solid fa-tachometer-alt"></i>
+                            <p>Tổng quan</p>
+                        </div>
+                    </div>
+
+                    <div class="nav-item" data-index="1">
+                        <div class="nav-item-left">
+                            <i class="fa-solid fa-box"></i>
+                            <p>Quản lý kho hàng</p>
+                        </div>
+                    </div>
+
+                    <div class="nav-item" data-index="2">
+                        <div class="nav-item-left">
+                            <i class="fa-solid fa-users"></i>
+                            <p>Quản lý khách hàng</p>
+                        </div>
+                    </div>
+
+                    <div class="nav-item" data-index="3">
+                        <div class="nav-item-left">
+                            <i class="fa-solid fa-receipt"></i>
+                            <p>Quản lý đơn hàng</p>
+                        </div>
+                    </div>
+
+                    <div class="nav-item" data-index="4">
+                        <div class="nav-item-left">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <p>Thống kê doanh thu</p>
+                        </div>
+                    </div>
+
+                    <div class="nav-item" data-index="5" id="nav-item-system">
+                        <div class="nav-item-header">
+                            <div class="nav-item-left">
+                                <i class="fa-solid fa-tags"></i>
+                                <p>Quản lý khuyến mãi</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-item" data-index="6" id="nav-item-system">
+                        <div class="nav-item-header">
+                            <div class="nav-item-left">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Quản lý tài khoản</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Submenu-->
+                    <!-- <ul class="submenu-admin" id="submenu-admin">
+                      <li class="menu-item" data-target="discount-management">
+                        <i class="fa-solid fa-tags"></i><a href="#">Giảm giá</a>
+                      </li>
+
+                      <li class="menu-item" data-target="account-management">
+                        <i class="fa-solid fa-user"></i
+                        ><a href="#">Quản lý tài khoản</a>
+                      </li>
+                    </ul> -->
+                </div>
+
+                <div class="sidebar-bottom" id="sign-up">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <p>Đăng xuất</p>
+                </div>
+            </div>
+
+            <div class="main-content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script type="module" src="~/Content/js/admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+</body>
+</html>

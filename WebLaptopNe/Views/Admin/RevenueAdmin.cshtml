@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "RevenueAdmin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="tab-content" id="revenue-statistics-content">
+    <div class="revenue-statistics">
+        <div class="revenue-header">
+            <p>THỐNG KÊ DOANH THU</p>
+        </div>
+        <div class="chart-selection">
+            <div class="left">
+                <label for="statistic-type">Chọn loại thống kê:</label>
+                <select id="statistic-type">
+                    <option value="monthly">Thống kê theo tháng</option>
+                    <option value="yearly">Thống kê theo năm</option>
+                </select>
+            </div>
+            <div class="right">
+                <div class="input-group" id="month-input-group">
+                    <label for="month">Năm:</label>
+                    <input type="number"
+                           id="month"
+                           placeholder="Nhập năm"
+                           required />
+                </div>
+                <button id="submit-btn">Xem Thống Kê</button>
+            </div>
+        </div>
+
+        <!-- Biểu đồ -->
+        <div class="revenue-body">
+            <canvas id="revenue-chart"></canvas>
+        </div>
+    </div>
+</div>
+

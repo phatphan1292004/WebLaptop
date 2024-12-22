@@ -1,0 +1,827 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@*<link rel="icon" href="./img/laptopback/logo2.png" sizes="180x180">
+<title>TECH NEST</title>*@
+@*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />*@
+@*<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet" />*@
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link href="~/Content/css/reset.css" rel="stylesheet" />
+<link href="~/Content/css/home.css" rel="stylesheet" />
+<div class="main">
+
+    <div class="slider-container">
+        <div class="container">
+            <div class="slider">
+                <div class="slider-wrapper">
+                    <div class="slider-item">
+                        <div class="slider-image">
+                            <img src="~/Content/img/laptopback/back1.jpg" />
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-image">
+                            <img src="~/Content/img/laptopback/back2.jpg" />
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-image">
+                            <img src="~/Content/img/laptopback/back3.jpg" />
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-image">
+                            <img src="~/Content/img/laptopback/back4.jpg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="banner">
+                <div class="banner-top">
+                    <img src="https://file.hstatic.net/200000722513/file/gearvn-4-laptop-gaming.png"
+                         alt="" />
+                </div>
+
+                <div class="banner-top">
+                    <img src="https://file.hstatic.net/200000722513/file/gearvn-7-gaming-gear-sub-banner.png"
+                         alt="" />
+                </div>
+
+                <div class="banner-top">
+                    <img src="https://file.hstatic.net/200000722513/file/gearvn-2-loa-sld-right.png"
+                         alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="container-sale">
+            <div class="container-sale-header">
+                <div class="sale-info">
+                    <h2>SIÊU SALE - GIẢM SỐC!</h2>
+                </div>
+                <div class="countdown-timer">
+                    <div class="time-box">
+                        <p id="days">00</p>
+                        <span>Ngày</span>
+                    </div>
+                    <div class="time-box">
+                        <p id="hours">00</p>
+                        <span>Giờ</span>
+                    </div>
+                    <div class="time-box">
+                        <p id="minutes">00</p>
+                        <span>Phút</span>
+                    </div>
+                    <div class="time-box">
+                        <p id="seconds">00</p>
+                        <span>Giây</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-sale-product">
+                <ul class="list-product-hot" id="list-product-sale">
+                    <li class="product-hot-item">
+                        <div class="img">
+                            <img src="https://denhoamy.vn/upload/attachment/thumb/8519den-quat-tich-hop-ban-chong-tham-nuoc-trang-tri-san-vuon-phong-cach-chau-au-dq00682-08.jpg"
+                                 alt="" />
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-name">
+                                Đèn quạt tích hợp bàn chống thấm nước trang trí sân vườn phong cách Châu Âu DQ00682
+                            </div>
+                            <p class="original-price">2.000.000 VND</p>
+                            <div class="price-discount">
+                                <p class="product-price">1.800.000VND</p>
+                                <p class="discount-percentage">-10%</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="product-hot-item">
+                        <div class="img">
+                            <img src="https://denhoamy.vn/upload/attachment/8991den-chum-trang-tri-noi-that-phong-cach-my-dc03813-01.jpg"
+                                 alt="" />
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-name">
+                                Đèn chùm trang trí nội thất phong cách Mỹ DC03813
+                            </div>
+                            <p class="original-price">1.500.000VND</p>
+                            <div class="price-discount">
+                                <p class="product-price">1.245.000VND</p>
+                                <p class="discount-percentage">-5%</p>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="product-hot-item">
+                        <div class="img">
+                            <img src="https://denhoamy.vn/upload/attachment/8002den-tha-trang-tri-noi-that-phong-cach-my-dt02991-03.jpg"
+                                 alt="" />
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-name">
+                                Đèn thả trang trí nội thất phong cách Mỹ DT02991
+                            </div>
+                            <p class="original-price">3.000.000 VND</p>
+                            <div class="price-discount">
+                                <p class="product-price">2.000.000 VND</p>
+                                <p class="discount-percentage">-20%</p>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="product-hot-item">
+                        <div class="img">
+                            <img src="https://denhoamy.vn/upload/attachment/8728den-quat-giau-canh-trang-tri-phong-cach-hien-dai-dq00904-01.jpg"
+                                 alt="" />
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-name">
+                                Đèn quạt giấu cánh trang trí phong cách hiện đại DQ00904
+                            </div>
+                            <p class="original-price">3.000.000 VND</p>
+                            <div class="price-discount">
+                                <p class="product-price">2.000.000 VND</p>
+                                <p class="discount-percentage">-33%</p>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="product-hot-item">
+                        <div class="img">
+                            <img src="https://denhoamy.vn/upload/attachment/5258den-ban-trang-tri-noi-that-phong-cach-my-db02101-03.jpg"
+                                 alt="" />
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-name">
+                                Đèn bàn trang trí nội thất phong cách Mỹ DB02101
+                            </div>
+                            <p class="original-price">900.000 VND</p>
+                            <div class="price-discount">
+                                <p class="product-price">720.000VND</p>
+                                <p class="discount-percentage">-20%</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="product-hot-item">
+                        <div class="img">
+                            <img src="https://denhoamy.vn/upload/attachment/thumb/1174den-ngoai-troi-soi-thuy-tinh-trang-tri-san-vuon-bai-co-phong-cach-trung-hoa-dn00718-03.jpg"
+                                 alt="" />
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-name">
+                                Đèn ngoài trời sợi thủy tinh trang trí sân vườn bãi cỏ phong cách Trung Hoa DN00718
+                            </div>
+                            <p class="original-price">1.240.000 VND</p>
+                            <div class="price-discount">
+                                <p class="product-price">790.000 VND</p>
+                                <p class="discount-percentage">-33%</p>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="product-hot-item">
+                        <div class="img">
+                            <img src="https://denhoamy.vn/upload/attachment/thumb/3996den-tha-go-phong-cach-thai-dt02861-03.jpg"
+                                 alt="" />
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-name">
+                                Đèn thả gỗ phong cách Thái DT02861
+                            </div>
+                            <p class="original-price">2.000.000 VND</p>
+                            <div class="price-discount">
+                                <p class="product-price">1.000.000 VND</p>
+                                <p class="discount-percentage">-50%</p>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="product-hot-item">
+                        <div class="img">
+                            <img src="https://denhoamy.vn/upload/attachment/1018den-san-thiet-ke-phong-cach-hien-dai-dy01047-01.jpg"
+                                 alt="" />
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-name">
+                                Đèn sàn thiết kế phong cách hiện đại DY01047
+                            </div>
+                            <p class="original-price">800.000 VND</p>
+                            <div class="price-discount">
+                                <p class="product-price">400.000 VND</p>
+                                <p class="discount-percentage">-50%</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  
+    <div class="container">
+        <div class="product-wrapper">
+            <div class="wrapper-title">SẢN PHẨM BÁN CHẠY</div>
+            <ul class="list-product-hot">
+                <li class="product-hot-item">
+                    <div class="img">
+                        <img src="https://denhoamy.vn/upload/attachment/thumb/8709den-chum-tiffany-trang-tri-noi-that-dc03776-04.jpg"
+                             alt="" />
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-name">
+                            Đèn chùm Tiffany trang trí nội thất DC03776
+                        </div>
+                        <p class="original-price">3.000.000 VND</p>
+                        <div class="price-discount">
+                            <p class="product-price">2.000.000 VND</p>
+                            <p class="discount-percentage">-33%</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="product-hot-item">
+                    <div class="img">
+                        <img src="https://denhoamy.vn/upload/attachment/thumb/3771den-chum-trang-tri-phong-cach-dong-que-my-dc03768-02.jpg"
+                             alt="" />
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-name">
+                            Đèn chùm trang trí phong cách đồng quê Mỹ DC03768
+                        </div>
+                        <p class="original-price">1.999.999VND</p>
+                        <div class="price-discount">
+                            <p class="product-price">1.499.000 VND</p>
+                            <p class="discount-percentage">-33%</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="product-hot-item">
+                    <div class="img">
+                        <img src="https://denhoamy.vn/upload/attachment/thumb/8382den-op-tran-phong-cach-trung-hoa-do01525-02.jpg"
+                             alt="" />
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-name">
+                            Đèn ốp trần phong cách Trung Hoa DO01525
+                        </div>
+                        <p class="original-price">3.000.000 VND</p>
+                        <div class="price-discount">
+                            <p class="product-price">2.000.000 VND</p>
+                            <p class="discount-percentage">-33%</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="product-hot-item">
+                    <div class="img">
+                        <img src="https://denhoamy.vn/upload/attachment/thumb/4525den-op-tran-go-trang-tri-noi-that-phong-cach-trung-hoa-do01449-03.jpg"
+                             alt="" />
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-name">
+                            Đèn ốp trần gỗ trang trí nội thất phong cách Trung Hoa DO01449
+                        </div>
+                        <p class="original-price">3.000.000 VND</p>
+                        <div class="price-discount">
+                            <p class="product-price">2.000.000 VND</p>
+                            <p class="discount-percentage">-33%</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="product-hot-item">
+                    <div class="img">
+                        <img src="https://denhoamy.vn/upload/attachment/704den-quat-hop-giau-canh-trang-tri-noi-that-phong-cach-trung-hoa-dq00895-03.jpg"
+                             alt="" />
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-name">
+                            Đèn quạt hộp giấu cánh trang trí nội thất phong cách Trung Hoa DQ00895
+                        </div>
+                        <p class="original-price">1.000.000 VND</p>
+                        <div class="price-discount">
+                            <p class="product-price">500.000 VND</p>
+                            <p class="discount-percentage">-50%</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="product-hot-item">
+                    <div class="img">
+                        <img src="https://denhoamy.vn/upload/attachment/thumb/6052den-quat-tich-hop-loc-khong-khi-trang-tri-phong-ngu-chung-cu-cao-cap-dq00838-03.jpg"
+                             alt="" />
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-name">
+                            Đèn quạt tích hợp lọc không khí trang trí phòng ngủ chung cư cao cấp DQ00838
+                        </div>
+                        <p class="original-price">3.000.000 VND</p>
+                        <div class="price-discount">
+                            <p class="product-price">2.000.000 VND</p>
+                            <p class="discount-percentage">-33%</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+     Home Products 
+    <section class="home-product">
+        <div class="container">
+            <div class="product-wrapper">
+                <div class="wrapper-top">
+                    <div class="wrapper-category">ĐÈN CHÙM</div>
+                    <a href="Detail.html">Xem thêm</a>
+                </div>
+
+                <div class="wrapper-bottom">
+                    <ul class="list-product" id="list-product1">
+                        <li class="product-item">
+                            <div class="img">
+                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
+                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
+                            </div>
+
+                            <div class="product-info">
+                                <div class="product-name">
+                                    Đèn chùm tiffany trang trí nội thất DC03596
+                                </div>
+
+                                <p class="original-price">3.000.000 VND</p>
+
+                                <div class="price-discount">
+                                    <p class="product-price">2.000.000 VND</p>
+                                    <p class="discount-percentage">-33%</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-product">
+        <div class="container">
+            <div class="product-wrapper">
+                <div class="wrapper-top">
+                    <div class="wrapper-category">ĐÈN THẢ</div>
+                    <a href="Detail.html">Xem thêm</a>
+                </div>
+
+                <div class="wrapper-bottom">
+                    <ul class="list-product" id="list-product2">
+                        <li class="product-item">
+                            <div class="img">
+                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
+                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
+                            </div>
+
+                            <div class="product-info">
+                                <div class="product-name">
+                                    Đèn chùm tiffany trang trí nội thất DC03596
+                                </div>
+
+                                <p class="original-price">3.000.000 VND</p>
+
+                                <div class="price-discount">
+                                    <p class="product-price">2.000.000 VND</p>
+                                    <p class="discount-percentage">-33%</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-product">
+        <div class="container">
+            <div class="product-wrapper">
+                <div class="wrapper-top">
+                    <div class="wrapper-category">ĐÈN BÀN</div>
+                    <a href="Detail.html">Xem thêm</a>
+                </div>
+
+                <div class="wrapper-bottom">
+                    <ul class="list-product" id="list-product3">
+                        <li class="product-item">
+                            <div class="img">
+                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
+                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
+                            </div>
+
+                            <div class="product-info">
+                                <div class="product-name">
+                                    Đèn chùm tiffany trang trí nội thất DC03596
+                                </div>
+
+                                <p class="original-price">3.000.000 VND</p>
+
+                                <div class="price-discount">
+                                    <p class="product-price">2.000.000 VND</p>
+                                    <p class="discount-percentage">-33%</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-product">
+        <div class="container">
+            <div class="product-wrapper">
+                <div class="wrapper-top">
+                    <div class="wrapper-category">ĐÈN ỐP TRẦN</div>
+                    <a href="Detail.html">Xem thêm</a>
+                </div>
+
+                <div class="wrapper-bottom">
+                    <ul class="list-product" id="list-product4">
+                        <li class="product-item">
+                            <div class="img">
+                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
+                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
+                            </div>
+
+                            <div class="product-info">
+                                <div class="product-name">
+                                    Đèn chùm tiffany trang trí nội thất DC03596
+                                </div>
+
+                                <p class="original-price">3.000.000 VND</p>
+
+                                <div class="price-discount">
+                                    <p class="product-price">2.000.000 VND</p>
+                                    <p class="discount-percentage">-33%</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-product">
+        <div class="container">
+            <div class="product-wrapper">
+                <div class="wrapper-top">
+                    <div class="wrapper-category">ĐÈN QUẠT</div>
+                    <a href="Detail.html">Xem thêm</a>
+                </div>
+
+                <div class="wrapper-bottom">
+                    <ul class="list-product" id="list-product5">
+                        <li class="product-item">
+                            <div class="img">
+                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
+                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
+                            </div>
+
+                            <div class="product-info">
+                                <div class="product-name">
+                                    Đèn chùm tiffany trang trí nội thất DC03596
+                                </div>
+
+                                <p class="original-price">3.000.000 VND</p>
+
+                                <div class="price-discount">
+                                    <p class="product-price">2.000.000 VND</p>
+                                    <p class="discount-percentage">-33%</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-product">
+        <div class="container">
+            <div class="product-wrapper">
+                <div class="wrapper-top">
+                    <div class="wrapper-category">ĐÈN KHÁC</div>
+                    <a href="Detail.html">Xem thêm</a>
+                </div>
+
+                <div class="wrapper-bottom">
+                    <ul class="list-product" id="list-product6">
+                        <li class="product-item">
+                            <div class="img">
+                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
+                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
+                            </div>
+
+                            <div class="product-info">
+                                <div class="product-name">
+                                    Đèn chùm tiffany trang trí nội thất DC03596
+                                </div>
+
+                                <p class="original-price">3.000.000 VND</p>
+
+                                <div class="price-discount">
+                                    <p class="product-price">2.000.000 VND</p>
+                                    <p class="discount-percentage">-33%</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="product-item">
+                            <div class="img">
+                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
+                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
+                            </div>
+
+                            <div class="product-info">
+                                <div class="product-name">
+                                    Đèn chùm tiffany trang trí nội thất DC03596
+                                </div>
+
+                                <p class="original-price">3.000.000 VND</p>
+
+                                <div class="price-discount">
+                                    <p class="product-price">2.000.000 VND</p>
+                                    <p class="discount-percentage">-33%</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="product-item">
+                            <div class="img">
+                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
+                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
+                            </div>
+
+                            <div class="product-info">
+                                <div class="product-name">
+                                    Đèn chùm tiffany trang trí nội thất DC03596
+                                </div>
+
+                                <p class="original-price">3.000.000 VND</p>
+
+                                <div class="price-discount">
+                                    <p class="product-price">2.000.000 VND</p>
+                                    <p class="discount-percentage">-33%</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="product-item">
+                            <div class="img">
+                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
+                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
+                            </div>
+
+                            <div class="product-info">
+                                <div class="product-name">
+                                    Đèn chùm tiffany trang trí nội thất DC03596
+                                </div>
+
+                                <p class="original-price">3.000.000 VND</p>
+
+                                <div class="price-discount">
+                                    <p class="product-price">2.000.000 VND</p>
+                                    <p class="discount-percentage">-33%</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="product-item">
+                            <div class="img">
+                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
+                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
+                            </div>
+
+                            <div class="product-info">
+                                <div class="product-name">
+                                    Đèn chùm tiffany trang trí nội thất DC03596
+                                </div>
+
+                                <p class="original-price">3.000.000 VND</p>
+
+                                <div class="price-discount">
+                                    <p class="product-price">2.000.000 VND</p>
+                                    <p class="discount-percentage">-33%</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="home-info">
+        <div class="container">
+            <div class="info-wrapper">
+                <div class="header-info">
+                    TIN TỨC
+                    <div class="bar"></div>
+                </div>
+                <div class="list-info">
+                    <div class="info-item">
+                        <div class="info-img">
+                            <img src="https://denhoamy.vn/upload/news/5157sofa-da-nhap-khau-cao-cap-trang-tri-noi-that-phong-khach-phong-cach-hien-dai-nt00401-01.jpg"
+                                 alt="" />
+                        </div>
+
+                        <div class="info-main">
+                            <div class="info-name">
+                                999+MẪU THIẾT KẾ NỘI THẤT ĐẸP - SANG TRỌNG - CAO CẤP XU
+                                HƯỚNG MỚI NHẤT NĂM
+                            </div>
+                            <div class="info-time">
+                                <i class="fa-regular fa-clock"></i>
+                                Saturday, June 01, 2024
+                            </div>
+                            <p>
+                                Nội thất hay còn gọi là vật dụng, thiết bị nội thất được
+                                xem là điểm nhấn trang trí ấn tượng ở không gian phòng
+                                ngủ, phòng khách, phòng bếp hay văn phòng công ty.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-img">
+                            <img src="https://denhoamy.vn/upload/news/32475008den-chum-pha-le-trang-tri-thong-tang-phong-khach-dc03620-03.jpg"
+                                 alt="" />
+                        </div>
+
+                        <div class="info-main">
+                            <div class="info-name">
+                                +99 MẪU ĐÈN TRANG TRÍ PHA LÊ CAO CẤP
+                            </div>
+                            <div class="info-time">
+                                <i class="fa-regular fa-clock"></i>
+                                Monday, Sep 01, 2024
+                            </div>
+                            <p>
+                                Đèn chùm pha lê được trang trí rộng rãi trong các công trình nhằm tăng độ chiếu sáng và tính thẩm mỹ
+                                c
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-img">
+                            <img src="https://denhoamy.vn/upload/news/161tong-hop-cac-mau-quat-tran-den-cho-khong-gian-biet-thu-dep.png"
+                                 alt="" />
+                        </div>
+
+                        <div class="info-main">
+                            <div class="info-name">
+                                Tổng hợp các mẫu quạt trần đèn cho không gian biệt thự đẹp
+                            </div>
+                            <div class="info-time">
+                                <i class="fa-regular fa-clock"></i>
+                                Sunday, Nov 01, 2023
+                            </div>
+                            <p>
+                                Hiện nay việc sử dụng quạt trần đèn cho không gian biệt thự cao cấp là điều rất cần thiết để làm
+                                tăng lên sự sang trọng, đẳng cấp cho không gian thiết kế này.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-img">
+                            <img src="https://denhoamy.vn/upload/news/1333184den-quat-sai-canh-trang-tri-noi-that-phong-cach-trung-hoa-dq00684.jpg"
+                                 alt="" />
+                        </div>
+
+                        <div class="info-main">
+                            <div class="info-name">
+                                Đèn quạt trần – sản phẩm nội thất thông minh cho mọi gia đình
+                            </div>
+                            <div class="info-time">
+                                <i class="fa-regular fa-clock"></i>
+                                Tuesday, July 01, 2024
+                            </div>
+                            <p>
+                                Chạy theo sự phát triển của thời đại, nội thất thông minh ngày càng trở thành xu hướng và được ưa
+                                chuộng. Trong đó đèn quạt trần là món đồ trang trí mang tính ứng dụng cao.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="feedback">
+            <h2 class="feedback-title">
+                ĐÁNH GIÁ KHÁCH HÀNG
+                <div class="bar"></div>
+            </h2>
+            <ul class="feedback-list">
+                <li class="feedback-item">
+                    <div class="feedback-img">
+                        <img src="https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fHww"
+                             alt="User Image" />
+                    </div>
+                    <div class="feedback-content">
+                        <h3 class="user-name">Nguyễn Minh Tú</h3>
+                        <p class="feedback-text">
+                            "Trang web này thật sự đã mang đến cho tôi một trải nghiệm
+                            tuyệt vời. Giao diện dễ sử dụng, sản phẩm đa dạng và chất
+                            lượng rất tốt. Tôi đặc biệt ấn tượng với chính sách giao
+                            hàng nhanh chóng và dịch vụ hỗ trợ khách hàng thân thiện.
+                            Tôi sẽ quay lại và giới thiệu cho bạn bè!"
+                        </p>
+                    </div>
+                </li>
+
+                <li class="feedback-item">
+                    <div class="feedback-img">
+                        <img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
+                             alt="User Image" />
+                    </div>
+                    <div class="feedback-content">
+                        <h3 class="user-name">Lê Anh Tuấn</h3>
+                        <p class="feedback-text">
+                            "Tôi thực sự hài lòng với trang web này. Các sản phẩm luôn
+                            có thông tin chi tiết và dễ dàng tìm kiếm. Tôi đặc biệt
+                            thích giao diện dễ sử dụng và khả năng duyệt qua các sản
+                            phẩm nhanh chóng. Dịch vụ chăm sóc khách hàng rất tuyệt vời
+                            và luôn sẵn sàng hỗ trợ tôi khi có vấn đề."
+                        </p>
+                    </div>
+                </li>
+
+                <li class="feedback-item">
+                    <div class="feedback-img">
+                        <img src="https://plus.unsplash.com/premium_photo-1702598525684-fe2f8b75eb62?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D"
+                             alt="User Image" />
+                    </div>
+                    <div class="feedback-content">
+                        <h3 class="user-name">Bùi Minh Anh</h3>
+                        <p class="feedback-text">
+                            "Mua sắm trực tuyến thật dễ dàng với trang web này. Sản phẩm
+                            phong phú, chất lượng tuyệt vời và dịch vụ khách hàng cực kỳ
+                            nhanh chóng. Tôi rất vui với việc giao hàng đúng hẹn và sản
+                            phẩm đến tay tôi trong tình trạng hoàn hảo. Chắc chắn sẽ
+                            quay lại!"
+                        </p>
+                    </div>
+                </li>
+
+                <li class="feedback-item">
+                    <div class="feedback-img">
+                        <img src="https://images.unsplash.com/photo-1640951613773-54706e06851d?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="User Image" />
+                    </div>
+                    <div class="feedback-content">
+                        <h3 class="user-name">Vũ Quang Hải</h3>
+                        <p class="feedback-text">
+                            "Tôi rất hài lòng với trải nghiệm mua sắm trên trang web
+                            này. Giao diện rất dễ hiểu, dễ điều hướng và sản phẩm đa
+                            dạng. Dịch vụ chăm sóc khách hàng luôn hỗ trợ nhanh chóng và
+                            hiệu quả. Tôi rất mong sẽ có nhiều ưu đãi hấp dẫn hơn trong
+                            tương lai."
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+<script src="~/Content/js/home.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+

@@ -1,0 +1,469 @@
+﻿
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link href="~/Content/css/product.css" rel="stylesheet" />
+<div class="main">
+    <div class="container">
+        <div class="breadcrumb">
+            <i class="fa-solid fa-house"></i>
+            <a href="index.html">TRANG CHỦ</a>
+            <span class="separator">›</span>
+            <a href="#">LAPTOP MỚI</a>
+            <span class="separator">›</span>
+            <span>LAPTOP LENOVO MỚI</span>
+        </div>
+
+        <div class="product-info-container">
+            <div class="left-container">
+                <div class="product-view">
+                    <div class="product-name">
+                        [New 100%] Lenovo LOQ 2024 15IAX9 (Core i5-12450HX, 12GB, 512GB, RTX 3050 6GB, 15.6" FHD 144Hz)
+                    </div>
+                    <div class="main_product">
+                        <div class="product-image-list">
+                            <div class="product-image">
+                                <img src="./img/sanpham/loq24.webp" alt="Đèn chùm Tiffany" />
+                            </div>
+                        </div>
+                        <div class="product-detail">
+                            <p class="product-price">17.990.000 VND <span class="sale">23.990.000 VND</span></p>
+                            <div class="product-status">
+                                <span class="product-availability"><span class="title">Tình trạng : </span>Còn hàng</span>
+                                <span class="product-reviews">
+                                    <span class="title">Đánh giá : </span> <span class="star-review">5</span>/5
+                                </span>
+                            </div>
+                            <p class="product-warranty"> <span>Bảo hành : </span>12 tháng TechNest</p>
+                            <a href="#product-info" class="detail-config">Xem chi tiết cấu hình</a>
+                            <div class="product-desc">
+                                <!-- Phần 1: Option Cấu hình -->
+                                <div class="product-config">
+                                    <div class="product-config">
+                                        <h3>CẤU HÌNH:</h3>
+                                        <div class="config-options-grid">
+                                            <label class="config-item">
+                                                <input type="radio" name="config" checked>
+                                                <div class="config-content">
+                                                    <p>Ryzen 5-7235HS, 12GB, 512GB, RTX 3050 6GB, 15.6 FHD 144Hz</p>
+                                                    <strong>16.490.000đ</strong>
+                                                </div>
+                                            </label>
+                                            <label class="config-item">
+                                                <input type="radio" name="config">
+                                                <div class="config-content">
+                                                    <p>Core i5-12450HX, 12GB, 512GB, RTX 3050 6GB, 15.6 FHD 144Hz</p>
+                                                    <strong>17.990.000đ</strong>
+                                                </div>
+                                            </label>
+                                            <label class="config-item">
+                                                <input type="radio" name="config">
+                                                <div class="config-content">
+                                                    <p>Core i5-12450HX, 12GB, 512GB, RTX 2050 4GB, 15.6 FHD 144Hz</p>
+                                                    <strong>16.990.000đ</strong>
+                                                </div>
+                                            </label>
+                                            <label class="config-item">
+                                                <input type="radio" name="config">
+                                                <div class="config-content">
+                                                    <p>Ryzen 7-7435HS, 16GB, 512GB, RTX 4060 8GB, 15.6 FHD 144Hz</p>
+                                                    <strong>21.890.000đ</strong>
+                                                </div>
+                                            </label>
+                                            <label class="config-item">
+                                                <input type="radio" name="config">
+                                                <div class="config-content">
+                                                    <p>Ryzen 7-7435HS, 16GB, 512GB, RTX 4050 6GB, 15.6 FHD 144Hz</p>
+                                                    <strong>20.590.000đ</strong>
+                                                </div>
+                                            </label>
+                                            <label class="config-item">
+                                                <input type="radio" name="config">
+                                                <div class="config-content">
+                                                    <p>Core i5-13420H, 8GB, 1TB, RTX 3050 6GB, 15.6 FHD 144Hz</p>
+                                                    <strong style="color: red;">Liên hệ</strong>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Phần 2: Quà tặng/Khuyến mãi -->
+                                <div class="product-promotion">
+                                    <h3 class="promotion-header">
+                                        <i class="fa-solid fa-gift"></i>
+                                        QUÀ TẶNG/KHUYẾN MÃI
+                                    </h3>
+                                    <ul class="promotion-list">
+                                        <li>Tặng Windows bản quyền theo máy</li>
+                                        <li>Miễn phí cân màu màn hình công nghệ cao</li>
+                                        <li>Balo thời trang</li>
+                                        <li>Chuột không dây + Bàn di cao cấp</li>
+                                        <li>Tặng gói cài đặt, bảo dưỡng, vệ sinh máy trọn đời</li>
+                                        <li>Tặng Voucher giảm giá cho lần mua tiếp theo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-detail-bottom">
+                                <button class="buy-product">MUA NGAY</button>
+                            </div>
+                            <div id="cartNotification" class="notification">
+                                Bạn đã thêm vào giỏ hàng thành công!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-info" id="product-info">
+                    <div class="left-product-info">
+                        <div class="product-main">
+                            <div class="product-main-head">
+                                <p class="title" style="text-align: center !important">
+                                    CHI TIẾT CẤU HÌNH
+                                </p>
+                            </div>
+                            <div class="product-main-detail">
+                                <ul class="policy-list">
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        <strong>Thiết kế</strong>
+                                        <p><span>Laptop LOQ 2024</span></p>
+                                        <p>
+                                            Nhìn qua chắc hăn anh em sẽ nhận ra Lenovo LOQ 2024 đã được thay đổi diện mạo hoàn toàn mới so
+                                            với bản 2023. <br>
+                                            Lenovo LOQ 2024 có kiểu dáng đơn giản, không quá hầm hố nhưng vẫn làm nổi bật lên vẻ đẹp mạnh
+                                            mẽ, cứng cáp mà một chiếc laptop gaming cần có. <br>
+                                            Viền màn hình Lenovo LOQ 2024 cũng được thiết kế mỏng đáng kể, máy có trọng lượng khá nhẹ,
+                                            không quá nặng nề so với nhiều sản phẩm laptop gaming khác trên thị trường.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        <strong>Màn hình</strong>
+                                        <img src="./img/sanpham/loqmh.jpg" alt="">
+                                        <p>
+                                            Với một chiếc laptop chơi game thì màn hình là phần không kém phần quan trọng.
+                                            Lenovo LOQ 2024 có màn hình kích thước tiêu chuẩn 15.6 inch với viền cạnh siêu mỏng, tạo hiệu
+                                            ứng thị giác hấp dẫn hơn, rộng hơn so với thông thường.
+                                        </p>
+                                        <p>
+                                            Màn hình độ phân giải FHD sắc nét mang đến trải nghiệm chơi game thích mắt, hình ảnh hiển thị
+                                            rõ ràng, tươi sáng và độ chân thật cao.
+                                            Công nghệ chống chói Anti-Glare giúp bạn có thể sử dụng máy ngay trong điều kiện ánh sáng mạnh
+                                            như ánh nắng ngoài trời. Với những game thủ game FPS thì màn hình tần số quét 144Hz sẽ giúp
+                                            bạn luôn có lợi thế trong mọi cuộc đối đầu.
+                                        </p>
+                                        <img src="./img/sanpham/loqmh1.jpg" alt="">
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        <strong>Cổng kết nối</strong>
+                                        <p>
+                                            Với số lượng cổng kết nối đa dạng giúp cho người dùng kết nối với các thiết bị ngoại vi như
+                                            chuột, bàn phím, USB,
+                                            tai nghe,... một cách dễ dàng và tiện lợi:
+                                        </p>
+                                        <p>
+                                            - 2x USB-A 3.2 Gen 2
+                                            <br> - 1x USB-A 3.2 Gen 1
+                                            <br> - 1x USB-C 3.2 Gen 2
+                                            <br> - 1x RJ45
+                                            <br> - 1x HDMI 2.1
+                                            <br> - 1x jack 3.5mm
+                                            <br> - 1x cổng nguồn
+                                        </p>
+                                        <img src="./img/sanpham/loqcong.jpg" alt="">
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        <strong>Bàn phím</strong>
+                                        <p>
+                                            Layout bàn phím full size độc đáo, thiết kế Fullsize và được trang bị bàn phím TrueStrike với chất lượng không kém gì bán phím cơ.
+                                            Bàn phím của máy có tiết diện lớn, khoảng cách hợp lý, hành trình phím sâu cho trải nghiệm gõ siêu mê.
+                                            Ngoài ra, bàn phím trên chiếc Lenovo LOQ 2024 được trang bị đèn nền đẹp mắt, hỗ trợ cho người dùng làm việc trong điều kiện thiếu sáng một cách thuận lợi, cho bạn những thao tác nhanh nhạy và chính xác.
+                                        </p>
+                                        <img src="./img/sanpham/loqkey.jpg" alt="">
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        <strong>Hiệu năng</strong>
+                                        <p>
+                                            Với bộ xử lý Core i5-12450HX đem đến tốc độ xử lý nhanh chóng ở mọi tác vụ công việc học tập văn phòng trên các phần mềm Word, Excel, PowerPoint,... cho đến đồ họa chuyên nghiệp và chơi game một cách hoàn hảo.
+                                            Lenovo LOQ 2024 được trang bị card đồ họa rời NVIDIA GeForce RTX 3050 6GB đáp ứng tốt nhu cầu làm việc và giải trí. Và đem lại cho người dùng khả năng thao tác đồ họa mạnh mẽ, render video, chỉnh sửa hình ảnh hay
+                                            chơi các tựa game hot như CSGO, FO4, Genshin Impact,... ở mức cài đặt medium đến high một cách mượt mà.
+                                            Lenovo LOQ 2024 với bộ nhớ Ram 12GB DDR5 đem lại khả năng xử lý đa nhiệm và chơi game cường độ cao một cách mượt mà khi trải nghiệm các tựa game nặng về đồ họa và các ứng dụng chỉnh sửa video, cũng như nhiều chương trình và tab trình duyệt cùng một lúc.
+                                            Ngoài ra, Laptop Lenovo LOQ 2024 còn được trang bị thêm ổ cứng 512GB PCIe NVMe M.2 SSD cho truyền tải ứng dụng dữ liệu ổn định, thao tác mượt mà, lưu trữ thông tin tốt, không gây tiếng ồn, giảm sản sinh nhiệt và tiêu thụ năng lượng trên pin.FF
+                                        </p>
+                                        <img src="./img/sanpham/loqhn.jpg" alt="">
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        <strong>Khả năng tản nhiệt</strong>
+                                        <p>
+                                            Về khả năng tản nhiệt Lenovo LOQ 2024 có tính năng làm mát tối ưu nhờ hệ thống hút gió kép, cánh quạt siêu mỏng, ống đồng và bốn khe tản nhiệt thông hơi được đặt ở vị trí chiến lược.
+                                            Vì vậy, bất kể khi người dùng có sử dụng máy nóng đến mức nào, hệ thống của bạn sẽ luôn được giữ ở trạng thái mát mẻ.
+                                        </p>
+                                        <img src="./img/sanpham/loqtannhiet.jpg" alt="">
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        <strong>Tổng kết</strong>
+                                        <p>
+                                            Lenovo LOQ 2024 hứa hẹn là một trong những sự lựa chọn tuyệt vời bởi thiết kế độc đáo, cá tính cùng với hiệu năng và những thông số kĩ thuật ấn tượng.
+                                            Vậy nên đừng ngần ngại lựa chọn mua Lenovo LOQ 2024 tại hệ thống của hàng của TechNest.vn để được trải nghiệm sự tuyệt vời của chiếc Laptop này đem lại.
+                                        </p>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="product-main">
+                            <div class="product-main-head">
+                                <div class="title">SẢN PHẨM LIÊN QUAN</div>
+                                <p>Xem tất cả</p>
+                            </div>
+                            <ul class="list-product">
+                                <li class="product-item">
+                                    <div class="img">
+                                        <img src="https://denhoamy.vn/upload/attachment/thumb/3433den-chum-trang-tri-noi-that-phong-cach-my-dc03780-01.jpg"
+                                             alt="Đèn chùm tiffany trang trí nội thất DC03596" />
+                                    </div>
+
+                                    <div class="product-info2">
+                                        <div class="product-name">
+                                            Đèn chùm tiffany trang trí nội thất DC03596
+                                        </div>
+
+                                        <p class="original-price">1.200.000 VND</p>
+
+                                        <div class="price-discount">
+                                            <p class="product-price">900.000 VND</p>
+                                            <p class="discount-percentage">-25%</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="product-item">
+                                    <div class="img">
+                                        <img src="https://denhoamy.vn/upload/attachment/thumb/2036den-chum-tiffany-trang-tri-noi-that-dc03784-01.jpg"
+                                             alt="Đèn chùm tiffany trang trí nội thất DC03596" />
+                                    </div>
+
+                                    <div class="product-info2">
+                                        <div class="product-name">
+                                            Đèn chùm tiffany trang trí nội thất DC03597
+                                        </div>
+
+                                        <p class="original-price">800.000 VND</p>
+
+                                        <div class="price-discount">
+                                            <p class="product-price">600.000 VND</p>
+                                            <p class="discount-percentage">-25%</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="product-item">
+                                    <div class="img">
+                                        <img src="https://denhoamy.vn/upload/attachment/thumb/8036den-chum-pha-le-trang-tri-noi-that-phong-cach-tan-co-dien-dc03781-03.jpg"
+                                             alt="Đèn chùm tiffany trang trí nội thất DC03596" />
+                                    </div>
+
+                                    <div class="product-info2">
+                                        <div class="product-name">
+                                            Đèn chùm tiffany trang trí nội thất DC03598
+                                        </div>
+
+                                        <p class="original-price">3.000.000Đ</p>
+
+                                        <div class="price-discount">
+                                            <p class="product-price">2.000.000Đ</p>
+                                            <p class="discount-percentage">-33%</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="product-item">
+                                    <div class="img">
+                                        <img src="https://denhoamy.vn/upload/attachment/thumb/3569den-chum-tiffany-trang-tri-noi-that-sang-trong-dc03775-05.jpg"
+                                             alt="Đèn chùm tiffany trang trí nội thất DC03596" />
+                                    </div>
+
+                                    <div class="product-info2">
+                                        <div class="product-name">
+                                            Đèn chùm tiffany trang trí nội thất DC03599
+                                        </div>
+
+                                        <p class="original-price">500.000 VND</p>
+
+                                        <div class="price-discount">
+                                            <p class="product-price">400.000 VND</p>
+                                            <p class="discount-percentage">-20%</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-container">
+                <div class="category-container">
+                    <div class="category-header">
+                        <p>Thông Số Sản Phẩm</p>
+                    </div>
+
+                    <table class="specs-table">
+                        <tr>
+                            <th>CPU</th>
+                            <td>AMD Ryzen™ 5-7235HS (3.20GHz up to 4.20GHz, 8MB Cache)</td>
+                        </tr>
+                        <tr>
+                            <th>RAM</th>
+                            <td>12GB SO-DIMM DDR5-4800MHz (2 slots, up to 32GB)</td>
+                        </tr>
+                        <tr>
+                            <th>Ổ cứng</th>
+                            <td>512GB SSD M.2 2242 PCIe® 4.0x4 NVMe®</td>
+                        </tr>
+                        <tr>
+                            <th>Card VGA</th>
+                            <td>NVIDIA® GeForce RTX™ 3050 6GB GDDR6</td>
+                        </tr>
+                        <tr>
+                            <th>Mux Switch</th>
+                            <td>Có</td>
+                        </tr>
+                        <tr>
+                            <th>Màn hình</th>
+                            <td>15.6" FHD (1920x1080) IPS 300nits Anti-glare, 100% sRGB, 144Hz, G-SYNC®</td>
+                        </tr>
+                        <tr>
+                            <th>Webcam</th>
+                            <td>HD 720p with E-shutter</td>
+                        </tr>
+                        <tr>
+                            <th>Cổng kết nối</th>
+                            <td>
+                                3x USB-A (USB 5Gbps/USB 3.2 Gen 1)<br>
+                                1x USB-C (USB 10Gbps/USB 3.2 Gen 2), with Lenovo’s PD 140W and DisplayPort™ 1.4<br>
+                                1x HDMI 2.1 (up to 8K/60Hz)<br>
+                                1x Headphone/microphone combo jack (3.5mm)<br>
+                                1x Ethernet (RJ-45)<br>
+                                1x Power connector
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Trọng lượng</th>
+                            <td>~2.4 kg</td>
+                        </tr>
+                        <tr>
+                            <th>Pin</th>
+                            <td>4-Cell, 60Wh</td>
+                        </tr>
+                        <tr>
+                            <th>Hệ điều hành</th>
+                            <td>Windows 11 bản quyền</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="review-product">
+            <!-- Tiêu đề phần đánh giá sản phẩm -->
+            <h2>KHÁCH HÀNG NÓI VỀ SẢN PHẨM</h2>
+
+            <!-- Thông báo nếu chưa có đánh giá -->
+            <div class="review-notice">
+                <p>Trở thành người đầu tiên đánh giá về sản phẩm.</p>
+            </div>
+
+            <!-- Phần danh sách đánh giá -->
+            <div class="review-ratings">
+                <div class="rating-item">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="rating-item">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="rating-item">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="rating-item">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="rating-item">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+            </div>
+
+            <!-- Phần nhập bình luận -->
+            <div class="review-input">
+                <textarea placeholder="Nhập nội dung bình luận"></textarea>
+                <button class="submit-review-btn">Gửi bình luận</button>
+            </div>
+
+            <!-- Phần hiển thị bình luận -->
+            <div class="comments-section">
+                <div class="comments-header">
+                    <h3>3 Bình luận</h3>
+                    <p>Đánh giá của khách hàng về sản phẩm</p>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="avatar">
+                            <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar Nguyễn Văn A" />
+                        </div>
+                        <div class="comment-info">
+                            <span class="username">Nguyễn Văn A</span>
+                            <span class="comment-date">02/11/2024</span>
+                        </div>
+                    </div>
+                    <p class="comment-content">
+                        Sản phẩm tuyệt vời, tôi rất hài lòng với chất lượng và giá cả!
+                    </p>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="avatar">
+                            <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar Trần Thị B" />
+                        </div>
+                        <div class="comment-info">
+                            <span class="username">Trần Thị B</span>
+                            <span class="comment-date">01/11/2024</span>
+                        </div>
+                    </div>
+                    <p class="comment-content">
+                        Chất lượng sản phẩm tốt, giao hàng nhanh chóng, nhưng tôi nghĩ
+                        giá hơi cao.
+                    </p>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="avatar">
+                            <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar Lê Thị C" />
+                        </div>
+                        <div class="comment-info">
+                            <span class="username">Lê Thị C</span>
+                            <span class="comment-date">30/10/2024</span>
+                        </div>
+                    </div>
+                    <p class="comment-content">
+                        Sản phẩm như mô tả, tôi sẽ mua thêm lần sau.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
