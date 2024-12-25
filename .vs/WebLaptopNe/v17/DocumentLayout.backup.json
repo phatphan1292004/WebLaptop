@@ -3,116 +3,24 @@
   "WorkspaceRootPath": "D:\\Nam3\\.Net\\WebLaptopNe\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\admin\\promotionadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\admin\\promotionadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\admin\\productadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\admin\\productadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\admin\\orderadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\admin\\orderadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\admin\\dashboardadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\admin\\dashboardadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\admin\\accountadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\admin\\accountadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\admin\\revenueadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\admin\\revenueadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\admin\\cusadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\admin\\cusadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\content\\js\\admin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\content\\js\\admin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\content\\css\\admin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\content\\css\\admin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\content\\css\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\content\\css\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\content\\js\\home.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\content\\js\\home.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\content\\js\\data.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\content\\js\\data.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\content\\css\\reset.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\content\\css\\reset.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\home\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\home\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\home\\user.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\home\\user.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\home\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\home\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\home\\productdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\home\\productdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\home\\category.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\home\\category.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\home\\productdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\home\\productdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\content\\css\\product.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\content\\css\\product.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\content\\css\\header-footer.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\content\\css\\header-footer.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\content\\css\\support.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\content\\css\\support.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|d:\\nam3\\.net\\weblaptopne\\weblaptopne\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{B071BA48-448A-4343-A3D5-B8E2F3B801D2}|WebLaptopNe\\WebLaptopNe.csproj|solutionrelative:weblaptopne\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -122,374 +30,70 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductAdmin.cshtml",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Admin\\ProductAdmin.cshtml",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Admin\\ProductAdmin.cshtml",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Admin\\ProductAdmin.cshtml",
-              "RelativeToolTip": "WebLaptopNe\\Views\\Admin\\ProductAdmin.cshtml",
-              "ViewState": "AgIAANABAAAAAAAAAAAYwOYBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T17:55:13.051Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OrderAdmin.cshtml",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Admin\\OrderAdmin.cshtml",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Admin\\OrderAdmin.cshtml",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Admin\\OrderAdmin.cshtml",
-              "RelativeToolTip": "WebLaptopNe\\Views\\Admin\\OrderAdmin.cshtml",
-              "ViewState": "AgIAAI4AAAAAAAAAAAAYwKgAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T17:55:21.385Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AccountAdmin.cshtml",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Admin\\AccountAdmin.cshtml",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Admin\\AccountAdmin.cshtml",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Admin\\AccountAdmin.cshtml",
-              "RelativeToolTip": "WebLaptopNe\\Views\\Admin\\AccountAdmin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T17:55:45.785Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "DashboardAdmin.cshtml",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Admin\\DashboardAdmin.cshtml",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Admin\\DashboardAdmin.cshtml",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Admin\\DashboardAdmin.cshtml",
-              "RelativeToolTip": "WebLaptopNe\\Views\\Admin\\DashboardAdmin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T17:38:59.221Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PromotionAdmin.cshtml",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Admin\\PromotionAdmin.cshtml",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Admin\\PromotionAdmin.cshtml",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Admin\\PromotionAdmin.cshtml",
-              "RelativeToolTip": "WebLaptopNe\\Views\\Admin\\PromotionAdmin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T17:55:38.108Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RevenueAdmin.cshtml",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Admin\\RevenueAdmin.cshtml",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Admin\\RevenueAdmin.cshtml",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Admin\\RevenueAdmin.cshtml",
-              "RelativeToolTip": "WebLaptopNe\\Views\\Admin\\RevenueAdmin.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAYwCQAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T17:55:51.739Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CusAdmin.cshtml",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Admin\\CusAdmin.cshtml",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Admin\\CusAdmin.cshtml",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Admin\\CusAdmin.cshtml",
-              "RelativeToolTip": "WebLaptopNe\\Views\\Admin\\CusAdmin.cshtml",
-              "ViewState": "AgIAAKIAAAAAAAAAAAAYwLwAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T17:55:30.278Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "WebLaptopNe\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAkwCwAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-22T15:44:41.737Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Controllers\\AdminController.cs",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "WebLaptopNe\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAA2wCcAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-22T17:38:25.193Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "admin.js",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\js\\admin.js",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Content\\js\\admin.js",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\js\\admin.js",
-              "RelativeToolTip": "WebLaptopNe\\Content\\js\\admin.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-12-22T17:23:28.577Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "admin.css",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\css\\admin.css",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Content\\css\\admin.css",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\css\\admin.css",
-              "RelativeToolTip": "WebLaptopNe\\Content\\css\\admin.css",
-              "ViewState": "AgIAAEIBAAAAAAAAAAAIwFIBAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-12-22T17:48:21.613Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "home.css",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\css\\home.css",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Content\\css\\home.css",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\css\\home.css",
-              "RelativeToolTip": "WebLaptopNe\\Content\\css\\home.css",
-              "ViewState": "AgIAACIAAAAAAAAAAAAIwDUAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-12-22T16:34:27.075Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "home.js",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\js\\home.js",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Content\\js\\home.js",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\js\\home.js",
-              "RelativeToolTip": "WebLaptopNe\\Content\\js\\home.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-12-22T17:52:39.813Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "_LayoutAdmin.cshtml",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "RelativeToolTip": "WebLaptopNe\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "ViewState": "AgIAAHYAAAAAAAAAAAAAAHkAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T17:33:55.71Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Home\\Login.cshtml",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Home\\Login.cshtml",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Home\\Login.cshtml",
-              "RelativeToolTip": "WebLaptopNe\\Views\\Home\\Login.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T17:13:41.533Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "data.js",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\js\\data.js",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Content\\js\\data.js",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\js\\data.js",
-              "RelativeToolTip": "WebLaptopNe\\Content\\js\\data.js",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-12-22T17:26:43.54Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Home\\Register.cshtml",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Home\\Register.cshtml",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Home\\Register.cshtml",
-              "RelativeToolTip": "WebLaptopNe\\Views\\Home\\Register.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T17:16:10.223Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Views\\_ViewStart.cshtml",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "WebLaptopNe\\Views\\_ViewStart.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T17:19:54.657Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "User.cshtml",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Home\\User.cshtml",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Home\\User.cshtml",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Home\\User.cshtml",
-              "RelativeToolTip": "WebLaptopNe\\Views\\Home\\User.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABwAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T17:18:33.045Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Cart.cshtml",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Home\\Cart.cshtml",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Home\\Cart.cshtml",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Home\\Cart.cshtml",
-              "RelativeToolTip": "WebLaptopNe\\Views\\Home\\Cart.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T17:08:52.302Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
               "Title": "Category.cshtml",
               "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Home\\Category.cshtml",
               "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Home\\Category.cshtml",
               "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Home\\Category.cshtml",
               "RelativeToolTip": "WebLaptopNe\\Views\\Home\\Category.cshtml",
-              "ViewState": "AgIAAKcBAAAAAAAAAAAYwK0BAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T17:02:54.546Z",
+              "WhenOpened": "2024-12-24T16:37:23.716Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 2,
               "Title": "ProductDetail.cshtml",
               "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Home\\ProductDetail.cshtml",
               "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Home\\ProductDetail.cshtml",
               "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Home\\ProductDetail.cshtml",
               "RelativeToolTip": "WebLaptopNe\\Views\\Home\\ProductDetail.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAABwAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB4AAACOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T16:56:25.008Z",
+              "WhenOpened": "2024-12-24T15:58:25.148Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "reset.css",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\css\\reset.css",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Content\\css\\reset.css",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\css\\reset.css",
-              "RelativeToolTip": "WebLaptopNe\\Content\\css\\reset.css",
-              "ViewState": "AgIAABMAAAAAAAAAAAAIwEAAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-12-22T16:12:51.589Z",
-              "EditorCaption": ""
+              "DocumentIndex": 4,
+              "Title": "Model1.edmx [Diagram1]",
+              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Models\\Model1.edmx",
+              "RelativeDocumentMoniker": "WebLaptopNe\\Models\\Model1.edmx",
+              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Models\\Model1.edmx [Diagram1]",
+              "RelativeToolTip": "WebLaptopNe\\Models\\Model1.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2024-12-24T15:40:59.592Z",
+              "EditorCaption": " [Diagram1]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "product.css",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\css\\product.css",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Content\\css\\product.css",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\css\\product.css",
-              "RelativeToolTip": "WebLaptopNe\\Content\\css\\product.css",
-              "ViewState": "AgIAABQEAAAAAAAAAAAYwCYEAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-12-22T16:59:09.483Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "WebLaptopNe\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKQAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T15:45:05.947Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "header-footer.css",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\css\\header-footer.css",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Content\\css\\header-footer.css",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\css\\header-footer.css",
-              "RelativeToolTip": "WebLaptopNe\\Content\\css\\header-footer.css",
-              "ViewState": "AgIAABoAAAAAAAAAAAAIwEAAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-12-22T15:49:26.482Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "support.css",
-              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\css\\support.css",
-              "RelativeDocumentMoniker": "WebLaptopNe\\Content\\css\\support.css",
-              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Content\\css\\support.css",
-              "RelativeToolTip": "WebLaptopNe\\Content\\css\\support.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-12-22T16:00:11.376Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "WebLaptopNe\\Views\\Home\\Index.cshtml",
               "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "WebLaptopNe\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAJABAAAAAAAAAAAAAJkBAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T15:45:01.951Z",
+              "WhenOpened": "2024-12-24T14:20:20.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "WebLaptopNe\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Nam3\\.Net\\WebLaptopNe\\WebLaptopNe\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "WebLaptopNe\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAUwCEAAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T14:13:18.575Z",
               "EditorCaption": ""
             }
           ]

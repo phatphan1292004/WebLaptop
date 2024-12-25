@@ -70,3 +70,7 @@ D:\Nam3\.Net\WebLaptopNe\WebLaptopNe\obj\Debug\WebLaptopNe.csproj.CoreCompileInp
 D:\Nam3\.Net\WebLaptopNe\WebLaptopNe\obj\Debug\WebLapto.3424077B.Up2Date
 D:\Nam3\.Net\WebLaptopNe\WebLaptopNe\obj\Debug\WebLaptopNe.dll
 D:\Nam3\.Net\WebLaptopNe\WebLaptopNe\obj\Debug\WebLaptopNe.pdb
+D:\Nam3\.Net\WebLaptopNe\WebLaptopNe\bin\EntityFramework.dll
+D:\Nam3\.Net\WebLaptopNe\WebLaptopNe\bin\EntityFramework.SqlServer.dll
+D:\Nam3\.Net\WebLaptopNe\WebLaptopNe\bin\EntityFramework.xml
+D:\Nam3\.Net\WebLaptopNe\WebLaptopNe\bin\EntityFramework.SqlServer.xml

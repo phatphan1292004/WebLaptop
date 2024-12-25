@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebPPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="brand">
+    <Key>
+      <PropertyRef Name="brand_id" />
+    </Key>
+    <Property Name="brand_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="brand_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="product" Relationship="Self.products_brands_fk" FromRole="brands" ToRole="products" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="stock_quantity" Type="Int32" />
+    <NavigationProperty Name="products" Relationship="Self.categories_products_fk" FromRole="categories" ToRole="products" />
+  </EntityType>
+  <EntityType Name="ORDER_1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="promotion_id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="total_price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="order_status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="shipping_fee" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="shipping_method" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="user" Relationship="Self.ACCOUNT_ORDER_fk" FromRole="ORDER_1" ToRole="users" />
+    <NavigationProperty Name="order_details" Relationship="Self.DONHANG_CHITIETDONHANG_fk" FromRole="ORDER_1" ToRole="order_details" />
+    <NavigationProperty Name="shippings" Relationship="Self.DONHANG_VANCHUYEN_fk" FromRole="ORDER_1" ToRole="shipping" />
+    <NavigationProperty Name="promotion" Relationship="Self.promotions_ORDER_1_fk" FromRole="ORDER_1" ToRole="promotions" />
+  </EntityType>
+  <EntityType Name="order_details">
+    <Key>
+      <PropertyRef Name="order_id" />
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="ORDER_1" Relationship="Self.DONHANG_CHITIETDONHANG_fk" FromRole="order_details" ToRole="ORDER_1" />
+    <NavigationProperty Name="product" Relationship="Self.products_order_details_fk" FromRole="order_details" ToRole="products" />
+  </EntityType>
+  <EntityType Name="product_detail">
+    <Key>
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="weight" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="cpu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="vga" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="port" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ram" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="storage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="webcam" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="battery" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="os" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="screen_size" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="stock_quantity" Type="Int32" Nullable="false" />
+    <Property Name="warranty_period" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="gpu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="product" Relationship="Self.products_product_configurations_fk" FromRole="product_detail" ToRole="products" />
+  </EntityType>
+  <EntityType Name="product_images">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="main_image" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="product" Relationship="Self.SANPHAM_HINHANHSP_fk" FromRole="product_images" ToRole="products" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="product_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="product_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="rating" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="discount_percent" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="brands" Relationship="Self.products_brands_fk" FromRole="products" ToRole="brands" />
+    <NavigationProperty Name="category" Relationship="Self.categories_products_fk" FromRole="products" ToRole="categories" />
+    <NavigationProperty Name="order_details" Relationship="Self.products_order_details_fk" FromRole="products" ToRole="order_details" />
+    <NavigationProperty Name="product_detail" Relationship="Self.products_product_configurations_fk" FromRole="products" ToRole="product_detail" />
+    <NavigationProperty Name="product_images" Relationship="Self.SANPHAM_HINHANHSP_fk" FromRole="products" ToRole="product_images" />
+    <NavigationProperty Name="promotions" Relationship="Self.products_promotions_fk" FromRole="products" ToRole="promotions" />
+    <NavigationProperty Name="reviews" Relationship="Self.SANPHAM_DANHGIA_fk" FromRole="products" ToRole="reviews" />
+  </EntityType>
+  <EntityType Name="promotion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="promotion_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="start_day" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="end_day" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="discount_percent" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="promotion_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ORDER_1" Relationship="Self.promotions_ORDER_1_fk" FromRole="promotions" ToRole="ORDER_1" />
+    <NavigationProperty Name="product" Relationship="Self.products_promotions_fk" FromRole="promotions" ToRole="products" />
+  </EntityType>
+  <EntityType Name="review">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="content" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="rating" Type="Int32" Nullable="false" />
+    <Property Name="review_typpe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="product" Relationship="Self.SANPHAM_DANHGIA_fk" FromRole="reviews" ToRole="products" />
+    <NavigationProperty Name="user" Relationship="Self.TAIKHOAN_DANHGIA_fk" FromRole="reviews" ToRole="users" />
+  </EntityType>
+  <EntityType Name="shipping">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <Property Name="pickup_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="delivery_date" Type="DateTime" Precision="3" />
+    <Property Name="shipping_status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="carrier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ORDER_1" Relationship="Self.DONHANG_VANCHUYEN_fk" FromRole="shipping" ToRole="ORDER_1" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="cus_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ORDER_1" Relationship="Self.ACCOUNT_ORDER_fk" FromRole="users" ToRole="ORDER_1" />
+    <NavigationProperty Name="reviews" Relationship="Self.TAIKHOAN_DANHGIA_fk" FromRole="users" ToRole="reviews" />
+  </EntityType>
+  <Association Name="products_brands_fk">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="brands" Type="Self.brand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="brands">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="categories_products_fk">
+    <End Role="categories" Type="Self.category" Multiplicity="1" />
+    <End Role="products" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ACCOUNT_ORDER_fk">
+    <End Role="users" Type="Self.user" Multiplicity="1" />
+    <End Role="ORDER_1" Type="Self.ORDER_1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ORDER_1">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DONHANG_CHITIETDONHANG_fk">
+    <End Role="ORDER_1" Type="Self.ORDER_1" Multiplicity="1" />
+    <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ORDER_1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DONHANG_VANCHUYEN_fk">
+    <End Role="ORDER_1" Type="Self.ORDER_1" Multiplicity="1" />
+    <End Role="shipping" Type="Self.shipping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ORDER_1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="shipping">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="promotions_ORDER_1_fk">
+    <End Role="promotions" Type="Self.promotion" Multiplicity="1" />
+    <End Role="ORDER_1" Type="Self.ORDER_1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="promotions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ORDER_1">
+        <PropertyRef Name="promotion_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="products_order_details_fk">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="products_product_configurations_fk">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="product_detail" Type="Self.product_detail" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_detail">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SANPHAM_HINHANHSP_fk">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="product_images" Type="Self.product_images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_images">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="products_promotions_fk">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="promotions" Type="Self.promotion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promotions">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SANPHAM_DANHGIA_fk">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="reviews" Type="Self.review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reviews">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TAIKHOAN_DANHGIA_fk">
+    <End Role="users" Type="Self.user" Multiplicity="1" />
+    <End Role="reviews" Type="Self.review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reviews">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebPPEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="brands" EntityType="Self.brand" />
+    <EntitySet Name="categories" EntityType="Self.category" />
+    <EntitySet Name="ORDER_1" EntityType="Self.ORDER_1" />
+    <EntitySet Name="order_details" EntityType="Self.order_details" />
+    <EntitySet Name="product_detail" EntityType="Self.product_detail" />
+    <EntitySet Name="product_images" EntityType="Self.product_images" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="promotions" EntityType="Self.promotion" />
+    <EntitySet Name="reviews" EntityType="Self.review" />
+    <EntitySet Name="shippings" EntityType="Self.shipping" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="products_brands_fk" Association="Self.products_brands_fk">
+      <End Role="products" EntitySet="products" />
+      <End Role="brands" EntitySet="brands" />
+    </AssociationSet>
+    <AssociationSet Name="categories_products_fk" Association="Self.categories_products_fk">
+      <End Role="categories" EntitySet="categories" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="ACCOUNT_ORDER_fk" Association="Self.ACCOUNT_ORDER_fk">
+      <End Role="users" EntitySet="users" />
+      <End Role="ORDER_1" EntitySet="ORDER_1" />
+    </AssociationSet>
+    <AssociationSet Name="DONHANG_CHITIETDONHANG_fk" Association="Self.DONHANG_CHITIETDONHANG_fk">
+      <End Role="ORDER_1" EntitySet="ORDER_1" />
+      <End Role="order_details" EntitySet="order_details" />
+    </AssociationSet>
+    <AssociationSet Name="DONHANG_VANCHUYEN_fk" Association="Self.DONHANG_VANCHUYEN_fk">
+      <End Role="ORDER_1" EntitySet="ORDER_1" />
+      <End Role="shipping" EntitySet="shippings" />
+    </AssociationSet>
+    <AssociationSet Name="promotions_ORDER_1_fk" Association="Self.promotions_ORDER_1_fk">
+      <End Role="promotions" EntitySet="promotions" />
+      <End Role="ORDER_1" EntitySet="ORDER_1" />
+    </AssociationSet>
+    <AssociationSet Name="products_order_details_fk" Association="Self.products_order_details_fk">
+      <End Role="products" EntitySet="products" />
+      <End Role="order_details" EntitySet="order_details" />
+    </AssociationSet>
+    <AssociationSet Name="products_product_configurations_fk" Association="Self.products_product_configurations_fk">
+      <End Role="products" EntitySet="products" />
+      <End Role="product_detail" EntitySet="product_detail" />
+    </AssociationSet>
+    <AssociationSet Name="SANPHAM_HINHANHSP_fk" Association="Self.SANPHAM_HINHANHSP_fk">
+      <End Role="products" EntitySet="products" />
+      <End Role="product_images" EntitySet="product_images" />
+    </AssociationSet>
+    <AssociationSet Name="products_promotions_fk" Association="Self.products_promotions_fk">
+      <End Role="products" EntitySet="products" />
+      <End Role="promotions" EntitySet="promotions" />
+    </AssociationSet>
+    <AssociationSet Name="SANPHAM_DANHGIA_fk" Association="Self.SANPHAM_DANHGIA_fk">
+      <End Role="products" EntitySet="products" />
+      <End Role="reviews" EntitySet="reviews" />
+    </AssociationSet>
+    <AssociationSet Name="TAIKHOAN_DANHGIA_fk" Association="Self.TAIKHOAN_DANHGIA_fk">
+      <End Role="users" EntitySet="users" />
+      <End Role="reviews" EntitySet="reviews" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

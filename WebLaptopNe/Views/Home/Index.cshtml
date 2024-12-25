@@ -1,21 +1,19 @@
-﻿
+﻿@model IEnumerable<WebLaptopNe.Models.product>
+
 @{
     ViewBag.Title = "Index";
 }
-@*<link rel="icon" href="./img/laptopback/logo2.png" sizes="180x180">
-<title>TECH NEST</title>*@
-@*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+
+@{
+    var products = ViewBag.listSPHome as List<WebLaptopNe.Models.product>;
+    var productImages = ViewBag.productImages as List<WebLaptopNe.Models.product_images>;
+
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
       integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />*@
-@*<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet" />*@
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-<link href="~/Content/css/reset.css" rel="stylesheet" />
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link href="~/Content/css/home.css" rel="stylesheet" />
 <div class="main">
-
     <div class="slider-container">
         <div class="container">
             <div class="slider">
@@ -244,7 +242,7 @@
         </div>
     </div>
 
-  
+
     <div class="container">
         <div class="product-wrapper">
             <div class="wrapper-title">SẢN PHẨM BÁN CHẠY</div>
@@ -355,36 +353,82 @@
         </div>
     </div>
 
-     Home Products 
     <section class="home-product">
         <div class="container">
             <div class="product-wrapper">
                 <div class="wrapper-top">
-                    <div class="wrapper-category">ĐÈN CHÙM</div>
+                    <div class="wrapper-category">Laptop Gaming</div>
                     <a href="Detail.html">Xem thêm</a>
                 </div>
 
                 <div class="wrapper-bottom">
                     <ul class="list-product" id="list-product1">
-                        <li class="product-item">
-                            <div class="img">
-                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
-                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
-                            </div>
+                        @foreach (var p in products.Where(p => p.category_id == 1)
+                                                   .OrderByDescending(p => p.created_at)
+                                                   .Take(5))
+                        {
+                            var imgne = productImages?.FirstOrDefault(pi => pi.product_id == p.id);
+                            var x = imgne?.url ?? "https://images.unsplash.com/photo-1731453171628-635e49577b59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4fHx8ZW58MHx8fHx8";
+                            var discountedPrice = (p.unit_price - p.unit_price * p.discount_percent / 100);
+                            <li class="product-item">
+                                <a href="@Url.Action("ProductDetail", "Home", new {id = p.id})" class="product-link">
+                                    <div class="img">
+                                        <img src="@x" alt="@p.product_name" />
+                                    </div>
 
-                            <div class="product-info">
-                                <div class="product-name">
-                                    Đèn chùm tiffany trang trí nội thất DC03596
+                                    <div class="product-info">
+                                        <div class="product-name">@p.product_name</div>
+                                        <p class="original-price">@p.unit_price.ToString("N0") VND</p>
+
+                                        <div class="price-discount">
+                                            <p class="product-price">@discountedPrice.ToString("N0") VND</p>
+                                            <p class="discount-percentage">-@p.discount_percent %</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-product">
+        <div class="container">
+            <div class="product-wrapper">
+                <div class="wrapper-top">
+                    <div class="wrapper-category">Laptop Văn Phòng</div>
+                    <a href="Detail.html">Xem thêm</a>
+                </div>
+
+                <div class="wrapper-bottom">
+                    <ul class="list-product" id="list-product1">
+                        @foreach (var p in products.Where(p => p.category_id == 2)
+                            .OrderByDescending(p => p.created_at)
+                            .Take(5))
+                        {
+                            var imgne = productImages?.FirstOrDefault(pi => pi.product_id == p.id);
+                            var x = imgne?.url ?? "https://images.unsplash.com/photo-1731453171628-635e49577b59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4fHx8ZW58MHx8fHx8";
+                            var discountedPrice = (p.unit_price - p.unit_price * p.discount_percent / 100);
+                            <li class="product-item">
+                                <div class="img">
+                                    <img src="@x" alt="@p.product_name" />
                                 </div>
 
-                                <p class="original-price">3.000.000 VND</p>
+                                <div class="product-info">
+                                    <div class="product-name">@p.product_name</div>
+                                    <p class="original-price">@p.unit_price VND</p>
 
-                                <div class="price-discount">
-                                    <p class="product-price">2.000.000 VND</p>
-                                    <p class="discount-percentage">-33%</p>
+                                    <div class="price-discount">
+                                        <p class="product-price">@discountedPrice VND</p>
+                                        <p class="discount-percentage">-@p.discount_percent %</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
@@ -395,31 +439,36 @@
         <div class="container">
             <div class="product-wrapper">
                 <div class="wrapper-top">
-                    <div class="wrapper-category">ĐÈN THẢ</div>
+                    <div class="wrapper-category">Laptop Like New</div>
                     <a href="Detail.html">Xem thêm</a>
                 </div>
 
                 <div class="wrapper-bottom">
-                    <ul class="list-product" id="list-product2">
-                        <li class="product-item">
-                            <div class="img">
-                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
-                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
-                            </div>
-
-                            <div class="product-info">
-                                <div class="product-name">
-                                    Đèn chùm tiffany trang trí nội thất DC03596
+                    <ul class="list-product" id="list-product1">
+                        @foreach (var p in products.Where(p => p.category_id == 3)
+                            .OrderByDescending(p => p.created_at)
+                            .Take(5))
+                        {
+                            var imgne = productImages?.FirstOrDefault(pi => pi.product_id == p.id);
+                            var x = imgne?.url ?? "https://images.unsplash.com/photo-1731453171628-635e49577b59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4fHx8ZW58MHx8fHx8";
+                            var discountedPrice = (p.unit_price - p.unit_price * p.discount_percent / 100);
+                            <li class="product-item">
+                                <div class="img">
+                                    <img src="@x" alt="@p.product_name" />
                                 </div>
 
-                                <p class="original-price">3.000.000 VND</p>
+                                <div class="product-info">
+                                    <div class="product-name">@p.product_name</div>
+                                    <p class="original-price">@p.unit_price VND</p>
 
-                                <div class="price-discount">
-                                    <p class="product-price">2.000.000 VND</p>
-                                    <p class="discount-percentage">-33%</p>
+                                    <div class="price-discount">
+                                        <p class="product-price">@discountedPrice VND</p>
+                                        <p class="discount-percentage">-@p.discount_percent %</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
@@ -430,219 +479,41 @@
         <div class="container">
             <div class="product-wrapper">
                 <div class="wrapper-top">
-                    <div class="wrapper-category">ĐÈN BÀN</div>
+                    <div class="wrapper-category">Phụ Kiện</div>
                     <a href="Detail.html">Xem thêm</a>
                 </div>
 
                 <div class="wrapper-bottom">
-                    <ul class="list-product" id="list-product3">
-                        <li class="product-item">
-                            <div class="img">
-                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
-                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
-                            </div>
-
-                            <div class="product-info">
-                                <div class="product-name">
-                                    Đèn chùm tiffany trang trí nội thất DC03596
+                    <ul class="list-product" id="list-product1">
+                        @foreach (var p in products.Where(p => p.category_id == 4)
+                             .OrderByDescending(p => p.created_at)
+                             .Take(5))
+                        {
+                            var imgne = productImages?.FirstOrDefault(pi => pi.product_id == p.id);
+                            var x = imgne?.url ?? "https://images.unsplash.com/photo-1731453171628-635e49577b59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4fHx8ZW58MHx8fHx8";
+                            var discountedPrice = (p.unit_price - p.unit_price * p.discount_percent / 100);
+                            <li class="product-item">
+                                <div class="img">
+                                    <img src="@x" alt="@p.product_name" />
                                 </div>
 
-                                <p class="original-price">3.000.000 VND</p>
+                                <div class="product-info">
+                                    <div class="product-name">@p.product_name</div>
+                                    <p class="original-price">@p.unit_price VND</p>
 
-                                <div class="price-discount">
-                                    <p class="product-price">2.000.000 VND</p>
-                                    <p class="discount-percentage">-33%</p>
+                                    <div class="price-discount">
+                                        <p class="product-price">@discountedPrice VND</p>
+                                        <p class="discount-percentage">-@p.discount_percent %</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-
-    <section class="home-product">
-        <div class="container">
-            <div class="product-wrapper">
-                <div class="wrapper-top">
-                    <div class="wrapper-category">ĐÈN ỐP TRẦN</div>
-                    <a href="Detail.html">Xem thêm</a>
-                </div>
-
-                <div class="wrapper-bottom">
-                    <ul class="list-product" id="list-product4">
-                        <li class="product-item">
-                            <div class="img">
-                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
-                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
-                            </div>
-
-                            <div class="product-info">
-                                <div class="product-name">
-                                    Đèn chùm tiffany trang trí nội thất DC03596
-                                </div>
-
-                                <p class="original-price">3.000.000 VND</p>
-
-                                <div class="price-discount">
-                                    <p class="product-price">2.000.000 VND</p>
-                                    <p class="discount-percentage">-33%</p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="home-product">
-        <div class="container">
-            <div class="product-wrapper">
-                <div class="wrapper-top">
-                    <div class="wrapper-category">ĐÈN QUẠT</div>
-                    <a href="Detail.html">Xem thêm</a>
-                </div>
-
-                <div class="wrapper-bottom">
-                    <ul class="list-product" id="list-product5">
-                        <li class="product-item">
-                            <div class="img">
-                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
-                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
-                            </div>
-
-                            <div class="product-info">
-                                <div class="product-name">
-                                    Đèn chùm tiffany trang trí nội thất DC03596
-                                </div>
-
-                                <p class="original-price">3.000.000 VND</p>
-
-                                <div class="price-discount">
-                                    <p class="product-price">2.000.000 VND</p>
-                                    <p class="discount-percentage">-33%</p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="home-product">
-        <div class="container">
-            <div class="product-wrapper">
-                <div class="wrapper-top">
-                    <div class="wrapper-category">ĐÈN KHÁC</div>
-                    <a href="Detail.html">Xem thêm</a>
-                </div>
-
-                <div class="wrapper-bottom">
-                    <ul class="list-product" id="list-product6">
-                        <li class="product-item">
-                            <div class="img">
-                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
-                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
-                            </div>
-
-                            <div class="product-info">
-                                <div class="product-name">
-                                    Đèn chùm tiffany trang trí nội thất DC03596
-                                </div>
-
-                                <p class="original-price">3.000.000 VND</p>
-
-                                <div class="price-discount">
-                                    <p class="product-price">2.000.000 VND</p>
-                                    <p class="discount-percentage">-33%</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item">
-                            <div class="img">
-                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
-                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
-                            </div>
-
-                            <div class="product-info">
-                                <div class="product-name">
-                                    Đèn chùm tiffany trang trí nội thất DC03596
-                                </div>
-
-                                <p class="original-price">3.000.000 VND</p>
-
-                                <div class="price-discount">
-                                    <p class="product-price">2.000.000 VND</p>
-                                    <p class="discount-percentage">-33%</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item">
-                            <div class="img">
-                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
-                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
-                            </div>
-
-                            <div class="product-info">
-                                <div class="product-name">
-                                    Đèn chùm tiffany trang trí nội thất DC03596
-                                </div>
-
-                                <p class="original-price">3.000.000 VND</p>
-
-                                <div class="price-discount">
-                                    <p class="product-price">2.000.000 VND</p>
-                                    <p class="discount-percentage">-33%</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item">
-                            <div class="img">
-                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
-                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
-                            </div>
-
-                            <div class="product-info">
-                                <div class="product-name">
-                                    Đèn chùm tiffany trang trí nội thất DC03596
-                                </div>
-
-                                <p class="original-price">3.000.000 VND</p>
-
-                                <div class="price-discount">
-                                    <p class="product-price">2.000.000 VND</p>
-                                    <p class="discount-percentage">-33%</p>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="product-item">
-                            <div class="img">
-                                <img src="https://denhoamy.vn/upload/attachment/thumb/7239den-chum-tiffany-trang-tri-noi-that-dc03596-05.jpg"
-                                     alt="Đèn chùm tiffany trang trí nội thất DC03596" />
-                            </div>
-
-                            <div class="product-info">
-                                <div class="product-name">
-                                    Đèn chùm tiffany trang trí nội thất DC03596
-                                </div>
-
-                                <p class="original-price">3.000.000 VND</p>
-
-                                <div class="price-discount">
-                                    <p class="product-price">2.000.000 VND</p>
-                                    <p class="discount-percentage">-33%</p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
 
     <section class="home-info">
         <div class="container">

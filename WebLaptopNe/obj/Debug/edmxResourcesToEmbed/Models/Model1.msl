@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebPPModelStoreContainer" CdmEntityContainer="WebPPEntities">
+    <EntitySetMapping Name="brands">
+      <EntityTypeMapping TypeName="WebPPModel.brand">
+        <MappingFragment StoreEntitySet="brands">
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="brand_name" ColumnName="brand_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="WebPPModel.category">
+        <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="stock_quantity" ColumnName="stock_quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDER_1">
+      <EntityTypeMapping TypeName="WebPPModel.ORDER_1">
+        <MappingFragment StoreEntitySet="ORDER_1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="promotion_id" ColumnName="promotion_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="order_status" ColumnName="order_status" />
+          <ScalarProperty Name="shipping_fee" ColumnName="shipping_fee" />
+          <ScalarProperty Name="shipping_method" ColumnName="shipping_method" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_details">
+      <EntityTypeMapping TypeName="WebPPModel.order_details">
+        <MappingFragment StoreEntitySet="order_details">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_detail">
+      <EntityTypeMapping TypeName="WebPPModel.product_detail">
+        <MappingFragment StoreEntitySet="product_detail">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="cpu" ColumnName="cpu" />
+          <ScalarProperty Name="vga" ColumnName="vga" />
+          <ScalarProperty Name="port" ColumnName="port" />
+          <ScalarProperty Name="ram" ColumnName="ram" />
+          <ScalarProperty Name="storage" ColumnName="storage" />
+          <ScalarProperty Name="webcam" ColumnName="webcam" />
+          <ScalarProperty Name="battery" ColumnName="battery" />
+          <ScalarProperty Name="os" ColumnName="os" />
+          <ScalarProperty Name="screen_size" ColumnName="screen_size" />
+          <ScalarProperty Name="stock_quantity" ColumnName="stock_quantity" />
+          <ScalarProperty Name="warranty_period" ColumnName="warranty_period" />
+          <ScalarProperty Name="gpu" ColumnName="gpu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_images">
+      <EntityTypeMapping TypeName="WebPPModel.product_images">
+        <MappingFragment StoreEntitySet="product_images">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="main_image" ColumnName="main_image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="WebPPModel.product">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="product_status" ColumnName="product_status" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="discount_percent" ColumnName="discount_percent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="promotions">
+      <EntityTypeMapping TypeName="WebPPModel.promotion">
+        <MappingFragment StoreEntitySet="promotions">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="promotion_name" ColumnName="promotion_name" />
+          <ScalarProperty Name="start_day" ColumnName="start_day" />
+          <ScalarProperty Name="end_day" ColumnName="end_day" />
+          <ScalarProperty Name="discount_percent" ColumnName="discount_percent" />
+          <ScalarProperty Name="promotion_type" ColumnName="promotion_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reviews">
+      <EntityTypeMapping TypeName="WebPPModel.review">
+        <MappingFragment StoreEntitySet="reviews">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="review_typpe" ColumnName="review_typpe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shippings">
+      <EntityTypeMapping TypeName="WebPPModel.shipping">
+        <MappingFragment StoreEntitySet="shipping">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="pickup_date" ColumnName="pickup_date" />
+          <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
+          <ScalarProperty Name="shipping_status" ColumnName="shipping_status" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="carrier" ColumnName="carrier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="WebPPModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="cus_name" ColumnName="cus_name" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
