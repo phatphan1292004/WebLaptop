@@ -109,6 +109,7 @@
     <Content Include="Content\css\reset.css" />
     <Content Include="Content\css\support.css" />
     <Content Include="Content\css\user.css" />
+    <Content Include="Content\css\search.css" />
     <Content Include="Content\img\adminpage\category.png" />
     <Content Include="Content\img\adminpage\chat.png" />
     <Content Include="Content\img\adminpage\checked.png" />
@@ -350,6 +351,7 @@
     <Content Include="Content\img\sanpham\loqtannhiet.jpg" />
     <Content Include="Content\js\admin.js" />
     <Content Include="Content\js\cart.js" />
+    <Content Include="Content\js\cart2.js" />
     <Content Include="Content\js\data.js" />
     <Content Include="Content\js\Detail.js" />
     <Content Include="Content\js\home.js" />
@@ -357,7 +359,9 @@
     <Content Include="Content\js\product.js" />
     <Content Include="Content\js\register.js" />
     <Content Include="Content\js\script.js" />
+    <Content Include="Content\js\search.js" />
     <Content Include="Content\js\user.js" />
+    <Content Include="Content\js\user2.js" />
     <Content Include="Global.asax" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -374,7 +378,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -423,6 +429,15 @@
     <Compile Include="Models\shipping.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\user.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -443,10 +458,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ProductDetail.cshtml" />
-    <Content Include="Views\Home\Category.cshtml" />
-    <Content Include="Views\Home\Cart.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\User.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\DashboardAdmin.cshtml" />
@@ -456,6 +467,12 @@
     <Content Include="Views\Admin\PromotionAdmin.cshtml" />
     <Content Include="Views\Admin\AccountAdmin.cshtml" />
     <Content Include="Views\Admin\RevenueAdmin.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\Home\CategoryHeader.cshtml" />
+    <Content Include="Views\Cart\ViewCart.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\Category.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

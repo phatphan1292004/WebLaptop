@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<WebLaptopNe.Models.product>
 @{
-    ViewBag.Title = "Category";
+    ViewBag.Title = "SearchProduct";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var productImages = ViewBag.productImages as List<WebLaptopNe.Models.product_images>;
 }
@@ -61,7 +61,7 @@
         text-align: center;
         display: flex;
         gap: 10px;
-        justify-content: center;
+        justify-content:center;
         align-items: center;
     }
         /* Danh sách các nút phân trang */
@@ -122,38 +122,19 @@
                 transform: scale(0.95);
                 transition: transform 0.1s ease;
             }
-
-    .breadcrumb {
-        padding-top: 30px;
-    }
-
-    a {
-        color: black;
-        text-decoration: none;
-    }
 </style>
-<div class="container">
-    <div class="breadcrumb">
-        <a href="@Url.Action("Index", "Home")">Trang chủ</a>
-        @if (!string.IsNullOrEmpty(ViewBag.Category))
-        {
-            <span> / </span>
-            <a href="@Url.Action("Category", "Home", new { categoryId = 1 })">
-                @ViewBag.Category
-            </a>
-        }
-        @if (!string.IsNullOrEmpty(ViewBag.Brand))
-        {
-            <span> / </span>
-            <span>@ViewBag.Brand</span>
-        }
-    </div>
-</div>
-
 <div class="main">
     <div class="main-content">
-        <div class="banner">
-            <img src="https://file.hstatic.net/200000722513/file/swift_1920x420_2048x2048.png" />
+        <div class="search">
+            <h2>Kết quả tìm kiếm</h2>
+            @if (Model.Any())
+            {
+                <p>Tìm thấy <span class="product-count">@Model.Count()</span> sản phẩm phù hợp.</p>
+            }
+            else
+            {
+                <p>Tìm kiếm theo <span>...</span></p>
+            }
         </div>
         <div class="container-header">
             <div class="filter-wrapper">

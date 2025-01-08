@@ -30,7 +30,6 @@
 
 .header .header-right .header-user {
     border-radius: 100%;
-    display: none;
     margin-left: 20px;
     position: relative;
     cursor: pointer;
@@ -227,7 +226,6 @@
 
         .header .navbar .navbar-list .dropdown:hover .submenu {
             display: block;
-            width: 1000px;
         }
 
         .header .navbar .navbar-list .dropdown .submenu {
@@ -237,32 +235,35 @@
 
             .header .navbar .navbar-list .dropdown .submenu > ul {
                 display: flex;
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
+                flex-direction: column;     
                 background-color: #fff;
-                padding: 12px;
                 box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
                 text-align: left;
             }
 
 .header .navbar-list .dropdown .submenu > ul .category {
     background-color: var(--color-white);
-    padding: 10px 10px 30px 10px;
+    padding: 15px 10px;
+    cursor: pointer;
+    
 }
 
 .header .navbar-list .dropdown .category-header {
-    font-size: 15px;
+    font-size: 14px;
     text-transform: uppercase;
     font-weight: 600;
-    color: var(--color-black);
+    color: black;
     text-align: left;
-    color: #e30019;
 }
 
-.header .navbar-list .dropdown .category-products {
-    margin-top: 10px;
-    list-style: none;
-}
+    .header .navbar-list .dropdown .category-header:hover {
+        color: #e30019;
+    }
+
+    .header .navbar-list .dropdown .category-products {
+        margin-top: 10px;
+        list-style: none;
+    }
 
 .header .navbar-list .dropdown .category-item {
     font-size: 14px;
@@ -470,4 +471,9 @@
     width: 100%;
     background-color: #fff;
     background-color: #12161d;
+}
+
+a {
+    list-style: none;
+    text-decoration:none;
 }

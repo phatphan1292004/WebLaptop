@@ -8,7 +8,15 @@
       integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-<link href="~/Content/css/product.css" rel="stylesheet" />
+<link href="~/Content/css/product.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
+<style>
+    .add-to-cart {
+        margin-top: 20px;
+        display: block;
+        padding: 10px 20px;
+        background-color: red;
+    }
+</style>
 <div class="main">
     <div class="container">
         <div class="breadcrumb">
@@ -27,6 +35,15 @@
                     </div>
                     <div class="main_product">
                         <div class="product-image-list">
+                            @if (ViewBag.AdditionalImages != null)
+                            {
+                                foreach (var imageUrl in ViewBag.AdditionalImages)
+                                {
+                                    <div class="product-image">
+                                        <img src="@imageUrl" alt="@Model.product.product_name" />
+                                    </div>
+                                }
+                            }
                             <div class="product-image">
                                 <img src="@(ViewBag.MainImage ?? Url.Content("~/img/default-image.jpg"))" alt="@Model.product.product_name" />
                             </div>
@@ -45,11 +62,9 @@
                             </div>
                             <p class="product-warranty"> <span>Bảo hành : </span>@Model.product.product_detail.warranty_period</p>
                             <a href="#product-info" class="detail-config">Xem chi tiết cấu hình</a>
-                            <div class="product-detail-bottom" style="margin-top: 100px;">
-                                <button class="buy-product">MUA NGAY</button>
-                            </div>
-                            <div id="cartNotification" class="notification">
-                                Bạn đã thêm vào giỏ hàng thành công!
+                            <button class="add-to-cart" data-product-id="@Model.product.id">Thêm vào giỏ hàng</button>
+                            <div id="cartNotification" class="notification" style="display: none;">
+                                Sản phẩm đã được thêm vào giỏ hàng!
                             </div>
                         </div>
                     </div>
@@ -68,6 +83,16 @@
                                     <li>
                                         <i class="fa-solid fa-check"></i>
                                         <strong>Thiết kế</strong>
+                                        <div class="additional-images">
+                                            @if (ViewBag.AdditionalImages != null)
+                                            {
+                                                foreach (var imageUrl in ViewBag.AdditionalImages)
+                                                {
+                                                    <img src="@imageUrl" alt="Hình phụ" class="additional-image" />
+                                                }
+                                            }
+                                        </div>
+
                                         <p><span>Laptop LOQ 2024</span></p>
                                         <p>
                                             Nhìn qua chắc hăn anh em sẽ nhận ra Lenovo LOQ 2024 đã được thay đổi diện mạo hoàn toàn mới so
@@ -402,7 +427,22 @@
     </div>
 </div>
 
+<!-- jQuery mới nhất -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+@*<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>*@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="~/Content/js/product.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.product-image-list').slick({
+            infinite: true,
+            slidesToShow: 1,
+            prevArrow: `<button type='button' class='slick-prev slick-arrow'><i class="fa-solid fa-angle-left"></i></button>`,
+            nextArrow: `<button type='button' class='slick-next slick-arrow'><i class="fa-solid fa-angle-right"></i></button>`,
+        });
+    });
+</script>
 

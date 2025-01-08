@@ -1,0 +1,336 @@
+﻿@model WebLaptopNe.Controllers.CartController.Cart
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="~/Content/css/cart.css" rel="stylesheet" />
+<style>
+    /* Tùy chỉnh toàn bộ popup */
+    .swal-custom-popup {
+        font-family: 'Poppins', sans-serif;
+        border-radius: 12px;
+        padding: 20px 30px;
+        background-color: #ffffff;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px; /* Khoảng cách giữa các phần tử */
+    }
+
+    /* Tùy chỉnh icon */
+    .swal-custom-icon {
+        font-size: 15px; /* Kích thước icon lớn hơn */
+        color: #e74c3c;
+        margin: 0 auto; /* Căn giữa icon */
+    }
+
+    /* Tùy chỉnh tiêu đề */
+    .swal-custom-popup .swal2-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 10px 0;
+        color: #333;
+    }
+
+    /* Tùy chỉnh nội dung HTML */
+    .swal-custom-popup .swal2-html-container {
+        font-size: 16px;
+        color: #555;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    /* Tùy chỉnh nút OK */
+    .swal-custom-confirm-button {
+        background-color: #e74c3c !important;
+        color: white !important;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .swal-custom-confirm-button:hover {
+            background-color: #c0392b !important;
+        }
+
+
+        .swal2-actions button {
+            margin: 0 10px !important;
+        }
+    /* Tùy chỉnh nút Hủy */
+    .swal2-cancel {
+        background-color: #7f8c8d !important; /* Màu xám */
+        color: white !important;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+
+</style>
+<div class="main">
+    <a class="direction" style="margin: 20px 140px; display: block; text-decoration: none; color: black;" href="index.html">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span id="direction-cart">Mua thêm sản phẩm</span>
+    </a>
+    <div class="nav">
+        <div class="nav-item" data-tab="cart">Giỏ hàng</div>
+        <div class="nav-item" data-tab="order-info">Thông tin đặt hàng</div>
+        <div class="nav-item" data-tab="payment">Thanh toán</div>
+        <div class="nav-item" data-tab="finish">Hoàn tất</div>
+    </div>
+
+    <div class="tab-container">
+        <div class="tab-content" id="cart">
+            <div class="container-top">
+                <div class="product">
+                    @if (Model.Items.Any())
+                    {
+                        <ul class="list-product">
+                            @foreach (var item in Model.Items)
+                            {
+                                <li class="product-item">
+                                    <div class="box">
+                                        <div class="product-img">
+                                            <img src="@item.ImageUrl" alt="@item.ProductName" />
+                                        </div>
+                                        <div class="delete-item" data-product-id="@item.ProductId">Xóa</div>
+                                    </div>
+
+                                    <div class="product-detail">
+                                        <div class="product-name">
+                                            @item.ProductName
+                                        </div>
+                                        <p class="product-note">
+                                            Tặng: Phiếu giảm giá 20% khi hóa đơn tiếp theo trên 1.500.000VND
+                                        </p>
+                                    </div>
+
+                                    <div class="product-qp">
+                                        <div class="product-price">@item.UnitPrice VND</div>
+                                        <div class="quantity-selector">
+                                            <button class="quantity-btn decrease" data-product-id="@item.ProductId">-</button>
+                                            <input type="number" class="quantity-input" data-product-id="@item.ProductId" value="@item.Quantity" min="1" />
+                                            <button class="quantity-btn increase" data-product-id="@item.ProductId">+</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="empty-cart">
+                            <h2>Giỏ hàng của bạn đang trống</h2>
+                            <p>Hãy tiếp tục mua sắm để thêm sản phẩm vào giỏ hàng.</p>
+                            <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Tiếp tục mua sắm</a>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="container-bottom">
+                <div class="result">
+                    <div class="b">
+                        <p>Phí vận chuyển:</p>
+                        <p>Miễn phí</p>
+                    </div>
+                    <div class="b">
+                        <p>Tổng tiền:</p>
+                        <p class="total-price">@Model.Items.Sum(item => item.TotalPrice) VND</p>
+                    </div>
+                </div>
+
+                <button class="buy-btn" data-next-tab="order-info">ĐẶT HÀNG NGAY</button>
+            </div>
+        </div>
+        <div class="tab-content" id="order-info">
+            <div class="cus-info">
+                <div class="container-top">
+                    <!-- Thông tin khách hàng -->
+                    <div class="cus-info-item">
+                        <p class="title">Thông tin khách mua hàng</p>
+                        <div class="cus-field-info">
+                            <!-- Họ tên -->
+                            <div class="form-field">
+                                <input type="text"
+                                       class="form-input"
+                                       id="cus-name"
+                                       placeholder=" "
+                                       required
+                                       aria-required="true"
+                                       aria-label="Nhập họ tên" />
+                                <label for="cus-name" class="form-label">Nhập họ tên</label>
+                            </div>
+                            <!-- Số điện thoại -->
+                            <div class="form-field">
+                                <input type="text"
+                                       class="form-input"
+                                       id="cus-tele"
+                                       placeholder=" "
+                                       required
+                                       aria-required="true"
+                                       pattern="\d{10,11}"
+                                       title="Số điện thoại phải từ 10-11 chữ số"
+                                       aria-label="Nhập số điện thoại" />
+                                <label for="cus-tele" class="form-label">Nhập số điện thoại</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Địa chỉ khách hàng -->
+                    <div class="address-container">
+                        <p class="title">Địa chỉ khách hàng</p>
+                        <div class="address-box">
+                            <div class="address-row">
+                                <!-- Tỉnh/Thành phố -->
+                                <select id="province" name="province" required aria-required="true" style="padding: 8px">
+                                    <option value="" disabled selected>Chọn Tỉnh, Thành phố</option>
+                                    <!-- Thêm các tùy chọn -->
+                                </select>
+                                <!-- Quận/Huyện -->
+                                <select id="district" name="district" required aria-required="true" style="padding: 8px">
+                                    <option value="" disabled selected>Chọn Quận, Huyện</option>
+                                    <!-- Thêm các tùy chọn -->
+                                </select>
+                            </div>
+                            <div class="address-row">
+                                <!-- Phường/Xã -->
+                                <select id="ward" name="ward" required aria-required="true" style="padding: 8px">
+                                    <option value="" disabled selected>Chọn Phường, Xã</option>
+                                    <!-- Thêm các tùy chọn -->
+                                </select>
+                                <!-- Số nhà và tên đường -->
+                                <div class="form-field">
+                                    <input type="text"
+                                           class="form-input"
+                                           id="number-address"
+                                           placeholder=" "
+                                           required
+                                           aria-required="true"
+                                           aria-label="Số nhà, tên đường" />
+                                    <label for="number-address" class="form-label">Số nhà, tên đường</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lưu ý -->
+                    <div class="form-field">
+                        <input type="text"
+                               class="form-input"
+                               id="note"
+                               placeholder=" "
+                               aria-label="Lưu ý, yêu cầu khác (Không bắt buộc)" />
+                        <label for="note" class="form-label">Lưu ý, yêu cầu khác (Không bắt buộc)</label>
+                    </div>
+                </div>
+
+                <!-- Kết quả và nút Đặt hàng -->
+                <div class="container-bottom">
+                    <div class="result">
+                        <div class="b">
+                            <p>Phí vận chuyển:</p>
+                            <p>Miễn phí</p>
+                        </div>
+                        <div class="b">
+                            <p>Tổng tiền:</p>
+                            <p class="total-price">@Model.Items.Sum(item => item.TotalPrice) VND</p>
+                        </div>
+                    </div>
+                    <button type="button" class="buy-btn" data-next-tab="payment">ĐẶT HÀNG NGAY</button>
+                    <p class="note-info">
+                        Bạn có thể chọn hình thức thanh toán sau khi đặt hàng.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content" id="payment">
+            <div class="container-top">
+                <div class="section order-info">
+                    <div class="order-info">
+                        <h2>Thông tin đặt hàng</h2>
+                        <p>
+                            <span>Khách hàng:</span>
+                            <span class="customer-name"></span>
+                        </p>
+                        <p>
+                            <span>Số điện thoại:</span>
+                            <span class="customer-phone"></span>
+                        </p>
+                        <p>
+                            <span>Địa chỉ nhận hàng:</span>
+                            <span class="customer-address"></span>
+                        </p>
+                        <p>
+                            <span>Phí vận chuyển:</span>
+                            <span class="highlight shipping-fee">Miễn phí</span>
+                        </p>
+                        <p>
+                            <span>Tổng tiền:</span>
+                            <span class="highlight total-amount">@Model.Items.Sum(item => item.TotalPrice) VND</span>
+                        </p>
+                    </div>
+                </div>
+                <hr />
+                <div class="discount-code">
+                    <div class="form-field">
+                        <input type="text"
+                               class="form-input"
+                               id="discount-code-cus"
+                               placeholder=" " />
+                        <label for="name" class="form-label">Mã giảm giá</label>
+                    </div>
+                    <button>Áp dụng mã</button>
+                </div>
+                <hr />
+                <div class="payment-method">
+                    <h2>Chọn hình thức thanh toán</h2>
+                    <div class="option">
+                        <input type="radio" id="cod" name="payment" checked />
+                        <label for="cod">
+                            <i class="fas fa-box"></i> Thanh toán khi giao hàng (COD)
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="container-bottom">
+                <div class="result">
+                    <div class="b">
+                        <p>Phí vận chuyển:</p>
+                        <p>Miễn phí</p>
+                    </div>
+                    <div class="b">
+                        <p>Tổng tiền:</p>
+
+                        <p class="total-price">@Model.Items.Sum(item => item.TotalPrice) VND</p>
+                    </div>
+                </div>
+                <button class="buy-btn" data-next-tab="finish">ĐẶT HÀNG NGAY</button>
+            </div>
+        </div>
+        <div class="tab-content" id="finish" style="padding: 70px 0">
+            <img src="https://daphongthuyvn.com/files/assets/dat-hang-thanh-cong.jpg" alt="" />
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/Content/js/cart2.js"></script>
+

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WebLaptopNe.Models.category>
+
+<ul class="navbar-list">
+    <li><a href="index.html">TRANG CHỦ</a></li>
+
+    @foreach (var cateItem in Model)
+    {
+        <li class="dropdown">
+            <a href="@Url.Action("Category", "Home", new { categoryId = cateItem.id })">
+            @cateItem.category_name
+            <i class="fa-solid fa-caret-down"></i>
+            </a>
+            <div class="submenu">
+                <ul id="category-list">
+                    @foreach (var brand in cateItem.brands)
+                    {
+                        <li class="category">
+                            <a href="@Url.Action("Category", "Home", new { brandId = brand.brand_id })">
+                                <p class="category-header">@brand.brand_name</p>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </li>
+    }
+    <li><a href="News.html">TIN TỨC</a></li>
+    <li><a href="Contact.html">LIÊN HỆ</a></li>
+</ul>

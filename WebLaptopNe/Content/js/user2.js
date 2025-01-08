@@ -1,4 +1,4 @@
-// Hàm hiển thị nội dung tab theo section
+﻿// Hàm hiển thị nội dung tab theo section
 function showContent(sectionId) {
     // Ẩn tất cả các tab nội dung
     const contentSections = document.querySelectorAll(".content_section");

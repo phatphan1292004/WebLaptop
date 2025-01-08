@@ -14,10 +14,18 @@ namespace WebLaptopNe.Models
     
     public partial class brand
     {
-        public int brand_id { get; set; }
-        public int product_id { get; set; }
-        public string brand_name { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public brand()
+        {
+            this.products = new HashSet<product>();
+        }
     
-        public virtual product product { get; set; }
+        public int brand_id { get; set; }
+        public string brand_name { get; set; }
+        public int category_id { get; set; }
+    
+        public virtual category category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<product> products { get; set; }
     }
 }

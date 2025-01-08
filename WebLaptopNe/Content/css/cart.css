@@ -20,18 +20,18 @@
 }
 
 /* Đảm bảo đường ngang băng qua các nav-item */
-.nav-item:not(:first-child)::after {
-  content: "";
-  position: absolute;
-  bottom: 50%;
-  transform: translateY(50%);
-  right: 100%;
-  width: 251.5px;
-  z-index: -1000;
-  height: 3px;
-  background-color: #dadada;
-  transition: left 0.3s ease, width 0.3s ease;
-}
+    .nav-item:not(:first-child)::after {
+        content: "";
+        position: absolute;
+        bottom: 50%;
+        transform: translateY(50%);
+        right: 100%;
+        width: calc(100% - 20px);
+        z-index: -1000;
+        height: 3px;
+        background-color: #dadada;
+        transition: left 0.3s ease, width 0.3s ease;
+    }
 
 
 /* 
@@ -75,6 +75,11 @@
 
 .tab-content.active {
   display: block;
+}
+
+.nav-item.active {
+    font-weight: bold;
+    border-bottom: 2px solid #007bff;
 }
 
 
@@ -439,6 +444,10 @@ input.valid, select.valid {
   border: 1px solid green; 
 }
 
+select {
+    padding: 8px !important;
+}
+
 input.invalid, select.invalid {
   border: 1px solid red; 
 }
@@ -449,145 +458,56 @@ input.invalid, select.invalid {
   color: white;
 }
 
-/* Reponsive */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .direction {
-    margin: 30px !important;
-  }
+
+/* Tùy chỉnh toàn bộ popup */
+.swal-custom-popup {
+    font-family: 'Poppins', sans-serif;
+    border-radius: 12px;
+    padding: 20px 30px;
+    background-color: #ffffff;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
 }
 
-/* Tablet */
-@media (min-width: 600px) and (max-width: 768px) {
-    
+/* Tùy chỉnh icon */
+.swal-custom-icon {
+    font-size: 50px;
+    color: #e74c3c;
+    margin-bottom: 10px;
 }
 
-/* Điện thoại (mobile) */
-@media (max-width: 600px) {
-  .main .tab-container {
-    width: 100% !important;
-  }
-
-  .nav .nav-item {
-    padding: 10px 5px;
-    font-size: 12px;
-  }
-
-  .direction {
-    margin: 20px !important;
-  }
-
-  .list-product .product-img {
-    width: 70px !important;
-    height: 70px !important;
-  }
-
-  .product-detail .product-name {
-    font-size: 13px !important;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; 
-    -webkit-box-orient: vertical;
-    overflow: hidden; 
-    text-overflow: ellipsis;
-  }
-
-  .product-detail .product-note {
-    font-size: 11px !important;
-  }
-
-  .quantity-btn {
-    padding: 5px 10px !important;
-  }
-
-  .quantity-selector input {
-    width: 30px !important;
-  }
-
-  .quantity-selector {
-    width: fit-content !important;
-  }
-
-  .product-qp {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .social-media p {
-    margin-right: 2px !important;
-  }
-
-  .nav-item:not(:first-child)::after {
-    width: 21.3px !important;
-  } 
+/* Tùy chỉnh tiêu đề */
+.swal-custom-popup .swal2-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
 }
 
-/* Khung xác nhận */
-.custom-confirm {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Mờ nền */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000000;
+/* Tùy chỉnh nội dung */
+.swal-custom-popup .swal2-html-container {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
 }
 
-.custom-confirm.hidden,
-.notification-container.hidden {
-  display: none; 
+/* Tùy chỉnh nút OK */
+.swal-custom-confirm-button {
+    background-color: #e74c3c !important;
+    color: white !important;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    transition: background-color 0.3s ease;
 }
 
-.custom-confirm-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 400px;
-  text-align: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-}
+    .swal-custom-confirm-button:hover {
+        background-color: #c0392b !important;
+    }
 
-.custom-confirm-actions {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-around;
-}
 
-.btn-ok {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 130px;
-}
-
-.btn-cancel {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 130px;
-}
-
-.btn-ok:hover {
-  background-color: #45a049;
-}
-
-.btn-cancel:hover {
-  background-color: #e53935;
-}
-
-.notification-bell {
-  position: relative;
-  display: inline-block;
-  font-size: 20px;
-  cursor: pointer;
-}
 
 

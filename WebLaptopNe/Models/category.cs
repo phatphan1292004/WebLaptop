@@ -17,13 +17,17 @@ namespace WebLaptopNe.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public category()
         {
+            this.brands = new HashSet<brand>();
             this.products = new HashSet<product>();
         }
     
         public int id { get; set; }
         public string category_name { get; set; }
         public Nullable<int> stock_quantity { get; set; }
+        public string DESC_1 { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<brand> brands { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<product> products { get; set; }
     }

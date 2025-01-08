@@ -10,17 +10,13 @@
 namespace WebLaptopNe.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class shipping
+    public partial class sp_helpdiagrams_Result
     {
-        public int id { get; set; }
-        public int order_id { get; set; }
-        public System.DateTime pickup_date { get; set; }
-        public string shipping_status { get; set; }
-        public string address { get; set; }
-        public string carrier { get; set; }
-    
-        public virtual ORDER_1 ORDER_1 { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

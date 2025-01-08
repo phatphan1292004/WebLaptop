@@ -5,9 +5,10 @@
       <PropertyRef Name="brand_id" />
     </Key>
     <Property Name="brand_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="product_id" Type="Int32" Nullable="false" />
     <Property Name="brand_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="product" Relationship="Self.products_brands_fk" FromRole="brands" ToRole="products" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="category" Relationship="Self.brands_categories_fk" FromRole="brands" ToRole="categories" />
+    <NavigationProperty Name="products" Relationship="Self.brands_products_fk" FromRole="brands" ToRole="products" />
   </EntityType>
   <EntityType Name="category">
     <Key>
@@ -16,6 +17,8 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="category_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="stock_quantity" Type="Int32" />
+    <Property Name="DESC_1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="brands" Relationship="Self.brands_categories_fk" FromRole="categories" ToRole="brands" />
     <NavigationProperty Name="products" Relationship="Self.categories_products_fk" FromRole="categories" ToRole="products" />
   </EntityType>
   <EntityType Name="ORDER_1">
@@ -84,6 +87,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="brand_id" Type="Int32" Nullable="false" />
     <Property Name="category_id" Type="Int32" Nullable="false" />
     <Property Name="product_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="unit_price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
@@ -91,7 +95,7 @@
     <Property Name="product_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="rating" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="discount_percent" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <NavigationProperty Name="brands" Relationship="Self.products_brands_fk" FromRole="products" ToRole="brands" />
+    <NavigationProperty Name="brand" Relationship="Self.brands_products_fk" FromRole="products" ToRole="brands" />
     <NavigationProperty Name="category" Relationship="Self.categories_products_fk" FromRole="products" ToRole="categories" />
     <NavigationProperty Name="order_details" Relationship="Self.products_order_details_fk" FromRole="products" ToRole="order_details" />
     <NavigationProperty Name="product_detail" Relationship="Self.products_product_configurations_fk" FromRole="products" ToRole="product_detail" />
@@ -133,11 +137,20 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="order_id" Type="Int32" Nullable="false" />
     <Property Name="pickup_date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="delivery_date" Type="DateTime" Precision="3" />
     <Property Name="shipping_status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="carrier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="ORDER_1" Relationship="Self.DONHANG_VANCHUYEN_fk" FromRole="shipping" ToRole="ORDER_1" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="user">
     <Key>
@@ -148,22 +161,36 @@
     <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="cus_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="ORDER_1" Relationship="Self.ACCOUNT_ORDER_fk" FromRole="users" ToRole="ORDER_1" />
     <NavigationProperty Name="reviews" Relationship="Self.TAIKHOAN_DANHGIA_fk" FromRole="users" ToRole="reviews" />
   </EntityType>
-  <Association Name="products_brands_fk">
-    <End Role="products" Type="Self.product" Multiplicity="1" />
+  <Association Name="brands_categories_fk">
+    <End Role="categories" Type="Self.category" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="brands" Type="Self.brand" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="products">
+      <Principal Role="categories">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="brands">
-        <PropertyRef Name="product_id" />
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="brands_products_fk">
+    <End Role="brands" Type="Self.brand" Multiplicity="1" />
+    <End Role="products" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="brands">
+        <PropertyRef Name="brand_id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="brand_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -299,7 +326,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="WebPPEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="WebPPEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="brands" EntityType="Self.brand" />
     <EntitySet Name="categories" EntityType="Self.category" />
     <EntitySet Name="ORDER_1" EntityType="Self.ORDER_1" />
@@ -310,10 +337,15 @@
     <EntitySet Name="promotions" EntityType="Self.promotion" />
     <EntitySet Name="reviews" EntityType="Self.review" />
     <EntitySet Name="shippings" EntityType="Self.shipping" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="users" EntityType="Self.user" />
-    <AssociationSet Name="products_brands_fk" Association="Self.products_brands_fk">
-      <End Role="products" EntitySet="products" />
+    <AssociationSet Name="brands_categories_fk" Association="Self.brands_categories_fk">
+      <End Role="categories" EntitySet="categories" />
       <End Role="brands" EntitySet="brands" />
+    </AssociationSet>
+    <AssociationSet Name="brands_products_fk" Association="Self.brands_products_fk">
+      <End Role="brands" EntitySet="brands" />
+      <End Role="products" EntitySet="products" />
     </AssociationSet>
     <AssociationSet Name="categories_products_fk" Association="Self.categories_products_fk">
       <End Role="categories" EntitySet="categories" />
@@ -359,5 +391,46 @@
       <End Role="users" EntitySet="users" />
       <End Role="reviews" EntitySet="reviews" />
     </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(WebPPModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(WebPPModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
 </Schema>

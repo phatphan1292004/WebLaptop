@@ -5,8 +5,8 @@
       <PropertyRef Name="brand_id" />
     </Key>
     <Property Name="brand_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="product_id" Type="int" Nullable="false" />
     <Property Name="brand_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="category_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="categories">
     <Key>
@@ -15,6 +15,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="category_name" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="stock_quantity" Type="int" />
+    <Property Name="DESC_1" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="ORDER_1">
     <Key>
@@ -74,6 +75,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="brand_id" Type="int" Nullable="false" />
     <Property Name="category_id" Type="int" Nullable="false" />
     <Property Name="product_name" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="unit_price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
@@ -112,10 +114,19 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="order_id" Type="int" Nullable="false" />
     <Property Name="pickup_date" Type="datetime" Nullable="false" />
-    <Property Name="delivery_date" Type="datetime" />
     <Property Name="shipping_status" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="address" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="carrier" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="users">
     <Key>
@@ -126,8 +137,8 @@
     <Property Name="address" Type="nvarchar" MaxLength="50" />
     <Property Name="phone" Type="nvarchar(max)" />
     <Property Name="cus_name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="username" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="password" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="created_at" Type="datetime" Nullable="false" />
     <Property Name="role" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
@@ -140,6 +151,32 @@
       </Principal>
       <Dependent Role="ORDER_1">
         <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="brands_categories_fk">
+    <End Role="categories" Type="Self.categories" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="brands" Type="Self.brands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="brands">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="brands_products_fk">
+    <End Role="brands" Type="Self.brands" Multiplicity="1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="brands">
+        <PropertyRef Name="brand_id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="brand_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -176,18 +213,6 @@
       </Principal>
       <Dependent Role="shipping">
         <PropertyRef Name="order_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="products_brands_fk">
-    <End Role="products" Type="Self.products" Multiplicity="1" />
-    <End Role="brands" Type="Self.brands" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="products">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="brands">
-        <PropertyRef Name="product_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -275,6 +300,37 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="WebPPModelStoreContainer">
     <EntitySet Name="brands" EntityType="Self.brands" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
@@ -286,10 +342,19 @@
     <EntitySet Name="promotions" EntityType="Self.promotions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="reviews" EntityType="Self.reviews" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="shipping" EntityType="Self.shipping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="ACCOUNT_ORDER_fk" Association="Self.ACCOUNT_ORDER_fk">
       <End Role="users" EntitySet="users" />
       <End Role="ORDER_1" EntitySet="ORDER_1" />
+    </AssociationSet>
+    <AssociationSet Name="brands_categories_fk" Association="Self.brands_categories_fk">
+      <End Role="categories" EntitySet="categories" />
+      <End Role="brands" EntitySet="brands" />
+    </AssociationSet>
+    <AssociationSet Name="brands_products_fk" Association="Self.brands_products_fk">
+      <End Role="brands" EntitySet="brands" />
+      <End Role="products" EntitySet="products" />
     </AssociationSet>
     <AssociationSet Name="categories_products_fk" Association="Self.categories_products_fk">
       <End Role="categories" EntitySet="categories" />
@@ -302,10 +367,6 @@
     <AssociationSet Name="DONHANG_VANCHUYEN_fk" Association="Self.DONHANG_VANCHUYEN_fk">
       <End Role="ORDER_1" EntitySet="ORDER_1" />
       <End Role="shipping" EntitySet="shipping" />
-    </AssociationSet>
-    <AssociationSet Name="products_brands_fk" Association="Self.products_brands_fk">
-      <End Role="products" EntitySet="products" />
-      <End Role="brands" EntitySet="brands" />
     </AssociationSet>
     <AssociationSet Name="products_order_details_fk" Association="Self.products_order_details_fk">
       <End Role="products" EntitySet="products" />

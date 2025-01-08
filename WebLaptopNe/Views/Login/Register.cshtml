@@ -1,0 +1,91 @@
+﻿@model WebLaptopNe.Models.user
+
+@{
+    ViewBag.Title = "Đăng Ký";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng Ký</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="~/Content/css/reset.css" rel="stylesheet" />
+    <link href="~/Content/css/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+        <form method="post" id="register-form" action="@Url.Action("Register", "Login")">
+            <div class="form-header">
+                <a href="#" class="logo"><img src="./img/logo-login.png" alt="Logo" /></a>
+                <p>ĐĂNG KÝ</p>
+            </div>
+            <div class="form-main">
+                <div class="form-group">
+                    <p>TÊN KHÁCH HÀNG</p>
+                    <div class="form-field">
+                        @Html.TextBoxFor(m => m.cus_name, new { @class = "form-input", placeholder = "Tên khách hàng" })
+                        @Html.ValidationMessageFor(m => m.cus_name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p>TÀI KHOẢN</p>
+                    <div class="form-field">
+                        @Html.TextBoxFor(m => m.username, new { @class = "form-input", placeholder = "Tài khoản" })
+                        @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p>EMAIL</p>
+                    <div class="form-field">
+                        @Html.TextBoxFor(m => m.email, new { @class = "form-input", placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p>MẬT KHẨU</p>
+                    <div class="form-field">
+                        @Html.PasswordFor(m => m.password, new { @class = "form-input", placeholder = "Mật khẩu" })
+                        @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p>NHẬP LẠI MẬT KHẨU</p>
+                    <div class="form-field">
+                        <input type="password" name="rePassword" class="form-input" placeholder="Nhập lại mật khẩu" required />
+                    </div>
+                </div>
+            </div>
+            <div class="form-footer">
+                <label>
+                    <input type="checkbox" id="terms-checkbox" required />
+                    Tôi đã đọc rõ điều khoản
+                </label>
+                <button type="submit" class="btn">Đăng ký</button>
+            </div>
+        </form>
+        <div>
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <p style="color: red;">@ViewBag.ErrorMessage</p>
+            }
+            @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+            {
+                <p style="color: green;">@ViewBag.SuccessMessage</p>
+            }
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#register-form").validate(); // Kiểm tra validation
+        });
+    </script>
+
+    <!-- Bổ sung JavaScript -->
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

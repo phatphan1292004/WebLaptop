@@ -17,7 +17,6 @@ namespace WebLaptopNe.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public product()
         {
-            this.brands = new HashSet<brand>();
             this.order_details = new HashSet<order_details>();
             this.product_images = new HashSet<product_images>();
             this.promotions = new HashSet<promotion>();
@@ -25,6 +24,7 @@ namespace WebLaptopNe.Models
         }
     
         public int id { get; set; }
+        public int brand_id { get; set; }
         public int category_id { get; set; }
         public string product_name { get; set; }
         public decimal unit_price { get; set; }
@@ -33,8 +33,7 @@ namespace WebLaptopNe.Models
         public decimal rating { get; set; }
         public decimal discount_percent { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<brand> brands { get; set; }
+        public virtual brand brand { get; set; }
         public virtual category category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_details> order_details { get; set; }

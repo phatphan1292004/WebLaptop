@@ -51,18 +51,25 @@
 
 .slick-prev,
 .slick-next {
-  position: absolute;
-  top: 50%;
-  border-radius: 100%;
-  transform: translateY(-50%);
-  color: #404033;
-  background-color: rgba(238, 238, 238, 0.4);
-  /* Màu nền với độ trong suốt 70% */
-  border: none;
-  z-index: 2;
-  width: 40px;
-  height: 40px;
+    position: absolute;
+    top: 50%;
+    border-radius: 100%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    /* Màu nền với độ trong suốt 70% */
+    border: none;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
 }
+
+    .slick-prev::before,
+    .slick-next::before {
+        content: none; /* Loại bỏ nội dung */
+        display: none; /* Ẩn hoàn toàn */
+    }
+
 
 .slick-prev {
   left: 10px;
@@ -1068,4 +1075,10 @@ textarea:focus {
   text-align: center;
   margin-top: 10px;
   color: #333;
+}
+
+.add-to-cart {
+    display: block;
+    padding: 10px 20px;
+    background-color:red;
 }
