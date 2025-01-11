@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="WebPPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="WebPPNeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="brand">
     <Key>
       <PropertyRef Name="brand_id" />
@@ -100,15 +100,29 @@
     <NavigationProperty Name="order_details" Relationship="Self.products_order_details_fk" FromRole="products" ToRole="order_details" />
     <NavigationProperty Name="product_detail" Relationship="Self.products_product_configurations_fk" FromRole="products" ToRole="product_detail" />
     <NavigationProperty Name="product_images" Relationship="Self.SANPHAM_HINHANHSP_fk" FromRole="products" ToRole="product_images" />
+    <NavigationProperty Name="promotion_programs" Relationship="Self.FK__promotion__produ__4222D4EF" FromRole="products" ToRole="promotion_programs" />
+    <NavigationProperty Name="promotion_programs1" Relationship="Self.FK_promotion_programs_products" FromRole="products" ToRole="promotion_programs" />
     <NavigationProperty Name="promotions" Relationship="Self.products_promotions_fk" FromRole="products" ToRole="promotions" />
     <NavigationProperty Name="reviews" Relationship="Self.SANPHAM_DANHGIA_fk" FromRole="products" ToRole="reviews" />
+  </EntityType>
+  <EntityType Name="promotion_programs">
+    <Key>
+      <PropertyRef Name="promotion_id" />
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="promotion_id" Type="Int32" Nullable="false" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="product" Relationship="Self.FK__promotion__produ__4222D4EF" FromRole="promotion_programs" ToRole="products" />
+    <NavigationProperty Name="product1" Relationship="Self.FK_promotion_programs_products" FromRole="promotion_programs" ToRole="products" />
+    <NavigationProperty Name="promotion" Relationship="Self.FK__promotion__promo__412EB0B6" FromRole="promotion_programs" ToRole="promotions" />
+    <NavigationProperty Name="promotion1" Relationship="Self.FK_promotion_programs_promotions" FromRole="promotion_programs" ToRole="promotions" />
   </EntityType>
   <EntityType Name="promotion">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="product_id" Type="Int32" />
     <Property Name="promotion_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="start_day" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="end_day" Type="DateTime" Nullable="false" Precision="3" />
@@ -116,6 +130,8 @@
     <Property Name="promotion_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="ORDER_1" Relationship="Self.promotions_ORDER_1_fk" FromRole="promotions" ToRole="ORDER_1" />
     <NavigationProperty Name="product" Relationship="Self.products_promotions_fk" FromRole="promotions" ToRole="products" />
+    <NavigationProperty Name="promotion_programs" Relationship="Self.FK__promotion__promo__412EB0B6" FromRole="promotions" ToRole="promotion_programs" />
+    <NavigationProperty Name="promotion_programs1" Relationship="Self.FK_promotion_programs_promotions" FromRole="promotions" ToRole="promotion_programs" />
   </EntityType>
   <EntityType Name="review">
     <Key>
@@ -137,20 +153,11 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="order_id" Type="Int32" Nullable="false" />
     <Property Name="pickup_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="delivery_date" Type="DateTime" Precision="3" />
     <Property Name="shipping_status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="carrier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="ORDER_1" Relationship="Self.DONHANG_VANCHUYEN_fk" FromRole="shipping" ToRole="ORDER_1" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="user">
     <Key>
@@ -290,8 +297,34 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="products_promotions_fk">
+  <Association Name="FK__promotion__produ__4222D4EF">
     <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="promotion_programs" Type="Self.promotion_programs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promotion_programs">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_promotion_programs_products">
+    <End Role="products" Type="Self.product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="promotion_programs" Type="Self.promotion_programs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promotion_programs">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="products_promotions_fk">
+    <End Role="products" Type="Self.product" Multiplicity="0..1" />
     <End Role="promotions" Type="Self.promotion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="products">
@@ -314,6 +347,32 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__promotion__promo__412EB0B6">
+    <End Role="promotions" Type="Self.promotion" Multiplicity="1" />
+    <End Role="promotion_programs" Type="Self.promotion_programs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="promotions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promotion_programs">
+        <PropertyRef Name="promotion_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_promotion_programs_promotions">
+    <End Role="promotions" Type="Self.promotion" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="promotion_programs" Type="Self.promotion_programs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="promotions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promotion_programs">
+        <PropertyRef Name="promotion_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="TAIKHOAN_DANHGIA_fk">
     <End Role="users" Type="Self.user" Multiplicity="1" />
     <End Role="reviews" Type="Self.review" Multiplicity="*" />
@@ -326,7 +385,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="WebPPEntities2" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="WebPPNeEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="brands" EntityType="Self.brand" />
     <EntitySet Name="categories" EntityType="Self.category" />
     <EntitySet Name="ORDER_1" EntityType="Self.ORDER_1" />
@@ -334,10 +393,10 @@
     <EntitySet Name="product_detail" EntityType="Self.product_detail" />
     <EntitySet Name="product_images" EntityType="Self.product_images" />
     <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="promotion_programs" EntityType="Self.promotion_programs" />
     <EntitySet Name="promotions" EntityType="Self.promotion" />
     <EntitySet Name="reviews" EntityType="Self.review" />
     <EntitySet Name="shippings" EntityType="Self.shipping" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="users" EntityType="Self.user" />
     <AssociationSet Name="brands_categories_fk" Association="Self.brands_categories_fk">
       <End Role="categories" EntitySet="categories" />
@@ -379,6 +438,14 @@
       <End Role="products" EntitySet="products" />
       <End Role="product_images" EntitySet="product_images" />
     </AssociationSet>
+    <AssociationSet Name="FK__promotion__produ__4222D4EF" Association="Self.FK__promotion__produ__4222D4EF">
+      <End Role="products" EntitySet="products" />
+      <End Role="promotion_programs" EntitySet="promotion_programs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_promotion_programs_products" Association="Self.FK_promotion_programs_products">
+      <End Role="products" EntitySet="products" />
+      <End Role="promotion_programs" EntitySet="promotion_programs" />
+    </AssociationSet>
     <AssociationSet Name="products_promotions_fk" Association="Self.products_promotions_fk">
       <End Role="products" EntitySet="products" />
       <End Role="promotions" EntitySet="promotions" />
@@ -387,50 +454,17 @@
       <End Role="products" EntitySet="products" />
       <End Role="reviews" EntitySet="reviews" />
     </AssociationSet>
+    <AssociationSet Name="FK__promotion__promo__412EB0B6" Association="Self.FK__promotion__promo__412EB0B6">
+      <End Role="promotions" EntitySet="promotions" />
+      <End Role="promotion_programs" EntitySet="promotion_programs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_promotion_programs_promotions" Association="Self.FK_promotion_programs_promotions">
+      <End Role="promotions" EntitySet="promotions" />
+      <End Role="promotion_programs" EntitySet="promotion_programs" />
+    </AssociationSet>
     <AssociationSet Name="TAIKHOAN_DANHGIA_fk" Association="Self.TAIKHOAN_DANHGIA_fk">
       <End Role="users" EntitySet="users" />
       <End Role="reviews" EntitySet="reviews" />
     </AssociationSet>
-    <FunctionImport Name="sp_alterdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_creatediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_dropdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(WebPPModel.sp_helpdiagramdefinition_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(WebPPModel.sp_helpdiagrams_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_renamediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="new_diagramname" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
-  <ComplexType Name="sp_helpdiagramdefinition_Result">
-    <Property Type="Int32" Name="version" Nullable="true" />
-    <Property Type="Binary" Name="definition" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="sp_helpdiagrams_Result">
-    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-    <Property Type="Int32" Name="OwnerID" Nullable="false" />
-  </ComplexType>
 </Schema>

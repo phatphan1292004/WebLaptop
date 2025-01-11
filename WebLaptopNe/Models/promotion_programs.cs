@@ -10,13 +10,16 @@
 namespace WebLaptopNe.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class promotion_programs
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public int promotion_id { get; set; }
+        public int product_id { get; set; }
+    
+        public virtual product product { get; set; }
+        public virtual product product1 { get; set; }
+        public virtual promotion promotion { get; set; }
+        public virtual promotion promotion1 { get; set; }
     }
 }

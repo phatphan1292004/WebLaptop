@@ -1,0 +1,69 @@
+﻿/* Tùy chỉnh popup */
+.swal2-popup {
+    font-size: 16px;
+    background-color: #ffffff; /* Màu nền */
+    border-radius: 12px; /* Bo góc */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    padding: 20px;
+    width: 500px; /* Tùy chỉnh chiều rộng */
+}
+
+/* Căn giữa biểu tượng */
+.swal2-icon {
+    margin: 0 auto; /* Căn giữa */
+    font-size: 16px; /* Kích thước biểu tượng */
+    color: #f39c12; /* Màu biểu tượng */
+    margin-bottom: 15px; /* Khoảng cách dưới biểu tượng */
+}
+
+/* Tùy chỉnh tiêu đề */
+.swal2-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333; /* Màu chữ tiêu đề */
+    text-align: center; /* Căn giữa tiêu đề */
+    margin-bottom: 10px; /* Khoảng cách dưới tiêu đề */
+}
+
+/* Tùy chỉnh nội dung */
+.swal2-content {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #666; /* Màu chữ nội dung */
+    text-align: center; /* Căn giữa nội dung */
+    margin-bottom: 20px; /* Khoảng cách dưới nội dung */
+}
+
+/* Tùy chỉnh nút "Từ chối" */
+.swal2-confirm {
+    background-color: #28a745; /* Màu nền xanh lá */
+    color: #fff; /* Màu chữ */
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px; /* Bo góc */
+    padding: 10px 20px;
+    border: none;
+    transition: background-color 0.3s ease;
+    margin-right: 10px; /* Khoảng cách với nút Hủy */
+}
+
+    .swal2-confirm:hover {
+        background-color: #218838; /* Màu khi hover */
+    }
+
+/* Tùy chỉnh nút "Hủy" */
+.swal2-cancel {
+    background-color: #dc3545; /* Màu nền đỏ */
+    color: #fff; /* Màu chữ */
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px; /* Bo góc */
+    padding: 10px 20px;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+    .swal2-cancel:hover {
+        background-color: #c82333; /* Màu khi hover */
+    }

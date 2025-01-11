@@ -10,7 +10,7 @@ namespace WebLaptopNe.Controllers
 {
     public class HomeController : Controller
     {
-        WebPPEntities2 db = new WebPPEntities2();
+        WebPPNeEntities1 db = new WebPPNeEntities1();
 
         // GET: Home
         public ActionResult Index()

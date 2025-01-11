@@ -1,8 +1,15 @@
-﻿
+﻿@model WebLaptopNe.Models.ViewModels.DashboardViewModel
+
+
 @{
     ViewBag.Title = "Admin";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
 
 <div class="tab-content" id="dashboard-content">
     <div class="card-revenue">
@@ -111,38 +118,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Đèn ngủ LED phong cách hiện đại DK04530</td>
-                            <td>150</td>
-                            <td>1,500,000 VND</td>
-                            <td>50</td>
-                        </tr>
-                        <tr>
-                            <td>Đèn bàn trang trí phong cách nghệ thuật DK04529</td>
-                            <td>120</td>
-                            <td>1,200,000 VND</td>
-                            <td>30</td>
-                        </tr>
-                        <tr>
-                            <td>Đèn LED chiếu sáng nội thất sang trọng DK04527</td>
-                            <td>100</td>
-                            <td>1,000,000 VND</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Đèn quạt trần hiện đại cho không gian mở QV04525
-                            </td>
-                            <td>90</td>
-                            <td>900,000 VND</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>Đèn quạt trần phòng bếp QV04523</td>
-                            <td>80</td>
-                            <td>800,000 VND</td>
-                            <td>5</td>
-                        </tr>
+                        @if (Model.TopProducts != null && Model.TopProducts.Any())
+                        {
+                            foreach (var product in Model.TopProducts)
+                            {
+                                <tr>
+                                    <td>@product.ProductName</td>
+                                    <td>@product.TotalSold</td>
+                                    <td>@String.Format("{0:N0} VND", product.TotalRevenue)</td>
+                                    <td>@product.StockQuantity</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" style="text-align: center; font-style: italic;">Không có dữ liệu sản phẩm.</td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
@@ -164,89 +157,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>#CUST001</td>
-                        <td class="customer-info">
-                            <img src="https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fHww"
-                                 alt="Avatar"
-                                 class="customer-avatar" />
-                            <span>Phạm Minh Duy</span>
-                        </td>
-                        <td>10/11/2024</td>
-                        <td class="status completed">
-                            <span>Hoàn thành</span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>#CUST002</td>
-                        <td class="customer-info">
-                            <img src="https://images.unsplash.com/photo-1623582854588-d60de57fa33f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D"
-                                 alt="Avatar"
-                                 class="customer-avatar" />
-                            <span>Nguyễn Thị Lan</span>
-                        </td>
-                        <td>09/11/2024</td>
-                        <td class="status pending">
-                            <span>Đang chờ</span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>#CUST003</td>
-                        <td class="customer-info">
-                            <img src="https://images.unsplash.com/photo-1663893364107-a6ecd06cf615?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D"
-                                 alt="Avatar"
-                                 class="customer-avatar" />
-                            <span>Lê Anh Tuấn</span>
-                        </td>
-                        <td>08/11/2024</td>
-                        <td class="status canceled">
-                            <span>Đã hủy</span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>#CUST004</td>
-                        <td class="customer-info">
-                            <img src="https://plus.unsplash.com/premium_photo-1690407617542-2f210cf20d7e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D"
-                                 alt="Avatar"
-                                 class="customer-avatar" />
-                            <span>Trần Quốc Khang</span>
-                        </td>
-                        <td>07/11/2024</td>
-                        <td class="status completed">
-                            <span>Hoàn thành</span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>#CUST005</td>
-                        <td class="customer-info">
-                            <img src="https://media.istockphoto.com/id/1401980646/photo/3d-rendered-classic-sculpture-metaverse-avatar-with-network-of-low-poly-glowing-purple-lines.webp?a=1&b=1&s=612x612&w=0&k=20&c=ktqSUQjjCAu9keEW0BYhrnVSiOZQWqk7kv_x29NmHP0="
-                                 alt="Avatar"
-                                 class="customer-avatar" />
-                            <span>Võ Minh Tâm</span>
-                        </td>
-                        <td>06/11/2024</td>
-                        <td class="status pending">
-                            <span>Đang chờ</span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>#CUST006</td>
-                        <td class="customer-info">
-                            <img src="https://images.unsplash.com/photo-1728577740843-5f29c7586afe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D"
-                                 alt="Avatar"
-                                 class="customer-avatar" />
-                            <span>Đinh Thị Kim</span>
-                        </td>
-                        <td>05/11/2024</td>
-                        <td class="status canceled">
-                            <span>Đã hủy</span>
-                        </td>
-                    </tr>
+                    @if (Model.RecentOrders != null && Model.RecentOrders.Any())
+                    {
+                        foreach (var order in Model.RecentOrders)
+                        {
+                            <tr>
+                                <td>@($"#{order.CustomerId}")</td>
+                                <td>@order.CustomerName</td>
+                                <td>@order.OrderDate.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    <span>@order.Status</span>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" style="text-align: center; font-style: italic;">Không có đơn hàng nào gần đây.</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -257,64 +187,6 @@
                 Đơn vị tính: %
             </div>
             <canvas id="customerPieChart"></canvas>
-        </div>
-    </div>
-
-    <div class="card-container2">
-        <div class="revenue-year">
-            <div class="revenue-year-header">Doanh thu trong năm</div>
-            <canvas id="revenueChart"></canvas>
-        </div>
-
-        <div class="review-customer">
-            <div class="review-header">Đánh giá</div>
-            <div class="review-content">
-                <div class="review-item">
-                    <div class="img-user">
-                        <img src="https://images.unsplash.com/photo-1663893364107-a6ecd06cf615?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D"
-                             alt="User Image" />
-                    </div>
-                    <div class="user-info">
-                        <h4>Sarah Graves</h4>
-                        <p>Highly recommend</p>
-                    </div>
-                    <div class="rating">★★★★★</div>
-                </div>
-                <div class="review-item">
-                    <div class="img-user">
-                        <img src="https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D"
-                             alt="User Image" />
-                    </div>
-                    <div class="user-info">
-                        <h4>Garbease sha</h4>
-                        <p>Awesome Pro</p>
-                    </div>
-                    <div class="rating">★★★★☆</div>
-                </div>
-
-                <div class="review-item">
-                    <div class="img-user">
-                        <img src="https://images.unsplash.com/photo-1633957897986-70e83293f3ff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D"
-                             alt="User Image" />
-                    </div>
-                    <div class="user-info">
-                        <h4>Sarah Graves</h4>
-                        <p>Highly recommend</p>
-                    </div>
-                    <div class="rating">★★★★★</div>
-                </div>
-                <div class="review-item">
-                    <div class="img-user">
-                        <img src="https://images.unsplash.com/photo-1636041282694-aa4e52370419?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D"
-                             alt="User Image" />
-                    </div>
-                    <div class="user-info">
-                        <h4>Garbease sha</h4>
-                        <p>Awesome Pro</p>
-                    </div>
-                    <div class="rating">★★★★☆</div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

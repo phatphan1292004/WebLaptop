@@ -11,7 +11,7 @@ namespace WebLaptopNe.Controllers
     public class CartController : Controller
     {
 
-        WebPPEntities2 db = new WebPPEntities2();
+        WebPPNeEntities1 db = new WebPPNeEntities1();
 
         public class CartItem
         {

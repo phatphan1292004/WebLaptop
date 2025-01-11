@@ -19,6 +19,8 @@ namespace WebLaptopNe.Models
         {
             this.order_details = new HashSet<order_details>();
             this.product_images = new HashSet<product_images>();
+            this.promotion_programs = new HashSet<promotion_programs>();
+            this.promotion_programs1 = new HashSet<promotion_programs>();
             this.promotions = new HashSet<promotion>();
             this.reviews = new HashSet<review>();
         }
@@ -40,6 +42,10 @@ namespace WebLaptopNe.Models
         public virtual product_detail product_detail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<product_images> product_images { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<promotion_programs> promotion_programs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<promotion_programs> promotion_programs1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<promotion> promotions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

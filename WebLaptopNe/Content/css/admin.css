@@ -8,6 +8,11 @@ select:focus {
   background-color: #f9f9f9 !important;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
 /* Code header */
 .wrapper .header {
   display: flex;
@@ -175,7 +180,7 @@ text-align: center;
 
 .main .sidebar .nav-item {
   display: flex;
-  justify-content: space-between;
+   gap: 20px;
   align-items: center;
   padding: 15px;
   border-radius: 4px;
@@ -321,8 +326,10 @@ text-align: center;
   padding-left: 240px;
 }
 
-.nav-item.active,
+.nav-link.active,
 .menu-item.active {
+    display:block;
+    border-radius: 6px;
   background-color: #e0e0e0;
   font-weight: 500;
 }
@@ -870,13 +877,17 @@ form label {
 }
 
 /* Form thêm sản phẩm căn giữa */
-.main-content .tab-content .overlay .add-product-form {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  min-width: 90%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
+    .main-content .tab-content .overlay .add-product-form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        min-width: 90%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        max-width: 1000px;
+        height: 850px;
+        overflow-y: auto; /* Thêm thanh cuộn dọc */
+    }
+
 
 .main-content .tab-content .add-product-form h3 {
   text-align: center;

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="WebPPModelStoreContainer" CdmEntityContainer="WebPPEntities2">
+  <EntityContainerMapping StorageEntityContainer="WebPPNeModelStoreContainer" CdmEntityContainer="WebPPNeEntities1">
     <EntitySetMapping Name="brands">
-      <EntityTypeMapping TypeName="WebPPModel.brand">
+      <EntityTypeMapping TypeName="WebPPNeModel.brand">
         <MappingFragment StoreEntitySet="brands">
           <ScalarProperty Name="brand_id" ColumnName="brand_id" />
           <ScalarProperty Name="brand_name" ColumnName="brand_name" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="categories">
-      <EntityTypeMapping TypeName="WebPPModel.category">
+      <EntityTypeMapping TypeName="WebPPNeModel.category">
         <MappingFragment StoreEntitySet="categories">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="category_name" ColumnName="category_name" />
@@ -21,7 +21,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ORDER_1">
-      <EntityTypeMapping TypeName="WebPPModel.ORDER_1">
+      <EntityTypeMapping TypeName="WebPPNeModel.ORDER_1">
         <MappingFragment StoreEntitySet="ORDER_1">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="promotion_id" ColumnName="promotion_id" />
@@ -36,7 +36,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="order_details">
-      <EntityTypeMapping TypeName="WebPPModel.order_details">
+      <EntityTypeMapping TypeName="WebPPNeModel.order_details">
         <MappingFragment StoreEntitySet="order_details">
           <ScalarProperty Name="order_id" ColumnName="order_id" />
           <ScalarProperty Name="product_id" ColumnName="product_id" />
@@ -47,7 +47,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="product_detail">
-      <EntityTypeMapping TypeName="WebPPModel.product_detail">
+      <EntityTypeMapping TypeName="WebPPNeModel.product_detail">
         <MappingFragment StoreEntitySet="product_detail">
           <ScalarProperty Name="product_id" ColumnName="product_id" />
           <ScalarProperty Name="weight" ColumnName="weight" />
@@ -67,7 +67,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="product_images">
-      <EntityTypeMapping TypeName="WebPPModel.product_images">
+      <EntityTypeMapping TypeName="WebPPNeModel.product_images">
         <MappingFragment StoreEntitySet="product_images">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="product_id" ColumnName="product_id" />
@@ -77,7 +77,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="products">
-      <EntityTypeMapping TypeName="WebPPModel.product">
+      <EntityTypeMapping TypeName="WebPPNeModel.product">
         <MappingFragment StoreEntitySet="products">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="brand_id" ColumnName="brand_id" />
@@ -91,8 +91,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="promotion_programs">
+      <EntityTypeMapping TypeName="WebPPNeModel.promotion_programs">
+        <MappingFragment StoreEntitySet="promotion_programs">
+          <ScalarProperty Name="promotion_id" ColumnName="promotion_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="promotions">
-      <EntityTypeMapping TypeName="WebPPModel.promotion">
+      <EntityTypeMapping TypeName="WebPPNeModel.promotion">
         <MappingFragment StoreEntitySet="promotions">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="product_id" ColumnName="product_id" />
@@ -105,7 +113,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="reviews">
-      <EntityTypeMapping TypeName="WebPPModel.review">
+      <EntityTypeMapping TypeName="WebPPNeModel.review">
         <MappingFragment StoreEntitySet="reviews">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="product_id" ColumnName="product_id" />
@@ -117,30 +125,20 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="shippings">
-      <EntityTypeMapping TypeName="WebPPModel.shipping">
+      <EntityTypeMapping TypeName="WebPPNeModel.shipping">
         <MappingFragment StoreEntitySet="shipping">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="order_id" ColumnName="order_id" />
           <ScalarProperty Name="pickup_date" ColumnName="pickup_date" />
+          <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
           <ScalarProperty Name="shipping_status" ColumnName="shipping_status" />
           <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="carrier" ColumnName="carrier" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="WebPPModel.sysdiagram">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="users">
-      <EntityTypeMapping TypeName="WebPPModel.user">
+      <EntityTypeMapping TypeName="WebPPNeModel.user">
         <MappingFragment StoreEntitySet="users">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="email" ColumnName="email" />
@@ -154,29 +152,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="WebPPModel.Store.sp_alterdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="WebPPModel.Store.sp_creatediagram" />
-    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="WebPPModel.Store.sp_dropdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="WebPPModel.Store.sp_helpdiagramdefinition">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="WebPPModel.sp_helpdiagramdefinition_Result">
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="WebPPModel.Store.sp_helpdiagrams">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="WebPPModel.sp_helpdiagrams_Result">
-          <ScalarProperty Name="Database" ColumnName="Database" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Owner" ColumnName="Owner" />
-          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="WebPPModel.Store.sp_renamediagram" />
-    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="WebPPModel.Store.sp_upgraddiagrams" />
   </EntityContainerMapping>
 </Mapping>

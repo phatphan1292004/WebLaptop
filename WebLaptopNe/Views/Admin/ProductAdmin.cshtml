@@ -1,9 +1,15 @@
-﻿
+﻿@model IEnumerable<WebLaptopNe.Models.category>
+
 @{
     ViewBag.Title = "ProductAdmin";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+<link href="~/Content/css/sweetalert.css?v=1.0" rel="stylesheet" />
 <div class="tab-content" id="product-management-content">
     <div class="product-stats">
         <div class="stat-card">
@@ -76,72 +82,121 @@
                     <div class="form-grid">
                         <!-- Cột 1 -->
                         <div class="form-column">
-                            <!-- ID sản phẩm -->
+
+
                             <div class="form-group">
-                                <label for="product-id">ID Sản phẩm:</label>
-                                <input type="text"
-                                       id="product-id"
-                                       placeholder="Nhập ID sản phẩm"
-                                       required />
+                                <label for="product-images">Hình ảnh sản phẩm (Tối đa 4 hình):</label>
+                                <input type="file" id="product-images" accept="image/*" multiple required />
                             </div>
 
-                            <!-- Hình ảnh sản phẩm -->
-                            <div class="form-group">
-                                <label for="product-image">Link Hình ảnh:</label>
-                                <input type="text"
-                                       id="product-image"
-                                       placeholder="Nhập link hình ảnh"
-                                       required />
-                            </div>
-
-                            <!-- Tên sản phẩm -->
                             <div class="form-group">
                                 <label for="product-name">Tên sản phẩm:</label>
-                                <input type="text"
-                                       id="product-name"
-                                       placeholder="Nhập tên sản phẩm"
-                                       required />
+                                <input type="text" id="product-name" placeholder="Nhập tên sản phẩm" required />
                             </div>
 
-                            <!-- Giá sản phẩm -->
                             <div class="form-group">
                                 <label for="product-price">Giá sản phẩm:</label>
-                                <input type="number"
-                                       id="product-price"
-                                       placeholder="Nhập giá sản phẩm"
-                                       required />
+                                <input type="number" id="product-price" placeholder="Nhập giá sản phẩm" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product-rating">Đánh giá sản phẩm:</label>
+                                <input type="number" id="product-rating" placeholder="Nhập đánh giá sản phẩm" min="1" max="5" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product-discount">Phần trăm giảm giá:</label>
+                                <input type="number" id="product-discount" placeholder="Nhập phần trăm giảm giá" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product-category">Danh mục sản phẩm:</label>
+                                <select id="product-category" required>
+                                    <option value="">Chọn danh mục</option>
+                                    @foreach (var category in ViewBag.Categories)
+                                    {
+                                        <option value="@category.id">@category.category_name</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product-brand">Thương hiệu:</label>
+                                <select id="product-brand" required>
+                                    <option value="">Chọn thương hiệu</option>
+                                    @foreach (var brand in ViewBag.Brands)
+                                    {
+                                        <option value="@brand.brand_id">@brand.brand_name</option>
+                                    }
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="product-weight">Cân nặng:</label>
+                                <input type="number" id="product-weight" placeholder="Nhập cân nặng" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product-quantity">Số lượng:</label>
+                                <input type="number" id="product-quantity" placeholder="Nhập số lượng" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product-port">Cổng kết nối:</label>
+                                <input type="text" id="product-port" placeholder="Nhập cổng kết nối" required />
                             </div>
                         </div>
 
                         <!-- Cột 2 -->
                         <div class="form-column">
-                            <!-- Loại sản phẩm -->
                             <div class="form-group">
-                                <label for="product-category">Danh mục sản phẩm:</label>
-                                <select id="product-category" required>
-                                    <option value="">Chọn danh mục</option>
-                                </select>
+                                <label for="product-cpu">CPU:</label>
+                                <input type="text" id="product-cpu" placeholder="Nhập CPU" required />
                             </div>
 
                             <div class="form-group">
-                                <label for="product-subcategory">Tên loại sản phẩm:</label>
-                                <input type="text"
-                                       id="product-subcategory"
-                                       placeholder="Nhập tên loại sản phẩm chính xác"
-                                       required />
+                                <label for="product-gpu">GPU:</label>
+                                <input type="text" id="product-gpu" placeholder="Nhập GPU" required />
                             </div>
 
-                            <!-- Ngày thêm sản phẩm -->
                             <div class="form-group">
-                                <label for="product-date">Ngày thêm:</label>
-                                <input type="date" id="product-date" required />
+                                <label for="product-vga">VGA:</label>
+                                <input type="text" id="product-vga" placeholder="Nhập VGA" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="product-ram">RAM:</label>
+                                <input type="text" id="product-ram" placeholder="Nhập RAM" required />
                             </div>
 
-                            <!-- Mô tả sản phẩm -->
                             <div class="form-group">
-                                <label for="product-desc">Mô tả sản phẩm:</label>
-                                <textarea id="product-desc"
-                                          placeholder="Nhập mô tả sản phẩm"></textarea>
+                                <label for="product-storage">Ổ cứng:</label>
+                                <input type="text" id="product-storage" placeholder="Nhập ổ cứng" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product-webcam">Webcam:</label>
+                                <input type="text" id="product-webcam" placeholder="Nhập Webcam" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product-battery">Pin:</label>
+                                <input type="text" id="product-battery" placeholder="Nhập pin" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product-os">Hệ điều hành:</label>
+                                <input type="text" id="product-os" placeholder="Nhập hệ điều hành" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product-screen-size">Kích thước màn hình:</label>
+                                <input type="text" id="product-screen-size" placeholder="Nhập kích thước màn hình" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product-warranty">Thời gian bảo hành:</label>
+                                <input type="number" id="product-warranty" placeholder="Nhập thời gian bảo hành" required />
                             </div>
                         </div>
                     </div>
@@ -155,6 +210,8 @@
                 </form>
             </div>
         </div>
+
+
 
         <div class="overlay" id="overlay" data-index="1">
             <div class="categories-container">
@@ -232,28 +289,28 @@
                 </thead>
                 <tbody id="product-table-body">
                     <!-- <tr>
-                       <td>001</td>
-                       <td>
-                         <a href="https://via.placeholder.com/50" target="_blank"
-                           >https://via.placeholder.com/50</a
-                         >
-                       </td>
-                       <td>Sản phẩm 1</td>
-                       <td>200.000 VNĐ</td>
-                       <td>Đèn LED</td>
-                       <td>01/12/2024</td>
-                       <td><button class="view-details">Xem chi tiết</button></td>
-                       <td>
-                         <button class="edit-product">
-                           <i class="fa-regular fa-pen-to-square"></i>
-                         </button>
-                       </td>
-                       <td>
-                         <button class="delete-product">
-                           <i class="fa-regular fa-trash-can"></i>
-                         </button>
-                       </td>
-                     </tr> -->
+                      <td>001</td>
+                      <td>
+                        <a href="https://via.placeholder.com/50" target="_blank"
+                          >https://via.placeholder.com/50</a
+                        >
+                      </td>
+                      <td>Sản phẩm 1</td>
+                      <td>200.000 VNĐ</td>
+                      <td>Đèn LED</td>
+                      <td>01/12/2024</td>
+                      <td><button class="view-details">Xem chi tiết</button></td>
+                      <td>
+                        <button class="edit-product">
+                          <i class="fa-regular fa-pen-to-square"></i>
+                        </button>
+                      </td>
+                      <td>
+                        <button class="delete-product">
+                          <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                      </td>
+                    </tr> -->
                 </tbody>
             </table>
         </div>
@@ -271,18 +328,18 @@
             <div class="product-info">
                 <div class="product-info-left">
                     <div class="product-image">
-                        <img id="product-image"
-                             src="https://denhoamy.vn/upload/attachment/5647den-chum-trang-tri-noi-that-phong-cach-my-dc03812-01.jpg"
+                        <img id="product-image-header"
+                             src=""
                              alt="Hình ảnh sản phẩm" />
                     </div>
                     <div class="basic-details">
                         <p>
                             <strong>Tên sản phẩm:</strong>
-                            <span id="product-name">Skinny Men Blazer</span>
+                            <span id="product-name-header"></span>
                         </p>
                         <p>
                             <strong>Mã sản phẩm:</strong>
-                            <span id="product-id-details">#5353</span>
+                            <span id="product-id-details"></span>
                         </p>
                     </div>
                 </div>
@@ -343,7 +400,7 @@
             <div class="details-content">
                 <div>
                     <strong>Id:</strong>
-                    <span id="product-id-view">5353</span>
+                    <span id="product-id-view"></span>
                     <input type="text"
                            id="edit-product-id"
                            value="5353"
@@ -353,7 +410,7 @@
 
                 <div>
                     <strong>Hình ảnh:</strong>
-                    <span id="product-image-view">https://denhoamy.vn/upload/attachment/5647den-chum-trang-tri-noi-that-phong-cach-my-dc03812-01.jpg</span>
+                    <span id="product-image-view"></span>
                     <input type="text"
                            id="edit-product-image"
                            style="display: none"
@@ -362,7 +419,7 @@
 
                 <div>
                     <strong>Tên sản phẩm:</strong>
-                    <span id="product-name-view">Skinny Men Blazer</span>
+                    <span id="product-name-view"></span>
                     <input type="text"
                            id="edit-product-name"
                            value="Skinny Men Blazer"
@@ -371,7 +428,7 @@
 
                 <div>
                     <strong>Giá:</strong>
-                    <span id="product-price-view">200,000 VNĐ</span>
+                    <span id="product-price-view"></span>
                     <input type="text"
                            id="edit-product-price"
                            value="200,000 VNĐ"
@@ -380,7 +437,7 @@
 
                 <div>
                     <strong>Loại sản phẩm:</strong>
-                    <span id="product-category-view">Thời trang nam</span>
+                    <span id="product-category-view"></span>
                     <input type="text"
                            id="edit-product-category"
                            value="Thời trang nam"
@@ -389,7 +446,7 @@
 
                 <div>
                     <strong>Tình trạng:</strong>
-                    <span id="product-status-view">Còn hàng</span>
+                    <span id="product-status-view"></span>
                     <input type="text"
                            id="edit-product-status"
                            value="Còn hàng"
@@ -399,8 +456,7 @@
                 <div>
                     <strong>Mô tả:</strong>
                     <span id="product-description-view">
-                        Blazer phong cách trẻ trung, phù hợp cho các sự
-                        kiện.
+
                     </span>
                     <textarea id="edit-product-description"
                               style="display: none">
@@ -409,7 +465,7 @@ Blazer phong cách trẻ trung, phù hợp cho các sự kiện.</textarea>
 
                 <div>
                     <strong>Ngày thêm:</strong>
-                    <span id="product-date-view">2024-11-15</span>
+                    <span id="product-date-view"></span>
                     <input type="date"
                            id="edit-product-date"
                            value="2024-11-15"
@@ -418,7 +474,7 @@ Blazer phong cách trẻ trung, phù hợp cho các sự kiện.</textarea>
 
                 <div>
                     <strong>Giảm giá:</strong>
-                    <span id="product-discount-view">10%</span>
+                    <span id="product-discount-view"></span>
                     <input type="text"
                            id="edit-product-discount"
                            value="10%"
@@ -426,7 +482,7 @@ Blazer phong cách trẻ trung, phù hợp cho các sự kiện.</textarea>
                 </div>
                 <div>
                     <strong>Số lượng tồn kho:</strong>
-                    <span id="product-stock-view">213</span>
+                    <span id="product-stock-view"></span>
                     <input type="text"
                            id="edit-product-stock"
                            value="213"
@@ -434,7 +490,7 @@ Blazer phong cách trẻ trung, phù hợp cho các sự kiện.</textarea>
                 </div>
                 <div>
                     <strong>Đánh giá:</strong>
-                    <span id="product-rating-view">5</span>
+                    <span id="product-rating-view"></span>
                     <input type="text"
                            id="edit-product-rating"
                            value="5"
@@ -442,47 +498,127 @@ Blazer phong cách trẻ trung, phù hợp cho các sự kiện.</textarea>
                 </div>
                 <div>
                     <strong>Thời gian bảo hành:</strong>
-                    <span id="product-warranty-view">12 tháng</span>
+                    <span id="product-warranty-view"></span>
                     <input type="text"
                            id="edit-product-warranty"
                            value="12 tháng"
                            style="display: none" />
                 </div>
                 <div>
-                    <strong>Chất liệu:</strong>
-                    <span id="product-material-view">Nhôm</span>
+                    <strong>CPU:</strong>
+                    <span id="product-cpu-view"></span>
                     <input type="text"
-                           id="edit-product-material"
-                           value="Nhôm"
+                           id="edit-product-cpu"
+                           value="Intel Core i7-12700H"
                            style="display: none" />
                 </div>
+
                 <div>
-                    <strong>Màu sắc:</strong>
-                    <span id="product-color-view">Trắng</span>
+                    <strong>GPU:</strong>
+                    <span id="product-gpu-view"></span>
                     <input type="text"
-                           id="edit-product-color"
-                           value="Trắng"
+                           id="edit-product-gpu"
+                           value="NVIDIA GeForce RTX 3060"
                            style="display: none" />
                 </div>
+
                 <div>
-                    <strong>Tuổi thọ:</strong>
-                    <span id="product-lifespan-view">5 năm</span>
+                    <strong>RAM:</strong>
+                    <span id="product-ram-view"></span>
                     <input type="text"
-                           id="edit-product-lifespan"
-                           value="5 năm"
+                           id="edit-product-ram"
+                           value="16GB DDR5"
                            style="display: none" />
                 </div>
+
                 <div>
-                    <strong>Công suất:</strong>
-                    <span id="product-power-view">60W</span>
+                    <strong>Ổ cứng:</strong>
+                    <span id="product-storage-view"></span>
                     <input type="text"
-                           id="edit-product-power"
-                           value="60W"
+                           id="edit-product-storage"
+                           value="512GB SSD"
+                           style="display: none" />
+                </div>
+
+                <div>
+                    <strong>Card VGA:</strong>
+                    <span id="product-vga-view"></span>
+                    <input type="text"
+                           id="edit-product-vga"
+                           value="NVIDIA GeForce RTX 3060"
+                           style="display: none" />
+                </div>
+
+                <div>
+                    <strong>Mux Switch:</strong>
+                    <span id="product-mux-switch-view">Có</span>
+                    <input type="text"
+                           id="edit-product-mux-switch"
+                           value="Có"
+                           style="display: none" />
+                </div>
+
+                <div>
+                    <strong>Màn hình:</strong>
+                    <span id="product-screen-view"></span>
+                    <input type="text"
+                           id="edit-product-screen"
+                           value="15.6&quot; FHD 144Hz"
+                           style="display: none" />
+                </div>
+
+                <div>
+                    <strong>Webcam:</strong>
+                    <span id="product-webcam-view"></span>
+                    <input type="text"
+                           id="edit-product-webcam"
+                           value="1080p Full HD"
+                           style="display: none" />
+                </div>
+
+                <div>
+                    <strong>Cổng kết nối:</strong>
+                    <span id="product-ports-view"></span>
+                    <input type="text"
+                           id="edit-product-ports"
+                           value="USB Type-C, HDMI, Ethernet"
+                           style="display: none" />
+                </div>
+
+                <div>
+                    <strong>Trọng lượng:</strong>
+                    <span id="product-weight-view"></span>
+                    <input type="text"
+                           id="edit-product-weight"
+                           value="~ 3 kg"
+                           style="display: none" />
+                </div>
+
+                <div>
+                    <strong>Pin:</strong>
+                    <span id="product-battery-view"></span>
+                    <input type="text"
+                           id="edit-product-battery"
+                           value="4-cell 90Wh"
+                           style="display: none" />
+                </div>
+
+                <div>
+                    <strong>Hệ điều hành:</strong>
+                    <span id="product-os-view"></span>
+                    <input type="text"
+                           id="edit-product-os"
+                           value="Windows 11"
                            style="display: none" />
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="~/Content/admin.js/productAdmin.js?v=@DateTime.Now.Ticks"></script>
+
 
 

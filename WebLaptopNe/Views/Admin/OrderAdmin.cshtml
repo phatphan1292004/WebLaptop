@@ -3,7 +3,12 @@
     ViewBag.Title = "OrderAdmin";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+<link href="~/Content/css/sweetalert.css" rel="stylesheet" />
 <div class="tab-content" id="order-management-content">
     <div class="stats-container">
         <!-- Khối 1 -->
@@ -52,7 +57,7 @@
         <div style="display: flex; gap: 20px">
             <select id="sort-select-order" class="sort-select">
                 <option value="" disabled selected>Tất cả</option>
-                <option value="pending-orders">Đơn hàng chưa duyệt</option>
+                <option value="Pending">Đơn hàng chưa duyệt</option>
                 <option value="in-progress-orders">Đang giao hàng</option>
                 <option value="completed-orders">Đã giao</option>
             </select>
@@ -75,15 +80,20 @@
                 <p>THÔNG TIN KHÁCH HÀNG</p>
                 <p>
                     <strong>Tên:</strong>
-                    <span id="customer-name">Nguyễn Văn A</span>
+                    <span id="customer-name"></span>
                 </p>
                 <p>
                     <strong>Địa chỉ:</strong>
-                    <span id="customer-address">123 Đường ABC</span>
+                    <span id="customer-address"></span>
                 </p>
                 <p>
                     <strong>Số điện thoại:</strong>
-                    <span id="customer-phone">0987654321</span>
+                    <span id="customer-phone"></span>
+                </p>
+
+                <p>
+                    <strong>Ngày tạo:</strong>
+                    <span id="createdAtDate"></span>
                 </p>
             </div>
 
@@ -100,41 +110,6 @@
                         </tr>
                     </thead>
                     <tbody id="order-items-body">
-                        <tr>
-                            <td>1</td>
-                            <td>Đèn Trang Trí Hoa Mỹ</td>
-                            <td>5</td>
-                            <td>2,000,000 VND</td>
-                            <td>10,000,000 VND</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Đèn Chùm Pha Lê</td>
-                            <td>2</td>
-                            <td>3,500,000 VND</td>
-                            <td>7,000,000 VND</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Đèn Led Đổi Màu</td>
-                            <td>10</td>
-                            <td>500,000 VND</td>
-                            <td>5,000,000 VND</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Đèn Tường Hiện Đại</td>
-                            <td>3</td>
-                            <td>1,200,000 VND</td>
-                            <td>3,600,000 VND</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Đèn Bàn Gốm Sứ</td>
-                            <td>4</td>
-                            <td>1,000,000 VND</td>
-                            <td>4,000,000 VND</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -156,9 +131,9 @@
                     <th>Id</th>
                     <th>Tên KH</th>
                     <th>Ngày đặt hàng</th>
-                    <th>Ngày giao dự kiến</th>
                     <th>Địa chỉ</th>
                     <th>Trạng thái</th>
+                    <th>Tổng tiền</th>
                     <th>Hóa đơn</th>
                     <th>Thao tác</th>
                 </tr>
@@ -167,4 +142,8 @@
         </table>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="~/Content/admin.js/orderAdmin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="WebPPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="WebPPNeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="brands">
     <Key>
       <PropertyRef Name="brand_id" />
@@ -84,12 +84,20 @@
     <Property Name="rating" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="discount_percent" Type="decimal" Precision="18" Scale="0" Nullable="false" />
   </EntityType>
+  <EntityType Name="promotion_programs">
+    <Key>
+      <PropertyRef Name="promotion_id" />
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="promotion_id" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="promotions">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" />
     <Property Name="promotion_name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="start_day" Type="datetime" Nullable="false" />
     <Property Name="end_day" Type="datetime" Nullable="false" />
@@ -114,19 +122,10 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="order_id" Type="int" Nullable="false" />
     <Property Name="pickup_date" Type="datetime" Nullable="false" />
+    <Property Name="delivery_date" Type="datetime" />
     <Property Name="shipping_status" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="address" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="carrier" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="users">
     <Key>
@@ -216,6 +215,58 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__promotion__produ__4222D4EF">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="promotion_programs" Type="Self.promotion_programs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promotion_programs">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__promotion__promo__412EB0B6">
+    <End Role="promotions" Type="Self.promotions" Multiplicity="1" />
+    <End Role="promotion_programs" Type="Self.promotion_programs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="promotions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promotion_programs">
+        <PropertyRef Name="promotion_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_promotion_programs_products">
+    <End Role="products" Type="Self.products" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="promotion_programs" Type="Self.promotion_programs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promotion_programs">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_promotion_programs_promotions">
+    <End Role="promotions" Type="Self.promotions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="promotion_programs" Type="Self.promotion_programs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="promotions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promotion_programs">
+        <PropertyRef Name="promotion_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="products_order_details_fk">
     <End Role="products" Type="Self.products" Multiplicity="1" />
     <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
@@ -241,7 +292,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="products_promotions_fk">
-    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="products" Type="Self.products" Multiplicity="0..1" />
     <End Role="promotions" Type="Self.promotions" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="products">
@@ -300,38 +351,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <EntityContainer Name="WebPPModelStoreContainer">
+  <EntityContainer Name="WebPPNeModelStoreContainer">
     <EntitySet Name="brands" EntityType="Self.brands" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ORDER_1" EntityType="Self.ORDER_1" Schema="dbo" store:Type="Tables" />
@@ -339,10 +359,10 @@
     <EntitySet Name="product_detail" EntityType="Self.product_detail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="product_images" EntityType="Self.product_images" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="promotion_programs" EntityType="Self.promotion_programs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="promotions" EntityType="Self.promotions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="reviews" EntityType="Self.reviews" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="shipping" EntityType="Self.shipping" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="ACCOUNT_ORDER_fk" Association="Self.ACCOUNT_ORDER_fk">
       <End Role="users" EntitySet="users" />
@@ -367,6 +387,22 @@
     <AssociationSet Name="DONHANG_VANCHUYEN_fk" Association="Self.DONHANG_VANCHUYEN_fk">
       <End Role="ORDER_1" EntitySet="ORDER_1" />
       <End Role="shipping" EntitySet="shipping" />
+    </AssociationSet>
+    <AssociationSet Name="FK__promotion__produ__4222D4EF" Association="Self.FK__promotion__produ__4222D4EF">
+      <End Role="products" EntitySet="products" />
+      <End Role="promotion_programs" EntitySet="promotion_programs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__promotion__promo__412EB0B6" Association="Self.FK__promotion__promo__412EB0B6">
+      <End Role="promotions" EntitySet="promotions" />
+      <End Role="promotion_programs" EntitySet="promotion_programs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_promotion_programs_products" Association="Self.FK_promotion_programs_products">
+      <End Role="products" EntitySet="products" />
+      <End Role="promotion_programs" EntitySet="promotion_programs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_promotion_programs_promotions" Association="Self.FK_promotion_programs_promotions">
+      <End Role="promotions" EntitySet="promotions" />
+      <End Role="promotion_programs" EntitySet="promotion_programs" />
     </AssociationSet>
     <AssociationSet Name="products_order_details_fk" Association="Self.products_order_details_fk">
       <End Role="products" EntitySet="products" />

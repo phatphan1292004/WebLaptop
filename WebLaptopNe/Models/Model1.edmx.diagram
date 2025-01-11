@@ -4,32 +4,36 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f73275d977ec400ab4e879a7a8fbf10f" Name="Diagram1">
-        <EntityTypeShape EntityType="WebPPModel.brand" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebPPModel.category" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebPPModel.ORDER_1" Width="1.5" PointX="9.75" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebPPModel.order_details" Width="1.5" PointX="10.5" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebPPModel.product_detail" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebPPModel.product_images" Width="1.5" PointX="7.5" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebPPModel.product" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebPPModel.promotion" Width="1.5" PointX="7.5" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebPPModel.review" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebPPModel.shipping" Width="1.5" PointX="12" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebPPModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebPPModel.user" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <AssociationConnector Association="WebPPModel.brands_categories_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPPModel.brands_products_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPPModel.categories_products_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPPModel.ACCOUNT_ORDER_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPPModel.DONHANG_CHITIETDONHANG_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPPModel.DONHANG_VANCHUYEN_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPPModel.promotions_ORDER_1_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPPModel.products_order_details_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPPModel.products_product_configurations_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPPModel.SANPHAM_HINHANHSP_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPPModel.products_promotions_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPPModel.SANPHAM_DANHGIA_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPPModel.TAIKHOAN_DANHGIA_fk" ManuallyRouted="false" />
+      <Diagram DiagramId="96a678487d934d04be29257c20b63868" Name="Diagram1">
+        <EntityTypeShape EntityType="WebPPNeModel.brand" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebPPNeModel.category" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebPPNeModel.ORDER_1" Width="1.5" PointX="9.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebPPNeModel.order_details" Width="1.5" PointX="10.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebPPNeModel.product_detail" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebPPNeModel.product_images" Width="1.5" PointX="7.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebPPNeModel.product" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebPPNeModel.promotion_programs" Width="1.5" PointX="9.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebPPNeModel.promotion" Width="1.5" PointX="7.5" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebPPNeModel.review" Width="1.5" PointX="10.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebPPNeModel.shipping" Width="1.5" PointX="12" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebPPNeModel.user" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="WebPPNeModel.brands_categories_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.brands_products_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.categories_products_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.ACCOUNT_ORDER_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.DONHANG_CHITIETDONHANG_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.DONHANG_VANCHUYEN_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.promotions_ORDER_1_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.products_order_details_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.products_product_configurations_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.SANPHAM_HINHANHSP_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.FK__promotion__produ__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.FK_promotion_programs_products" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.products_promotions_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.SANPHAM_DANHGIA_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.FK__promotion__promo__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.FK_promotion_programs_promotions" ManuallyRouted="false" />
+        <AssociationConnector Association="WebPPNeModel.TAIKHOAN_DANHGIA_fk" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

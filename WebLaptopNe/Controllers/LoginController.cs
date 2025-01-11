@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using WebLaptopNe.Models;
+using System.Configuration;
+using static System.Net.WebRequestMethods;
+using System.Web.UI.WebControls;
 
 namespace WebLaptopNe.Controllers
 {
     public class LoginController : Controller
     {
-        WebPPEntities2 db = new WebPPEntities2();
+        WebPPNeEntities1 db = new WebPPNeEntities1();
         // GET: Login
         public ActionResult Login()
         {
@@ -109,8 +114,96 @@ namespace WebLaptopNe.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpPost]
+        public ActionResult ForgotPassword(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                ViewBag.ErrorMessage = "Vui lòng nhập email.";
+                return View("Login");
+            }
 
+            // Kiểm tra email có tồn tại trong hệ thống không
+            var user = db.users.FirstOrDefault(u => u.email == email);
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = "Email không tồn tại trong hệ thống.";
+                return View("Login");
+            }
 
+            try
+            {
+                // Tạo mật khẩu mới
+                string newPassword = GenerateRandomPassword();
+                string hashedPassword = HashPassword(newPassword);
+
+                // Cập nhật mật khẩu mới trong cơ sở dữ liệu
+                user.password = hashedPassword;
+                db.SaveChanges();
+
+                // Gửi email chứa mật khẩu mới
+                SendPasswordEmail(email, newPassword);
+
+                ViewBag.SuccessMessage = "Mật khẩu mới đã được gửi đến email của bạn.";
+                return View("Login");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "Đã xảy ra lỗi khi xử lý yêu cầu: " + ex.Message;
+                return View("Login");
+            }
+        }
+
+        // Hàm tạo mật khẩu ngẫu nhiên
+        private string GenerateRandomPassword(int length = 8)
+        {
+            const string validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder res = new StringBuilder();
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            {
+                byte[] uintBuffer = new byte[sizeof(uint)];
+                while (res.Length < length)
+                {
+                    rng.GetBytes(uintBuffer);
+                    uint num = BitConverter.ToUInt32(uintBuffer, 0);
+                    res.Append(validChars[(int)(num % (uint)validChars.Length)]);
+                }
+            }
+            return res.ToString();
+        }
+
+        private void SendPasswordEmail(string toEmail, string newPassword)
+        {
+            try
+            {
+                // Khởi tạo đối tượng SmtpClient
+                using (var smtpClient = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    smtpClient.Credentials = new NetworkCredential("ryanz1292004@gmail.com", "xfpg rywy kemf yfde");
+                    smtpClient.EnableSsl = true; // Bật SSL để bảo mật
+
+                    // Tạo nội dung email
+                    var mailMessage = new MailMessage
+                    {
+                        From = new MailAddress("ryanz1292004@gmail.com"), // Địa chỉ email gửi
+                        Subject = "Cấp lại mật khẩu.",
+                        Body = $"Mật khẩu mới của bạn là (Hãy đăng nhập để đổi lại mật khẩu): {newPassword}", // Sử dụng newPassword thay vì otpCode
+                        IsBodyHtml = true,
+                    };
+
+                    // Thêm địa chỉ email người nhận
+                    mailMessage.To.Add(toEmail);
+
+                    // Gửi email
+                    smtpClient.Send(mailMessage);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Ghi thông báo lỗi nếu gửi email thất bại
+                TempData["ErrorMessage"] = $"Gửi email thất bại tới: {toEmail}. Lỗi: {ex.Message}";
+            }
+        }
 
         // Hash mật khẩu
         private string HashPassword(string password)

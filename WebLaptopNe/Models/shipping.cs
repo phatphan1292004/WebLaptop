@@ -17,6 +17,7 @@ namespace WebLaptopNe.Models
         public int id { get; set; }
         public int order_id { get; set; }
         public System.DateTime pickup_date { get; set; }
+        public Nullable<System.DateTime> delivery_date { get; set; }
         public string shipping_status { get; set; }
         public string address { get; set; }
         public string carrier { get; set; }

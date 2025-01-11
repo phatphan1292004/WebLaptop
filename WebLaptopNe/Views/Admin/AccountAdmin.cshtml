@@ -3,10 +3,131 @@
     ViewBag.Title = "AccountAdmin";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+<link href="~/Content/css/sweetalert.css" rel="stylesheet" />
+<style>
+    /* Modal - Chỉnh sửa tài khoản */
+    #account-detail-modal {
+        width: 100%;
+    }
 
+    /* Modal content */
+    .modal-content {
+        background-color: #fff;
+        width: 100%;
+        max-width: 800px;
+        position: relative;
+    }
+
+        /* Tiêu đề */
+        .modal-content h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+    /* Đóng modal */
+    #close-detail-btn {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    /* Form chỉnh sửa */
+    .account-detail {
+       
+    }
+
+    /* Các nhóm ô input */
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+        /* Label */
+        .form-group label {
+            text-align: left;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        /* Input fields */
+        .form-group input, .form-group select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+            .form-group input:disabled {
+                background-color: #f5f5f5;
+            }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+    /* Nút Lưu thay đổi */
+    #save-account-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        /* Nút Lưu thay đổi khi hover */
+        #save-account-btn:hover {
+            background-color: #45a049;
+        }
+
+    /* Modal đóng lại */
+    #close-detail-btn:hover {
+        background-color: #d32f2f;
+    }
+
+    /* Các input khi sửa */
+    input:focus, select:focus {
+        border-color: #4CAF50;
+        outline: none;
+    }
+
+    /* Cải thiện giao diện của các nút */
+    .secondary-button {
+        background-color: #f44336;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* Điều chỉnh khi modal mở */
+    .modal-content {
+        transition: all 0.3s ease-in-out;
+    }
+</style>
 <div class="tab-content"
-     id="account-management"
-     >
+     id="account-management">
     <h2>QUẢN LÝ TÀI KHOẢN</h2>
     <p>
         Đây là phần quản lý tài khoản. Bạn có thể thêm, chỉnh sửa hoặc
@@ -20,6 +141,14 @@
             <h3>THÊM TÀI KHOẢN MỚI</h3>
             <form id="add-account-form">
                 <!-- Tên đăng nhập -->
+                <div class="form-group">
+                    <label for="cusname">Tên khách hàng:</label>
+                    <input type="text"
+                           id="cus_name"
+                           name="cus_name"
+                           placeholder="Nhập tên khách hàng"
+                           required />
+                </div>
                 <div class="form-group">
                     <label for="username">Tên đăng nhập:</label>
                     <input type="text"
@@ -92,12 +221,13 @@
     <!-- Danh sách tài khoản -->
     <div id="account-list">
         <h3>DANH SÁCH TÀI KHOẢN</h3>
-        <table>
+        <table id="account-table">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Tên đăng nhập</th>
                     <th>Email</th>
+                    <th>Ngày tạo</th>
                     <th>Phân quyền</th>
                     <th>Hành động</th>
                 </tr>
@@ -105,5 +235,54 @@
             <tbody></tbody>
         </table>
     </div>
+
+    <div class="overlay">
+        <!-- Modal Xem chi tiết tài khoản -->
+        <div id="account-detail-modal" class="modal">
+            <div class="modal-content">
+                <h3>Chi tiết tài khoản</h3>
+                <div class="account-detail">
+                    <div class="form-group">
+                        <label for="edit-id">ID:</label>
+                        <input type="text" id="edit-id" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-cusname">Tên khách hàng:</label>
+                        <input type="text" id="edit-cusname" />
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-email">Email:</label>
+                        <input type="email" id="edit-email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-phone">Số điện thoại:</label>
+                        <input type="text" id="edit-phone" />
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-address">Địa chỉ:</label>
+                        <input type="text" id="edit-address" />
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-role">Vai trò:</label>
+                        <select id="edit-role">
+                            <option value="admin">Quản trị viên</option>
+                            <option value="editor">Người chỉnh sửa</option>
+                            <option value="customer">Khách hàng</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-created-at">Ngày tạo:</label>
+                        <input type="text" id="edit-created-at" disabled />
+                    </div>
+                </div>
+                <button id="save-account-btn" class="primary-button">Lưu thay đổi</button>
+                <button id="close-detail-btn" class="secondary-button">Đóng</button>
+            </div>
+        </div>
+    </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/Content/admin.js/accountAdmin.js?v=@DateTime.Now.Ticks"></script>
 

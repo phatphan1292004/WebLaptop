@@ -18,10 +18,12 @@ namespace WebLaptopNe.Models
         public promotion()
         {
             this.ORDER_1 = new HashSet<ORDER_1>();
+            this.promotion_programs = new HashSet<promotion_programs>();
+            this.promotion_programs1 = new HashSet<promotion_programs>();
         }
     
         public int id { get; set; }
-        public int product_id { get; set; }
+        public Nullable<int> product_id { get; set; }
         public string promotion_name { get; set; }
         public System.DateTime start_day { get; set; }
         public System.DateTime end_day { get; set; }
@@ -31,5 +33,9 @@ namespace WebLaptopNe.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDER_1> ORDER_1 { get; set; }
         public virtual product product { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<promotion_programs> promotion_programs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<promotion_programs> promotion_programs1 { get; set; }
     }
 }

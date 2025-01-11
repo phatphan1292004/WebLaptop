@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
-
       $(document).ready(function(){
           $('.product-image-list').slick({
             infinite: true,
@@ -11,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       // Code phần rating
-      const ratingItems = document.querySelectorAll(".rating-item");
+    const ratingItems = document.querySelectorAll(".rating-item");
     const selectedRatingDisplay = document.querySelector(".selected-rating");
 
     // Xử lý sự kiện hover
@@ -38,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-        $(".add-to-cart").click(function () {
+    $(".add-to-cart").click(function () {
             const productId = $(this).data("product-id");
 
             $.ajax({
@@ -121,6 +119,6 @@ document.addEventListener('DOMContentLoaded', function () {
             },
         });
     });
-})
+
 
 
