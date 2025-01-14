@@ -18,7 +18,7 @@
             </div>
             <div class="card-content">
                 <h3>Tổng sản phẩm trong kho</h3>
-                <p id="total-stock">0</p>
+                <p id="total-stock"></p>
             </div>
         </div>
         <div class="stat-card">
@@ -27,7 +27,7 @@
             </div>
             <div class="card-content">
                 <h3>Số loại sản phẩm</h3>
-                <p id="total-categories">0</p>
+                <p id="total-categories"></p>
             </div>
         </div>
         <div class="stat-card">
@@ -36,7 +36,7 @@
             </div>
             <div class="card-content">
                 <h3>Sản phẩm hết hàng</h3>
-                <p id="out-of-stock">0</p>
+                <p id="out-of-stock"></p>
             </div>
         </div>
         <div class="stat-card">
@@ -45,7 +45,7 @@
             </div>
             <div class="card-content">
                 <h3>Sản phẩm mới nhất</h3>
-                <p id="latest-product">Chưa có</p>
+                <p id="latest-product"></p>
             </div>
         </div>
     </div>
@@ -58,10 +58,6 @@
                        placeholder="Tìm kiếm sản phẩm..." />
                 <button id="search-btn-product">Tìm kiếm</button>
             </div>
-            <button class="add-category">
-                <i class="fa-solid fa-plus"></i>
-                Thêm loại sản phẩm
-            </button>
 
             <button class="add-product">
                 <i class="fa-solid fa-plus"></i>
@@ -211,67 +207,6 @@
             </div>
         </div>
 
-
-
-        <div class="overlay" id="overlay" data-index="1">
-            <div class="categories-container">
-                <!-- Nút Đóng lại -->
-                <div class="top-actions">
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-
-                <div class="categories-content">
-                    <!-- Danh sách danh mục -->
-                    <div class="categories-list">
-                        <h3>Danh sách danh mục</h3>
-                        <ul id="category-list">
-                            <!-- Các danh mục -->
-                        </ul>
-                    </div>
-
-                    <!-- Form thêm danh mục -->
-                    <div class="add-category-form">
-                        <h3>Thêm danh mục mới</h3>
-                        <form id="category-form">
-                            <label for="category-id">ID:</label>
-                            <input type="text"
-                                   id="category-id"
-                                   class="form-input"
-                                   required />
-
-                            <label for="category-name">Tên danh mục:</label>
-                            <input type="text"
-                                   id="category-name"
-                                   class="form-input"
-                                   required />
-
-                            <label for="parent-category">Danh mục cha:</label>
-                            <input type="text"
-                                   id="parent-category"
-                                   class="form-input" />
-
-                            <label for="stock-quantity">Số lượng tồn:</label>
-                            <input type="number"
-                                   id="stock-quantity"
-                                   class="form-input"
-                                   required />
-
-                            <label for="category-desc">Mô tả:</label>
-                            <textarea id="category-desc"
-                                      class="form-textarea"
-                                      rows="3"></textarea>
-
-                            <button type="button"
-                                    id="add-category-btn"
-                                    class="add-category-button">
-                                Thêm danh mục
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Bảng danh sách sản phẩm -->
         <div class="tab-container">
             <table class="product-table" id="product-table">
@@ -288,29 +223,7 @@
                     </tr>
                 </thead>
                 <tbody id="product-table-body">
-                    <!-- <tr>
-                      <td>001</td>
-                      <td>
-                        <a href="https://via.placeholder.com/50" target="_blank"
-                          >https://via.placeholder.com/50</a
-                        >
-                      </td>
-                      <td>Sản phẩm 1</td>
-                      <td>200.000 VNĐ</td>
-                      <td>Đèn LED</td>
-                      <td>01/12/2024</td>
-                      <td><button class="view-details">Xem chi tiết</button></td>
-                      <td>
-                        <button class="edit-product">
-                          <i class="fa-regular fa-pen-to-square"></i>
-                        </button>
-                      </td>
-                      <td>
-                        <button class="delete-product">
-                          <i class="fa-regular fa-trash-can"></i>
-                        </button>
-                      </td>
-                    </tr> -->
+                   
                 </tbody>
             </table>
         </div>
@@ -343,11 +256,7 @@
                         </p>
                     </div>
                 </div>
-                <button id="save-product-btn"
-                        class="save-button"
-                        style="display: none">
-                    <i class="fa-solid fa-pen"></i> Lưu
-                </button>
+               
 
                 <button id="edit-product-btn" class="edit-button">
                     <i class="fa-solid fa-pen"></i> Chỉnh sửa
@@ -397,228 +306,269 @@
             </div>
 
             <!-- Phần chi tiết sản phẩm -->
-            <div class="details-content">
-                <div>
-                    <strong>Id:</strong>
-                    <span id="product-id-view"></span>
-                    <input type="text"
-                           id="edit-product-id"
-                           value="5353"
-                           style="display: none"
-                           readonly />
-                </div>
+            <form class="form-update-product">
+                <div class="details-content">
+                    <button id="save-product-btn"
+                            type="submit"
+                            class="save-button"
+                            style="display: none">
+                        <i class="fa-solid fa-pen"></i> Lưu
+                    </button>
 
-                <div>
-                    <strong>Hình ảnh:</strong>
-                    <span id="product-image-view"></span>
-                    <input type="text"
-                           id="edit-product-image"
-                           style="display: none"
-                           accept="image/*" />
-                </div>
+                    <button id="cancel-product-btn"
+                            class="cancle-button"
+                            style="display: none"
+                        type="button">
+                            <i class="fa-solid fa-pen"></i> Hủy
+                    </button>
 
-                <div>
-                    <strong>Tên sản phẩm:</strong>
-                    <span id="product-name-view"></span>
-                    <input type="text"
-                           id="edit-product-name"
-                           value="Skinny Men Blazer"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>Id:</strong>
+                        <span id="product-id-view"></span>
+                        <input type="text"
+                               id="edit-product-id"
+                               name="ProductId"
+                               value=""
+                               style="display: none"
+                               readonly />
+                    </div>
 
-                <div>
-                    <strong>Giá:</strong>
-                    <span id="product-price-view"></span>
-                    <input type="text"
-                           id="edit-product-price"
-                           value="200,000 VNĐ"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>Hình ảnh:</strong>
+                        <span id="product-image-view"></span>
+                        <input type="text"
+                               id="edit-product-image"
+                               name="ImageUrl"
+                               style="display: none"
+                               accept="image/*" readonly />
+                    </div>
 
-                <div>
-                    <strong>Loại sản phẩm:</strong>
-                    <span id="product-category-view"></span>
-                    <input type="text"
-                           id="edit-product-category"
-                           value="Thời trang nam"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>Tên sản phẩm:</strong>
+                        <span id="product-name-view"></span>
+                        <input type="text"
+                               id="edit-product-name"
+                               name="ProductName"
+                               value=""
+                               style="display: none" />
+                    </div>
 
-                <div>
-                    <strong>Tình trạng:</strong>
-                    <span id="product-status-view"></span>
-                    <input type="text"
-                           id="edit-product-status"
-                           value="Còn hàng"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>Giá:</strong>
+                        <span id="product-price-view"></span>
+                        <input type="text"
+                               id="edit-product-price"
+                               name="UnitPrice"
+                               value=""
+                               style="display: none" />
+                    </div>
 
-                <div>
-                    <strong>Mô tả:</strong>
-                    <span id="product-description-view">
+                    <div>
+                        <strong>Loại sản phẩm:</strong>
+                        <span id="product-category-view"></span>
+                        <input type="text"
+                               id="edit-product-category"
+                               name="CategoryName"
+                               value=""
+                               style="display: none" readonly />
+                    </div>
 
-                    </span>
-                    <textarea id="edit-product-description"
-                              style="display: none">
-Blazer phong cách trẻ trung, phù hợp cho các sự kiện.</textarea>
-                </div>
+                    <div>
+                        <strong>Tình trạng:</strong>
+                        <span id="product-status-view"></span>
+                        <input type="text"
+                               id="edit-product-status"
+                               name="ProductStatus"
+                               value=""
+                               style="display: none" />
+                    </div>
 
-                <div>
-                    <strong>Ngày thêm:</strong>
-                    <span id="product-date-view"></span>
-                    <input type="date"
-                           id="edit-product-date"
-                           value="2024-11-15"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>Mô tả:</strong>
+                        <span id="product-description-view"></span>
+                        <textarea id="edit-product-description"
+                                  name="Description"
+                                  style="display: none"></textarea>
+                    </div>
 
-                <div>
-                    <strong>Giảm giá:</strong>
-                    <span id="product-discount-view"></span>
-                    <input type="text"
-                           id="edit-product-discount"
-                           value="10%"
-                           style="display: none" />
-                </div>
-                <div>
-                    <strong>Số lượng tồn kho:</strong>
-                    <span id="product-stock-view"></span>
-                    <input type="text"
-                           id="edit-product-stock"
-                           value="213"
-                           style="display: none" />
-                </div>
-                <div>
-                    <strong>Đánh giá:</strong>
-                    <span id="product-rating-view"></span>
-                    <input type="text"
-                           id="edit-product-rating"
-                           value="5"
-                           style="display: none" />
-                </div>
-                <div>
-                    <strong>Thời gian bảo hành:</strong>
-                    <span id="product-warranty-view"></span>
-                    <input type="text"
-                           id="edit-product-warranty"
-                           value="12 tháng"
-                           style="display: none" />
-                </div>
-                <div>
-                    <strong>CPU:</strong>
-                    <span id="product-cpu-view"></span>
-                    <input type="text"
-                           id="edit-product-cpu"
-                           value="Intel Core i7-12700H"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>Ngày thêm:</strong>
+                        <span id="product-date-view"></span>
+                        <input type="date"
+                               id="edit-product-date"
+                               name="CreatedAt"
+                               value=""
+                               style="display: none" />
+                    </div>
 
-                <div>
-                    <strong>GPU:</strong>
-                    <span id="product-gpu-view"></span>
-                    <input type="text"
-                           id="edit-product-gpu"
-                           value="NVIDIA GeForce RTX 3060"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>Giảm giá:</strong>
+                        <span id="product-discount-view"></span>
+                        <input type="text"
+                               id="edit-product-discount"
+                               name="DiscountPercent"
+                               value=""
+                               style="display: none" />
+                    </div>
 
-                <div>
-                    <strong>RAM:</strong>
-                    <span id="product-ram-view"></span>
-                    <input type="text"
-                           id="edit-product-ram"
-                           value="16GB DDR5"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>Số lượng tồn kho:</strong>
+                        <span id="product-stock-view"></span>
+                        <input type="text"
+                               id="edit-product-stock"
+                               name="StockQuantity"
+                               value=""
+                               style="display: none" />
+                    </div>
 
-                <div>
-                    <strong>Ổ cứng:</strong>
-                    <span id="product-storage-view"></span>
-                    <input type="text"
-                           id="edit-product-storage"
-                           value="512GB SSD"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>Đánh giá:</strong>
+                        <span id="product-rating-view"></span>
+                        <input type="text"
+                               id="edit-product-rating"
+                               name="Rating"
+                               value=""
+                               style="display: none" />
+                    </div>
 
-                <div>
-                    <strong>Card VGA:</strong>
-                    <span id="product-vga-view"></span>
-                    <input type="text"
-                           id="edit-product-vga"
-                           value="NVIDIA GeForce RTX 3060"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>Thời gian bảo hành:</strong>
+                        <span id="product-warranty-view"></span>
+                        <input type="text"
+                               id="edit-product-warranty"
+                               name="WarrantyPeriod"
+                               value=""
+                               style="display: none" />
+                    </div>
 
-                <div>
-                    <strong>Mux Switch:</strong>
-                    <span id="product-mux-switch-view">Có</span>
-                    <input type="text"
-                           id="edit-product-mux-switch"
-                           value="Có"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>CPU:</strong>
+                        <span id="product-cpu-view"></span>
+                        <input type="text"
+                               id="edit-product-cpu"
+                               name="CPU"
+                               value=""
+                               style="display: none" />
+                    </div>
 
-                <div>
-                    <strong>Màn hình:</strong>
-                    <span id="product-screen-view"></span>
-                    <input type="text"
-                           id="edit-product-screen"
-                           value="15.6&quot; FHD 144Hz"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>GPU:</strong>
+                        <span id="product-gpu-view"></span>
+                        <input type="text"
+                               id="edit-product-gpu"
+                               name="GPU"
+                               value=""
+                               style="display: none" />
+                    </div>
 
-                <div>
-                    <strong>Webcam:</strong>
-                    <span id="product-webcam-view"></span>
-                    <input type="text"
-                           id="edit-product-webcam"
-                           value="1080p Full HD"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>RAM:</strong>
+                        <span id="product-ram-view"></span>
+                        <input type="text"
+                               id="edit-product-ram"
+                               name="RAM"
+                               value=""
+                               style="display: none" />
+                    </div>
 
-                <div>
-                    <strong>Cổng kết nối:</strong>
-                    <span id="product-ports-view"></span>
-                    <input type="text"
-                           id="edit-product-ports"
-                           value="USB Type-C, HDMI, Ethernet"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>Ổ cứng:</strong>
+                        <span id="product-storage-view"></span>
+                        <input type="text"
+                               id="edit-product-storage"
+                               name="Storage"
+                               value=""
+                               style="display: none" />
+                    </div>
 
-                <div>
-                    <strong>Trọng lượng:</strong>
-                    <span id="product-weight-view"></span>
-                    <input type="text"
-                           id="edit-product-weight"
-                           value="~ 3 kg"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>Card VGA:</strong>
+                        <span id="product-vga-view"></span>
+                        <input type="text"
+                               id="edit-product-vga"
+                               name="VGA"
+                               value=""
+                               style="display: none" />
+                    </div>
 
-                <div>
-                    <strong>Pin:</strong>
-                    <span id="product-battery-view"></span>
-                    <input type="text"
-                           id="edit-product-battery"
-                           value="4-cell 90Wh"
-                           style="display: none" />
-                </div>
+                    <div>
+                        <strong>Mux Switch:</strong>
+                        <span id="product-mux-switch-view"></span>
+                        <input type="text"
+                               id="edit-product-mux-switch"
+                               name="MuxSwitch"
+                               value=""
+                               style="display: none" />
+                    </div>
 
-                <div>
-                    <strong>Hệ điều hành:</strong>
-                    <span id="product-os-view"></span>
-                    <input type="text"
-                           id="edit-product-os"
-                           value="Windows 11"
-                           style="display: none" />
+                    <div>
+                        <strong>Màn hình:</strong>
+                        <span id="product-screen-view"></span>
+                        <input type="text"
+                               id="edit-product-screen"
+                               name="ScreenSize"
+                               value=""
+                               style="display: none" />
+                    </div>
+
+                    <div>
+                        <strong>Webcam:</strong>
+                        <span id="product-webcam-view"></span>
+                        <input type="text"
+                               id="edit-product-webcam"
+                               name="Webcam"
+                               value=""
+                               style="display: none" />
+                    </div>
+
+                    <div>
+                        <strong>Cổng kết nối:</strong>
+                        <span id="product-ports-view"></span>
+                        <input type="text"
+                               id="edit-product-ports"
+                               name="Ports"
+                               value=""
+                               style="display: none" />
+                    </div>
+
+                    <div>
+                        <strong>Trọng lượng:</strong>
+                        <span id="product-weight-view"></span>
+                        <input type="text"
+                               id="edit-product-weight"
+                               name="Weight"
+                               value=""
+                               style="display: none" />
+                    </div>
+
+                    <div>
+                        <strong>Pin:</strong>
+                        <span id="product-battery-view"></span>
+                        <input type="text"
+                               id="edit-product-battery"
+                               name="Battery"
+                               value=""
+                               style="display: none" />
+                    </div>
+
+                    <div>
+                        <strong>Hệ điều hành:</strong>
+                        <span id="product-os-view"></span>
+                        <input type="text"
+                               id="edit-product-os"
+                               name="OS"
+                               value=""
+                               style="display: none" />
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="~/Content/admin.js/productAdmin.js?v=@DateTime.Now.Ticks"></script>
+<script src="~/Content/admin.js/productAdmin.js?v=2.0"></script>
 
 
 

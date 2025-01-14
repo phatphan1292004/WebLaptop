@@ -47,3 +47,116 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+
+
+$(document).ready(function () {
+    // Xử lý khi người dùng gửi form đổi mật khẩu
+    $('.change_password_form').submit(function (event) {
+        event.preventDefault(); // Ngừng hành động mặc định của form
+
+        var oldPassword = $('#oldPassword').val();
+        var newPassword = $('#newPassword').val();
+        var confirmPassword = $('#confirm_password').val();
+
+        // Kiểm tra các trường hợp trống
+        if (!oldPassword || !newPassword || !confirmPassword) {
+            Swal.fire({
+                title: 'Thông báo',
+                text: 'Vui lòng điền đầy đủ thông tin.',
+                icon: 'warning',
+                confirmButtonText: 'Đóng',
+                confirmButtonColor: '#3085d6',
+            });
+            return;
+        }
+
+        // Gửi yêu cầu POST tới server để thay đổi mật khẩu
+        $.ajax({
+            url: '/Login/ChangePassword',
+            type: 'POST',
+            data: {
+                oldPassword: oldPassword,
+                newPassword: newPassword,
+                confirmPassword: confirmPassword
+            },
+            success: function (response) {
+                // Kiểm tra nếu có thông báo lỗi hoặc thành công từ server
+                if (response.errorMessage) {
+                    Swal.fire({
+                        title: 'Lỗi',
+                        text: response.errorMessage,
+                        icon: 'error',
+                        confirmButtonText: 'Đóng',
+                        confirmButtonColor: '#d33',
+                    });
+                } else if (response.successMessage) {
+                    Swal.fire({
+                        title: 'Thành công',
+                        text: response.successMessage,
+                        icon: 'success',
+                        confirmButtonText: 'Đóng',
+                        confirmButtonColor: '#28a745',
+                    });
+                }
+            },
+            error: function () {
+                Swal.fire({
+                    title: 'Lỗi',
+                    text: 'Đã xảy ra lỗi, vui lòng thử lại sau.',
+                    icon: 'error',
+                    confirmButtonText: 'Đóng',
+                    confirmButtonColor: '#d33',
+                });
+            }
+        });
+    });
+
+    function loadOrderHistory() {
+        $.ajax({
+            url: '/Home/GetOrderHistory', // Gọi API lấy lịch sử đơn hàng
+            type: 'GET',
+            success: function (data) {
+                if (data && data.length > 0) {
+                    let orderTableBody = $('#orderTableBody');
+                    orderTableBody.empty(); // Xóa dữ liệu cũ
+
+                    // Lặp qua danh sách đơn hàng và thêm vào bảng
+                    data.forEach(function (order) {
+                        // Chuyển đổi chuỗi /Date(1736594242870)/ thành Date
+                        let orderDate = new Date(parseInt(order.created_at.replace("/Date(", "").replace(")/", "")));
+
+                        const orderRow = `
+                            <tr>
+                                <td>${order.id}</td>
+                                <td>${orderDate.toLocaleDateString()}</td> <!-- Hiển thị ngày -->
+                                <td>${order.total_price.toLocaleString("vi-VN", { style: "currency", currency: "VND" })}</td>
+                                <td>${order.order_status}</td>
+                            </tr>
+                        `;
+                        orderTableBody.append(orderRow);
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Thông báo',
+                        text: 'Bạn chưa có đơn hàng nào.',
+                        icon: 'warning',
+                        confirmButtonText: 'Đóng',
+                    });
+                }
+            },
+            error: function () {
+                Swal.fire({
+                    title: 'Lỗi',
+                    text: 'Không thể lấy dữ liệu đơn hàng.',
+                    icon: 'error',
+                    confirmButtonText: 'Đóng',
+                });
+            }
+        });
+    }
+
+    // Gọi hàm tải lịch sử đơn hàng khi trang load
+    loadOrderHistory();
+});
+
+

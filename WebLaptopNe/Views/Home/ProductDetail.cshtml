@@ -15,6 +15,9 @@
         display: block;
         padding: 10px 20px;
         background-color: red;
+        color: white;
+        font-weight: 500;
+        border-radius: 4px;
     }
 </style>
 <div class="main">
@@ -35,12 +38,12 @@
                     </div>
                     <div class="main_product">
                         <div class="product-image-list">
-                            @if (ViewBag.AdditionalImages != null)
+                            @if (ViewBag.ListImg != null)
                             {
-                                foreach (var imageUrl in ViewBag.AdditionalImages)
+                                foreach (var item in ViewBag.ListImg)
                                 {
                                     <div class="product-image">
-                                        <img src="@imageUrl" alt="@Model.product.product_name" />
+                                        <img src="@item" alt="@Model.product.product_name" />
                                     </div>
                                 }
                             }
@@ -60,7 +63,7 @@
                                     <span class="title">Đánh giá : </span> <span class="star-review">@Model.product.rating</span>/5
                                 </span>
                             </div>
-                            <p class="product-warranty"> <span>Bảo hành : </span>@Model.product.product_detail.warranty_period</p>
+                            <p class="product-warranty"> <span>Bảo hành : </span>@Model.product.product_detail.warranty_period năm</p>
                             <a href="#product-info" class="detail-config">Xem chi tiết cấu hình</a>
                             <button class="add-to-cart" data-product-id="@Model.product.id">Thêm vào giỏ hàng</button>
                             <div id="cartNotification" class="notification" style="display: none;">
@@ -335,92 +338,32 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="review-container" data-product-id="@Model.product.id">
         <div class="review-product">
             <!-- Tiêu đề phần đánh giá sản phẩm -->
             <h2>KHÁCH HÀNG NÓI VỀ SẢN PHẨM</h2>
 
-            <!-- Thông báo nếu chưa có đánh giá -->
-            <div class="review-notice">
-                <p>Trở thành người đầu tiên đánh giá về sản phẩm.</p>
-            </div>
-
-            <!-- Phần danh sách đánh giá -->
-            <div class="review-ratings">
-                <div class="rating-item">
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <div class="rating-item">
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <div class="rating-item">
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <div class="rating-item">
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <div class="rating-item">
-                    <i class="fa-solid fa-star"></i>
-                </div>
-            </div>
-
-            <!-- Phần nhập bình luận -->
+            <!-- Phần nhập đánh giá -->
             <div class="review-input">
-                <textarea placeholder="Nhập nội dung bình luận"></textarea>
-                <button class="submit-review-btn">Gửi bình luận</button>
+                <select id="rating" class="rating-select">
+                    <option value="1">1 Sao</option>
+                    <option value="2">2 Sao</option>
+                    <option value="3">3 Sao</option>
+                    <option value="4">4 Sao</option>
+                    <option value="5">5 Sao</option>
+                </select>
+                <textarea id="review-content" placeholder="Nhập nội dung bình luận"></textarea>
+                <button class="submit-review-btn" onclick="submitReview()">Gửi bình luận</button>
             </div>
 
-            <!-- Phần hiển thị bình luận -->
+            <!-- Phần hiển thị danh sách bình luận -->
             <div class="comments-section">
                 <div class="comments-header">
-                    <h3>3 Bình luận</h3>
+                    <h3 id="review-count">0 Bình luận</h3>
                     <p>Đánh giá của khách hàng về sản phẩm</p>
                 </div>
-
-                <div class="comment">
-                    <div class="comment-header">
-                        <div class="avatar">
-                            <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar Nguyễn Văn A" />
-                        </div>
-                        <div class="comment-info">
-                            <span class="username">Nguyễn Văn A</span>
-                            <span class="comment-date">02/11/2024</span>
-                        </div>
-                    </div>
-                    <p class="comment-content">
-                        Sản phẩm tuyệt vời, tôi rất hài lòng với chất lượng và giá cả!
-                    </p>
-                </div>
-
-                <div class="comment">
-                    <div class="comment-header">
-                        <div class="avatar">
-                            <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar Trần Thị B" />
-                        </div>
-                        <div class="comment-info">
-                            <span class="username">Trần Thị B</span>
-                            <span class="comment-date">01/11/2024</span>
-                        </div>
-                    </div>
-                    <p class="comment-content">
-                        Chất lượng sản phẩm tốt, giao hàng nhanh chóng, nhưng tôi nghĩ
-                        giá hơi cao.
-                    </p>
-                </div>
-
-                <div class="comment">
-                    <div class="comment-header">
-                        <div class="avatar">
-                            <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar Lê Thị C" />
-                        </div>
-                        <div class="comment-info">
-                            <span class="username">Lê Thị C</span>
-                            <span class="comment-date">30/10/2024</span>
-                        </div>
-                    </div>
-                    <p class="comment-content">
-                        Sản phẩm như mô tả, tôi sẽ mua thêm lần sau.
-                    </p>
+                <div id="comments-container">
+                    <!-- Các bình luận sẽ được thêm vào đây -->
                 </div>
             </div>
         </div>
@@ -442,6 +385,115 @@
             prevArrow: `<button type='button' class='slick-prev slick-arrow'><i class="fa-solid fa-angle-left"></i></button>`,
             nextArrow: `<button type='button' class='slick-next slick-arrow'><i class="fa-solid fa-angle-right"></i></button>`,
         });
+
+        const productId = $("#review-container").data("product-id");
+
+        // Gửi đánh giá
+        $(".submit-review-btn").click(function () {
+            const rating = $("#rating").val();
+            const content = $("#review-content").val().trim();
+
+            if (!content) {
+                Toastify({
+                    text: "Vui lòng nhập nội dung đánh giá!",
+                    duration: 3000,
+                    gravity: "top", // Hiển thị ở trên cùng
+                    position: "center", // Căn giữa
+                    backgroundColor: "linear-gradient(to right, #f44336, #e57373)", // Màu đỏ
+                }).showToast();
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/SubmitReview",
+                data: {
+                    product_id: productId,
+                    rating: rating,
+                    content: content
+                },
+                success: function (response) {
+                    if (response.success) {
+                        Toastify({
+                            text: response.message,
+                            duration: 3000,
+                            gravity: "top", // Hiển thị ở trên cùng
+                            position: "center", // Căn giữa
+                            backgroundColor: "linear-gradient(to right, #4caf50, #81c784)", // Màu xanh lá
+                        }).showToast();
+
+                        // Reset form
+                        $("#rating").val("1");
+                        $("#review-content").val("");
+
+                        // Tải lại danh sách đánh giá
+                        loadReviews();
+                    } else {
+                        Toastify({
+                            text: response.message,
+                            duration: 3000,
+                            gravity: "top", // Hiển thị ở trên cùng
+                            position: "center", // Căn giữa
+                            backgroundColor: "linear-gradient(to right, #f44336, #e57373)", // Màu đỏ
+                        }).showToast();
+                    }
+                },
+                error: function () {
+                    Toastify({
+                        text: "Có lỗi xảy ra khi gửi đánh giá. Vui lòng thử lại!",
+                        duration: 3000,
+                        gravity: "top", // Hiển thị ở trên cùng
+                        position: "center", // Căn giữa
+                        backgroundColor: "linear-gradient(to right, #f44336, #e57373)", // Màu đỏ
+                    }).showToast();
+                }
+            });
+        });
+
+        // Tải danh sách đánh giá
+        function loadReviews() {
+            $.ajax({
+                type: "GET",
+                url: "/Home/GetReviews",
+                data: { productId: productId },
+                success: function (reviews) {
+                    const commentsContainer = $("#comments-container");
+                    const reviewCount = $("#review-count");
+
+                    commentsContainer.empty(); // Xóa các bình luận cũ
+                    reviewCount.text(`${reviews.length} Bình luận`);
+
+                    reviews.forEach(review => {
+                        const commentHtml = `
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="avatar">
+                            <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar ${review.Username}" />
+                        </div>
+                        <div class="comment-info">
+                            <span class="username">${review.Username}</span>
+                        </div>
+                    </div>
+                    <p class="comment-content">${review.Content}</p>
+                </div>
+            `;
+                        commentsContainer.append(commentHtml);
+                    });
+                },
+                error: function () {
+                    Toastify({
+                        text: "Có lỗi xảy ra khi tải danh sách đánh giá!",
+                        duration: 3000,
+                        gravity: "top", // Hiển thị ở trên cùng
+                        position: "center", // Căn giữa
+                        backgroundColor: "linear-gradient(to right, #f44336, #e57373)", // Màu đỏ
+                    }).showToast();
+                }
+            });
+        }
+
+        // Tải danh sách đánh giá khi trang được tải
+        loadReviews();
     });
 </script>
 

@@ -80,7 +80,6 @@ namespace WebLaptopNe.Controllers
         }
 
 
-
         [HttpPost]
         public ActionResult Login(user model)
         {
@@ -111,8 +110,17 @@ namespace WebLaptopNe.Controllers
             Session["role"] = existingUser.role;
             Session["userInfo"] = existingUser;
             ViewBag.SuccessMessage = "Đăng nhập thành công!";
+
+            // Kiểm tra nếu là admin thì chuyển đến trang Admin
+            if (existingUser.role.ToLower() == "admin")
+            {
+                return RedirectToAction("DashBoardAdmin", "Admin");
+            }
+
+            // Nếu không phải admin, chuyển đến trang chủ
             return RedirectToAction("Index", "Home");
         }
+
 
         [HttpPost]
         public ActionResult ForgotPassword(string email)
@@ -205,6 +213,46 @@ namespace WebLaptopNe.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult ChangePassword(string oldPassword, string newPassword, string confirmPassword)
+        {
+            // Kiểm tra các trường nhập vào
+            if (string.IsNullOrEmpty(oldPassword) || string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
+            {
+                return Json(new { errorMessage = "Vui lòng điền đầy đủ thông tin." });
+            }
+
+            // Kiểm tra mật khẩu mới và mật khẩu xác nhận có trùng khớp không
+            if (newPassword != confirmPassword)
+            {
+                return Json(new { errorMessage = "Mật khẩu mới và mật khẩu xác nhận không khớp." });
+            }
+
+            // Lấy thông tin người dùng hiện tại từ session
+            var username = Session["username"].ToString();
+            var user = db.users.FirstOrDefault(u => u.username == username);
+
+            if (user == null)
+            {
+                return Json(new { errorMessage = "Người dùng không tồn tại." });
+            }
+
+            // Kiểm tra mật khẩu cũ có đúng không
+            string hashedOldPassword = HashPassword(oldPassword);
+            if (hashedOldPassword != user.password)
+            {
+                return Json(new { errorMessage = "Mật khẩu cũ không chính xác." });
+            }
+
+            // Cập nhật mật khẩu mới
+            user.password = HashPassword(newPassword);
+            db.SaveChanges();
+
+            return Json(new { successMessage = "Mật khẩu đã được thay đổi thành công!" });
+        }
+
+
+
         // Hash mật khẩu
         private string HashPassword(string password)
         {
@@ -220,5 +268,15 @@ namespace WebLaptopNe.Controllers
             }
         }
 
+
+        public ActionResult Logout()
+        {
+            // Xóa tất cả các session khi đăng xuất
+            Session.Clear(); // Xóa tất cả session
+            Session.Abandon(); // Hủy session
+
+            // Chuyển hướng về trang login
+            return RedirectToAction("Login", "Login");
+        }
     }
 }

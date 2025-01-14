@@ -257,4 +257,20 @@ function formatDateFromAspNet(dateString) {
     return `${day}/${month}/${year}`;
 }
 
+$(document).ready(function () {
+    // Gửi yêu cầu đến API để lấy dữ liệu
+    $.ajax({
+        url: '/Admin/GetOrderStats',  // API URL
+        type: 'GET',
+        success: function (data) {
+            // Hiển thị dữ liệu lên giao diện
+            $('#total-orders').text(data.TotalOrders);  // Tổng đơn hàng
+            $('#pending-orders').text(data.PendingOrders);  // Đơn hàng chưa xử lý
+            $('#in-transit-orders').text(data.InTransitOrders);  // Đơn hàng đang giao
+        },
+        error: function () {
+            console.error('Không thể lấy dữ liệu thống kê đơn hàng.');
+        }
+    });
+});
 

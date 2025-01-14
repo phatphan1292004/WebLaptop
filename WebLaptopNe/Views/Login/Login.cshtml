@@ -93,9 +93,39 @@
                 </div>
                 <div class="form-footer">
                     <button type="submit" class="btn">Gửi mật khẩu</button>
+                    <span id="back-to-login" style="cursor: pointer; color: blue;">Quay về đăng nhập</span>
                 </div>
             </div>
         </form>
     </div>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const forgotPasswordLink = document.querySelector(".forgot-pw");
+        const loginForm = document.getElementById("login-form");
+        const forgotPasswordForm = document.getElementById("forgot-password-form");
+        const backToLoginLink = document.getElementById("back-to-login");
+
+        // Ẩn form quên mật khẩu ban đầu
+        forgotPasswordForm.style.display = "none";
+
+        // Xử lý sự kiện khi nhấn vào "Quên mật khẩu?"
+        forgotPasswordLink.addEventListener("click", function(e) {
+            e.preventDefault(); // Ngừng hành động mặc định của liên kết
+
+            // Ẩn form đăng nhập và hiển thị form quên mật khẩu
+            loginForm.style.display = "none";
+            forgotPasswordForm.style.display = "block";
+        });
+
+        backToLoginLink.addEventListener("click", function (e) {
+            e.preventDefault(); // Ngừng hành động mặc định của liên kết
+
+            // Hiển thị lại form đăng nhập và ẩn form quên mật khẩu
+            loginForm.style.display = "block";
+            forgotPasswordForm.style.display = "none";
+        });
+    });
+</script>
+
 </html>

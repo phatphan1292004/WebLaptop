@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
       integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link href="~/Content/css/search.css" rel="stylesheet" />
+<link href="~/Content/css/search.css?v=2.0" rel="stylesheet" />
 <style>
     .no-results {
         text-align: center;
@@ -138,42 +138,7 @@
         </div>
         <div class="container-header">
             <div class="filter-wrapper">
-                <button class="filter-button">Bộ lọc</button>
-                <div class="dropdown">
-                    <button class="dropdown-toggle">
-                        Giá
-                    </button>
-                    <div class="dropdown-menu price-slider">
-                        <input type="range" min="1800000" max="120000000" value="5000000" id="priceRange" />
-                        <div class="price-values">
-                            <span id="minPrice">1.800.000₫</span>
-                            <span id="maxPrice">120.000.000₫</span>
-                        </div>
-                        <button class="apply-button">Xem kết quả</button>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="dropdown-toggle">
-                        Hãng
-                    </button>
-                    <div class="dropdown-menu">
-                        <button class="option">ACER</button>
-                        <button class="option">Không thương hiệu</button>
-                        <button class="apply-button">Xem kết quả</button>
-                    </div>
-                </div>
-            </div>
-            <div class="sort-wrapper">
-                <label for="sort-by">Sắp xếp theo</label>
-                <select id="sort-by">
-                    <option value="newest">Mới nhất</option>
-                    <option value="price-asc">Giá: thấp -> cao</option>
-                    <option value="price-desc">Giá: cao -> thấp</option>
-                    <option value="most-viewed">Xem nhiều nhất</option>
-                    <option value="most-reviewed">Nhiều nhận xét</option>
-                    <option value="highest-rated">Đánh giá cao nhất</option>
-                    <option value="name-asc">Tên A->Z</option>
-                </select>
+               
             </div>
         </div>
         <div class="container">
@@ -195,20 +160,22 @@
                             var x = imgne?.url ?? "https://images.unsplash.com/photo-1731453171628-635e49577b59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4fHx8ZW58MHx8fHx8";
                             var discountedPrice = (p.unit_price - p.unit_price * p.discount_percent / 100);
                             <div class="product-item">
-                                <div class="img" style="height: 250px">
-                                    <img src="@x" alt="@p.product_name" />
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-name">@p.product_name</h3>
-                                    <p class="original-price">@p.unit_price.ToString("N0") VND</p>
-                                    <div class="price-discount">
-                                        <p class="product-price">@discountedPrice.ToString("N0") VND</p>
-                                        @if (@p.discount_percent > 0)
-                                        {
-                                            <p class="discount-percentage">-@p.discount_percent %</p>
-                                        }
+                                <a href="@Url.Action("ProductDetail", "Home", new { id = p.id })" class="product-link">
+                                    <div class="img" style="height: 250px">
+                                        <img src="@x" alt="@p.product_name" />
                                     </div>
-                                </div>
+                                    <div class="product-info">
+                                        <h3 class="product-name">@p.product_name</h3>
+                                        <p class="original-price">@p.unit_price.ToString("N0") VND</p>
+                                        <div class="price-discount">
+                                            <p class="product-price">@discountedPrice.ToString("N0") VND</p>
+                                            @if (@p.discount_percent > 0)
+                                            {
+                                                <p class="discount-percentage">-@p.discount_percent %</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         }
                     </div>

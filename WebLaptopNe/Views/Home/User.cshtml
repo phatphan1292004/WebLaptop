@@ -36,7 +36,7 @@
                         </li>
                         <li onclick="logout()">
                             <i class="fa-solid fa-right-from-bracket"></i>
-                            <a href="#" id="logoutLink">Đăng xuất</a>
+                            <a href="@Url.Action("Logout", "Login")" id="logoutLink">Đăng xuất</a>
                         </li>
                     </ul>
                 </nav>
@@ -105,6 +105,7 @@
                 </p>
             </div>
             <!-- Quản lý đơn hàng -->
+            <!-- Quản lý đơn hàng -->
             <div id="order" class="content_section" style="display: none;">
                 <div class="order_header">
                     <h2>ĐƠN HÀNG ĐÃ ĐẶT</h2>
@@ -121,22 +122,13 @@
                         </select>
                     </div>
                     <div class="search_bar">
-                        <input type="text"
-                               placeholder="Tìm đơn hàng theo Mã đơn hàng" />
+                        <input type="text" id="order-search" placeholder="Tìm đơn hàng theo Mã đơn hàng" />
                         <span>|</span>
                         <div>
-                            <button>Tìm</button>
+                            <button id="search-order">Tìm</button>
                         </div>
                     </div>
                 </div>
-                <!-- <div id="noOrders" class="no_orders">
-
-                  <p>Quý khách chưa có đơn hàng nào.</p>
-
-                  <p>Quý khách chưa có đơn hàng nào.</p>
-
-                  <button>Tiếp tục mua hàng</button>
-                </div> -->
 
                 <div class="order-table-container" id="orderTableContainer">
                     <table class="order-table">
@@ -146,18 +138,15 @@
                                 <th>Ngày Đặt</th>
                                 <th>Tổng Tiền</th>
                                 <th>Trạng Thái</th>
-                                <th>Khuyến Mãi</th>
-                                <th>Chi Tiết</th>
                             </tr>
                         </thead>
                         <tbody id="orderTableBody">
-                           
-                                
-                          
+                            <!-- Đơn hàng sẽ được hiển thị ở đây -->
                         </tbody>
                     </table>
                 </div>
             </div>
+
 
             <!-- đổi mật khẩu -->
             <div id="change_password"
@@ -170,7 +159,7 @@
                         người khác
                     </div>
                 </div>
-                <form class="change_password_form">
+                <form class="change_password_form" method="post">
                     <div class="dlex">
                         <label for="oldPassword">Mật khẩu cũ:</label>
                         <div>
@@ -207,5 +196,6 @@
         </div>
     </div>
 </div>
-
-<script src="~/Content/js/user2.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/Content/js/user2.js?v=2.0"></script>

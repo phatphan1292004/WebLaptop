@@ -11,6 +11,26 @@
 <link href="~/Content/css/sweetalert.css" rel="stylesheet" />
 <link href="~/Content/css/promotionAdmin.css" rel="stylesheet" />
 <style>
+    .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            flex: 0 0 150px; /* Độ rộng cố định cho label */
+            text-align: right; /* Căn lề phải */
+            margin-right: 10px; /* Khoảng cách giữa label và input */
+        }
+
+        .form-group input,
+        .form-group select {
+            flex: 1; /* Input hoặc select chiếm phần còn lại */
+            padding: 8px 10px; /* Khoảng cách bên trong */
+            font-size: 14px; /* Kích thước chữ */
+            border: 1px solid #ccc; /* Viền */
+            border-radius: 5px; /* Bo góc */
+        }
     /* Tổng quát: Thiết kế bảng */
     .table {
         width: 100%;
@@ -206,4 +226,4 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="~/Content/admin.js/promotionAdmin.js?v=2.0"></script>
+<script src="~/Content/admin.js/promotionAdmin.js?v=1.0"></script>

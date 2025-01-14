@@ -22,12 +22,9 @@
                 </select>
             </div>
             <div class="right">
-                <div class="input-group" id="month-input-group">
-                    <label for="month">Năm:</label>
-                    <input type="number"
-                           id="month"
-                           placeholder="Nhập năm"
-                           required />
+                <div class="input-group" id="month-input-group" style="display: flex;">
+                    <label style="line-height: 3" for="month">Năm:</label>
+                    <input type="number" id="month" placeholder="Nhập năm" required />
                 </div>
                 <button id="submit-btn">Xem Thống Kê</button>
             </div>
@@ -39,4 +36,6 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="~/Content/admin.js/revenueAdmin.js"></script>
 

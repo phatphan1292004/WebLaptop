@@ -319,4 +319,103 @@ $(document).ready(function () {
     $("#close-form").on("click", function () {
         $("#overlay").removeClass("active"); // Xóa class active để ẩn modal
     });
+
+    $(document).ready(function () {
+        // Gửi yêu cầu đến API để lấy dữ liệu
+        $.ajax({
+            url: '/Admin/GetProductStats',
+            type: 'GET',
+            success: function (data) {
+                // Hiển thị dữ liệu lên giao diện
+                $('#total-stock').text(data.TotalStock); // Tổng sản phẩm trong kho
+                $('#total-categories').text(data.TotalCategories); // Số loại sản phẩm
+                $('#out-of-stock').text(data.OutOfStock); // Sản phẩm hết hàng
+                $('#latest-product').text(data.LatestProduct); // Sản phẩm mới nhất
+            },
+            error: function () {
+                console.error('Không thể lấy dữ liệu thống kê sản phẩm.');
+            }
+        });
+    });
+
+
+    let originalData = {}; // Store original data for reverting when canceling edits
+
+    // When "Chỉnh sửa" (Edit) button is clicked
+    $('#edit-product-btn').click(function () {
+
+        $('.details-content').find('span').each(function () {
+            const value = $(this).text().trim(); // Lấy giá trị từ `span`
+            const input = $(this).siblings('input, textarea'); // Lấy `input` hoặc `textarea` trong cùng `div`
+
+            if (input.length) { 
+                input.attr('value', value); // Gán giá trị vào thuộc tính `value` trong HTML
+                $(this).hide(); // Ẩn `span`
+                input.show(); // Hiển thị `input`
+            }
+        });
+
+        // Hiển thị các nút "Lưu" và "Hủy", ẩn nút "Chỉnh sửa"
+        $('#save-product-btn, #cancel-product-btn').show();
+        $('#edit-product-btn').hide();
+    });
+
+
+
+
+
+    // Khi nhấn vào nút "Hủy"
+    $('#cancel-product-btn').click(function () {
+        // Ẩn các input và hiển thị lại span
+        $('.details-content input, .details-content textarea').hide();
+        $('.details-content span').show();
+
+        // Ẩn nút "Lưu" và "Hủy", hiển thị nút "Chỉnh sửa"
+        $('#save-product-btn, #cancel-product-btn').hide();
+        $('#edit-product-btn').show();
+    });
+
+    $('.form-update-product').on('submit', function (e) {
+        e.preventDefault(); // Ngăn form reload trang
+
+        const formData = new FormData(this); // Tự động thu thập tất cả input trong form
+        for (let [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
+
+        $.ajax({
+            url: '/Admin/UpdateProduct', // URL của Controller
+            type: 'POST',
+            data: formData,
+            processData: false, // Không xử lý dữ liệu (để FormData xử lý)
+            contentType: false, // Đặt Content-Type tự động
+            success: function (response) {
+                if (response.success) {
+                    Swal.fire({
+                        title: 'Thành công!',
+                        text: 'Cập nhật sản phẩm thành công!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        location.reload(); // Reload lại trang sau khi người dùng nhấn OK
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Lỗi!',
+                        text: response.message || 'Đã xảy ra lỗi khi cập nhật sản phẩm.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            },
+            error: function () {
+                Swal.fire({
+                    title: 'Lỗi!',
+                    text: 'Đã xảy ra lỗi khi cập nhật sản phẩm.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    });
 });

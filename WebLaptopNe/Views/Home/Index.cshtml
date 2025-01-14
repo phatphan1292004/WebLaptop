@@ -1,14 +1,9 @@
-﻿@model IEnumerable<WebLaptopNe.Models.product>
+﻿@model WebLaptopNe.Models.ViewModels.HomePageViewModel
 
 @{
     ViewBag.Title = "Index";
 }
 
-@{
-    var products = ViewBag.listSPHome as List<WebLaptopNe.Models.product>;
-    var productImages = ViewBag.productImages as List<WebLaptopNe.Models.product_images>;
-
-}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
       integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -60,186 +55,82 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="container-sale">
-            <div class="container-sale-header">
-                <div class="sale-info">
-                    <h2>SIÊU SALE - GIẢM SỐC!</h2>
-                </div>
-                <div class="countdown-timer">
-                    <div class="time-box">
-                        <p id="days">00</p>
-                        <span>Ngày</span>
+    @if (Model.Promotions != null && Model.Promotions.Count > 0)
+    {
+        foreach (var promotion in Model.Promotions)
+        {
+            <div class="container">
+                <div class="container-sale">
+                    <div class="container-sale-header">
+                        <div class="sale-info">
+                            <h2>@promotion.PromotionName</h2>
+                        </div>
+                        <div class="countdown-timer" data-enddate="@promotion.EndDate">
+                            <div class="time-box">
+                                <p class="days">00</p>
+                                <span>Ngày</span>
+                            </div>
+                            <div class="time-box">
+                                <p class="hours">00</p>
+                                <span>Giờ</span>
+                            </div>
+                            <div class="time-box">
+                                <p class="minutes">00</p>
+                                <span>Phút</span>
+                            </div>
+                            <div class="time-box">
+                                <p class="seconds">00</p>
+                                <span>Giây</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="time-box">
-                        <p id="hours">00</p>
-                        <span>Giờ</span>
-                    </div>
-                    <div class="time-box">
-                        <p id="minutes">00</p>
-                        <span>Phút</span>
-                    </div>
-                    <div class="time-box">
-                        <p id="seconds">00</p>
-                        <span>Giây</span>
+
+                    <div class="container-sale-product">
+                        <ul class="list-product-hot" id="list-product-sale">
+                            @if (promotion.Products != null && promotion.Products.Count > 0)
+                            {
+                                foreach (var product in promotion.Products)
+                                {
+                                    <li class="product-hot-item">
+                                        <a href="@Url.Action("ProductDetail", "Home", new { id = product.ProductId })" class="product-link">
+                                            <div class="img">
+                                                <img src="@product.ProductImage" alt="@product.ProductName" />
+                                            </div>
+                                            <div class="product-info">
+                                                <div class="product-name">
+                                                    @product.ProductName
+                                                </div>
+                                                <p class="original-price">@String.Format("{0:0,0} VND", product.UnitPrice)</p>
+                                                <div class="price-discount">
+                                                    <p class="product-price">@String.Format("{0:0,0} VND", product.DiscountPrice)</p>
+                                                    <p class="discount-percentage">@product.DiscountPercent %</p>
+                                                </div>
+                                            </div>
+                                            </a>
+                                    </li>
+
+                                   
+                                }
+                            }
+                            else
+                            {
+                                <p>No products available for this promotion.</p>
+                            }
+                        </ul>
                     </div>
                 </div>
             </div>
-
-            <div class="container-sale-product">
-                <ul class="list-product-hot" id="list-product-sale">
-                    <li class="product-hot-item">
-                        <div class="img">
-                            <img src="https://denhoamy.vn/upload/attachment/thumb/8519den-quat-tich-hop-ban-chong-tham-nuoc-trang-tri-san-vuon-phong-cach-chau-au-dq00682-08.jpg"
-                                 alt="" />
-                        </div>
-
-                        <div class="product-info">
-                            <div class="product-name">
-                                Đèn quạt tích hợp bàn chống thấm nước trang trí sân vườn phong cách Châu Âu DQ00682
-                            </div>
-                            <p class="original-price">2.000.000 VND</p>
-                            <div class="price-discount">
-                                <p class="product-price">1.800.000VND</p>
-                                <p class="discount-percentage">-10%</p>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="product-hot-item">
-                        <div class="img">
-                            <img src="https://denhoamy.vn/upload/attachment/8991den-chum-trang-tri-noi-that-phong-cach-my-dc03813-01.jpg"
-                                 alt="" />
-                        </div>
-
-                        <div class="product-info">
-                            <div class="product-name">
-                                Đèn chùm trang trí nội thất phong cách Mỹ DC03813
-                            </div>
-                            <p class="original-price">1.500.000VND</p>
-                            <div class="price-discount">
-                                <p class="product-price">1.245.000VND</p>
-                                <p class="discount-percentage">-5%</p>
-                            </div>
-                        </div>
-                    </li>
+        }
+    }
+    else
+    {
+        <p>No promotions available.</p>
+    }
 
 
-                    <li class="product-hot-item">
-                        <div class="img">
-                            <img src="https://denhoamy.vn/upload/attachment/8002den-tha-trang-tri-noi-that-phong-cach-my-dt02991-03.jpg"
-                                 alt="" />
-                        </div>
-
-                        <div class="product-info">
-                            <div class="product-name">
-                                Đèn thả trang trí nội thất phong cách Mỹ DT02991
-                            </div>
-                            <p class="original-price">3.000.000 VND</p>
-                            <div class="price-discount">
-                                <p class="product-price">2.000.000 VND</p>
-                                <p class="discount-percentage">-20%</p>
-                            </div>
-                        </div>
-                    </li>
 
 
-                    <li class="product-hot-item">
-                        <div class="img">
-                            <img src="https://denhoamy.vn/upload/attachment/8728den-quat-giau-canh-trang-tri-phong-cach-hien-dai-dq00904-01.jpg"
-                                 alt="" />
-                        </div>
 
-                        <div class="product-info">
-                            <div class="product-name">
-                                Đèn quạt giấu cánh trang trí phong cách hiện đại DQ00904
-                            </div>
-                            <p class="original-price">3.000.000 VND</p>
-                            <div class="price-discount">
-                                <p class="product-price">2.000.000 VND</p>
-                                <p class="discount-percentage">-33%</p>
-                            </div>
-                        </div>
-                    </li>
-
-
-                    <li class="product-hot-item">
-                        <div class="img">
-                            <img src="https://denhoamy.vn/upload/attachment/5258den-ban-trang-tri-noi-that-phong-cach-my-db02101-03.jpg"
-                                 alt="" />
-                        </div>
-
-                        <div class="product-info">
-                            <div class="product-name">
-                                Đèn bàn trang trí nội thất phong cách Mỹ DB02101
-                            </div>
-                            <p class="original-price">900.000 VND</p>
-                            <div class="price-discount">
-                                <p class="product-price">720.000VND</p>
-                                <p class="discount-percentage">-20%</p>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="product-hot-item">
-                        <div class="img">
-                            <img src="https://denhoamy.vn/upload/attachment/thumb/1174den-ngoai-troi-soi-thuy-tinh-trang-tri-san-vuon-bai-co-phong-cach-trung-hoa-dn00718-03.jpg"
-                                 alt="" />
-                        </div>
-
-                        <div class="product-info">
-                            <div class="product-name">
-                                Đèn ngoài trời sợi thủy tinh trang trí sân vườn bãi cỏ phong cách Trung Hoa DN00718
-                            </div>
-                            <p class="original-price">1.240.000 VND</p>
-                            <div class="price-discount">
-                                <p class="product-price">790.000 VND</p>
-                                <p class="discount-percentage">-33%</p>
-                            </div>
-                        </div>
-                    </li>
-
-
-                    <li class="product-hot-item">
-                        <div class="img">
-                            <img src="https://denhoamy.vn/upload/attachment/thumb/3996den-tha-go-phong-cach-thai-dt02861-03.jpg"
-                                 alt="" />
-                        </div>
-
-                        <div class="product-info">
-                            <div class="product-name">
-                                Đèn thả gỗ phong cách Thái DT02861
-                            </div>
-                            <p class="original-price">2.000.000 VND</p>
-                            <div class="price-discount">
-                                <p class="product-price">1.000.000 VND</p>
-                                <p class="discount-percentage">-50%</p>
-                            </div>
-                        </div>
-                    </li>
-
-
-                    <li class="product-hot-item">
-                        <div class="img">
-                            <img src="https://denhoamy.vn/upload/attachment/1018den-san-thiet-ke-phong-cach-hien-dai-dy01047-01.jpg"
-                                 alt="" />
-                        </div>
-
-                        <div class="product-info">
-                            <div class="product-name">
-                                Đèn sàn thiết kế phong cách hiện đại DY01047
-                            </div>
-                            <p class="original-price">800.000 VND</p>
-                            <div class="price-discount">
-                                <p class="product-price">400.000 VND</p>
-                                <p class="discount-percentage">-50%</p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
     <div class="container">
         <div class="product-wrapper">
@@ -361,17 +252,18 @@
 
                 <div class="wrapper-bottom">
                     <ul class="list-product" id="list-product1">
-                        @foreach (var p in products.Where(p => p.category_id == 1)
-                                                   .OrderByDescending(p => p.created_at)
-                                                   .Take(5))
+                        @foreach (var p in Model.Products
+                            .Where(p => p.category_id == 1)
+                            .OrderByDescending(p => p.created_at)
+                            .Take(5))
                         {
-                            var imgne = productImages?.FirstOrDefault(pi => pi.product_id == p.id);
-                            var x = imgne?.url ?? "https://images.unsplash.com/photo-1731453171628-635e49577b59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4fHx8ZW58MHx8fHx8";
+                            var imgne = Model.ProductImages?.FirstOrDefault(pi => pi.product_id == p.id);
+                            var imageUrl = imgne != null ? imgne.url : "/Content/img/default-product-image.jpg";
                             var discountedPrice = (p.unit_price - p.unit_price * p.discount_percent / 100);
                             <li class="product-item">
-                                <a href="@Url.Action("ProductDetail", "Home", new {id = p.id})" class="product-link">
+                                <a href="@Url.Action("ProductDetail", "Home", new { id = p.id })" class="product-link">
                                     <div class="img">
-                                        <img src="@x" alt="@p.product_name" />
+                                        <img src="@imageUrl" alt="@p.product_name" />
                                     </div>
 
                                     <div class="product-info">
@@ -387,7 +279,6 @@
                             </li>
                         }
                     </ul>
-
                 </div>
             </div>
         </div>
@@ -403,30 +294,32 @@
 
                 <div class="wrapper-bottom">
                     <ul class="list-product" id="list-product1">
-                        @foreach (var p in products.Where(p => p.category_id == 2)
+                        @foreach (var p in Model.Products
+                            .Where(p => p.category_id == 2)
                             .OrderByDescending(p => p.created_at)
                             .Take(5))
                         {
-                            var imgne = productImages?.FirstOrDefault(pi => pi.product_id == p.id);
-                            var x = imgne?.url ?? "https://images.unsplash.com/photo-1731453171628-635e49577b59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4fHx8ZW58MHx8fHx8";
+                            var imgne = Model.ProductImages?.FirstOrDefault(pi => pi.product_id == p.id);
+                            var imageUrl = imgne != null ? imgne.url : "/Content/img/default-product-image.jpg";
                             var discountedPrice = (p.unit_price - p.unit_price * p.discount_percent / 100);
                             <li class="product-item">
-                                <div class="img">
-                                    <img src="@x" alt="@p.product_name" />
-                                </div>
-
-                                <div class="product-info">
-                                    <div class="product-name">@p.product_name</div>
-                                    <p class="original-price">@p.unit_price VND</p>
-
-                                    <div class="price-discount">
-                                        <p class="product-price">@discountedPrice VND</p>
-                                        <p class="discount-percentage">-@p.discount_percent %</p>
+                                <a href="@Url.Action("ProductDetail", "Home", new { id = p.id })" class="product-link">
+                                    <div class="img">
+                                        <img src="@imageUrl" alt="@p.product_name" />
                                     </div>
-                                </div>
+
+                                    <div class="product-info">
+                                        <div class="product-name">@p.product_name</div>
+                                        <p class="original-price">@p.unit_price.ToString("N0") VND</p>
+
+                                        <div class="price-discount">
+                                            <p class="product-price">@discountedPrice.ToString("N0") VND</p>
+                                            <p class="discount-percentage">-@p.discount_percent %</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </li>
                         }
-
                     </ul>
                 </div>
             </div>
@@ -443,30 +336,32 @@
 
                 <div class="wrapper-bottom">
                     <ul class="list-product" id="list-product1">
-                        @foreach (var p in products.Where(p => p.category_id == 3)
+                        @foreach (var p in Model.Products
+                            .Where(p => p.category_id == 3)
                             .OrderByDescending(p => p.created_at)
                             .Take(5))
                         {
-                            var imgne = productImages?.FirstOrDefault(pi => pi.product_id == p.id);
-                            var x = imgne?.url ?? "https://images.unsplash.com/photo-1731453171628-635e49577b59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4fHx8ZW58MHx8fHx8";
+                            var imgne = Model.ProductImages?.FirstOrDefault(pi => pi.product_id == p.id);
+                            var imageUrl = imgne != null ? imgne.url : "/Content/img/default-product-image.jpg";
                             var discountedPrice = (p.unit_price - p.unit_price * p.discount_percent / 100);
                             <li class="product-item">
-                                <div class="img">
-                                    <img src="@x" alt="@p.product_name" />
-                                </div>
-
-                                <div class="product-info">
-                                    <div class="product-name">@p.product_name</div>
-                                    <p class="original-price">@p.unit_price VND</p>
-
-                                    <div class="price-discount">
-                                        <p class="product-price">@discountedPrice VND</p>
-                                        <p class="discount-percentage">-@p.discount_percent %</p>
+                                <a href="@Url.Action("ProductDetail", "Home", new { id = p.id })" class="product-link">
+                                    <div class="img">
+                                        <img src="@imageUrl" alt="@p.product_name" />
                                     </div>
-                                </div>
+
+                                    <div class="product-info">
+                                        <div class="product-name">@p.product_name</div>
+                                        <p class="original-price">@p.unit_price.ToString("N0") VND</p>
+
+                                        <div class="price-discount">
+                                            <p class="product-price">@discountedPrice.ToString("N0") VND</p>
+                                            <p class="discount-percentage">-@p.discount_percent %</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </li>
                         }
-
                     </ul>
                 </div>
             </div>
@@ -483,30 +378,32 @@
 
                 <div class="wrapper-bottom">
                     <ul class="list-product" id="list-product1">
-                        @foreach (var p in products.Where(p => p.category_id == 4)
-                             .OrderByDescending(p => p.created_at)
-                             .Take(5))
+                        @foreach (var p in Model.Products
+                            .Where(p => p.category_id == 4)
+                            .OrderByDescending(p => p.created_at)
+                            .Take(5))
                         {
-                            var imgne = productImages?.FirstOrDefault(pi => pi.product_id == p.id);
-                            var x = imgne?.url ?? "https://images.unsplash.com/photo-1731453171628-635e49577b59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4fHx8ZW58MHx8fHx8";
+                            var imgne = Model.ProductImages?.FirstOrDefault(pi => pi.product_id == p.id);
+                            var imageUrl = imgne != null ? imgne.url : "/Content/img/default-product-image.jpg";
                             var discountedPrice = (p.unit_price - p.unit_price * p.discount_percent / 100);
                             <li class="product-item">
-                                <div class="img">
-                                    <img src="@x" alt="@p.product_name" />
-                                </div>
-
-                                <div class="product-info">
-                                    <div class="product-name">@p.product_name</div>
-                                    <p class="original-price">@p.unit_price VND</p>
-
-                                    <div class="price-discount">
-                                        <p class="product-price">@discountedPrice VND</p>
-                                        <p class="discount-percentage">-@p.discount_percent %</p>
+                                <a href="@Url.Action("ProductDetail", "Home", new { id = p.id })" class="product-link">
+                                    <div class="img">
+                                        <img src="@imageUrl" alt="@p.product_name" />
                                     </div>
-                                </div>
+
+                                    <div class="product-info">
+                                        <div class="product-name">@p.product_name</div>
+                                        <p class="original-price">@p.unit_price.ToString("N0") VND</p>
+
+                                        <div class="price-discount">
+                                            <p class="product-price">@discountedPrice.ToString("N0") VND</p>
+                                            <p class="discount-percentage">-@p.discount_percent %</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </li>
                         }
-
                     </ul>
                 </div>
             </div>
@@ -517,7 +414,7 @@
         <div class="feedback">
             <h2 class="feedback-title">
                 ĐÁNH GIÁ KHÁCH HÀNG
-                <div class="bar"></div>
+                @*<div class="bar"></div>*@
             </h2>
             <ul class="feedback-list">
                 <li class="feedback-item">
@@ -591,7 +488,7 @@
         </div>
     </section>
 </div>
-<script src="~/Content/js/home.js"></script>
+<script src="~/Content/js/home.js?v=2.0"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

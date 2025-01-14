@@ -131,6 +131,91 @@
         color: black;
         text-decoration: none;
     }
+
+    .filter-wrapper {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 100%;
+}
+
+.filter-wrapper h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.filter-section form {
+    display: flex;
+    gap: 20px; /* Khoảng cách giữa các phần tử */
+    align-items: center;
+    justify-content: space-between; /* Phân bổ đều khoảng cách */
+    flex-wrap: wrap; /* Nếu không đủ chỗ, tự động xuống dòng */
+    width: 100%; /* Chiều rộng của form */
+}
+
+/* Mỗi phần lọc */
+.filter-section .a {
+    display: flex;
+    gap: 5px;
+    flex: 1; /* Chia đều chiều rộng cho mỗi phần tử */
+    max-width: 60%; /* Đặt chiều rộng tối thiểu */
+}
+
+    .filter-section .b {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        flex: 1; /* Chia đều chiều rộng cho mỗi phần tử */
+        min-width: 150px; /* Đặt chiều rộng tối thiểu */
+    }
+
+/* Đảm bảo chiều rộng của các input và select */
+.filter-section label {
+    font-size: 14px;
+    color: #555;
+    font-weight: 600;
+}
+
+.filter-section input[type="number"],
+.filter-section select {
+    width: 100%; /* Chiều rộng 100% */
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.filter-section input[type="number"]:focus,
+.filter-section select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button */
+.filter-section button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1; /* Đặt nút bấm chiếm chiều rộng bằng các input khác */
+    max-width: 200px; /* Giới hạn chiều rộng tối đa */
+}
+
+.filter-section button:hover {
+    background-color: #0056b3;
+}
 </style>
 <div class="container">
     <div class="breadcrumb">
@@ -157,42 +242,46 @@
         </div>
         <div class="container-header">
             <div class="filter-wrapper">
-                <button class="filter-button">Bộ lọc</button>
-                <div class="dropdown">
-                    <button class="dropdown-toggle">
-                        Giá
-                    </button>
-                    <div class="dropdown-menu price-slider">
-                        <input type="range" min="1800000" max="120000000" value="5000000" id="priceRange" />
-                        <div class="price-values">
-                            <span id="minPrice">1.800.000₫</span>
-                            <span id="maxPrice">120.000.000₫</span>
+                <div class="filter-section" style="width: 100%">
+                    <form method="get" action="@Url.Action("Category", "Home")">
+                        <div class="a">
+                            <!-- Lưu giá trị categoryId -->
+                            @if (Request.QueryString["categoryId"] != null)
+                            {
+                                <input type="hidden" name="categoryId" value="@Request.QueryString["categoryId"]" />
+                            }
+
+                            @if (Request.QueryString["brandId"] != null)
+                            {
+                                <input type="hidden" name="brandId" value="@Request.QueryString["brandId"]" />
+                            }
+
+                            <!-- Lọc theo giá -->
+                            <div class="b">
+                                <label for="minPrice">Giá từ:</label>
+                                <input type="number" id="minPrice" name="minPrice" value="@Request.QueryString["minPrice"]" min="0" />
+                            </div>
+                            <div class="b">
+                                <label for="maxPrice">Đến:</label>
+                                <input type="number" id="maxPrice" name="maxPrice" value="@Request.QueryString["maxPrice"]" min="0" />
+                            </div>
+
+                            <!-- Sắp xếp -->
+                            <div class="b">
+                                <label for="sortBy">Sắp xếp theo:</label>
+                                <select id="sortBy" name="sortBy">
+                                    <option value="">Mặc định</option>
+                                    <option value="price-asc" @(Request.QueryString["sortBy"] == "price-asc" ? "selected" : "")>Giá: Thấp -> Cao</option>
+                                    <option value="price-desc" @(Request.QueryString["sortBy"] == "price-desc" ? "selected" : "")>Giá: Cao -> Thấp</option>
+                                    <option value="name-asc" @(Request.QueryString["sortBy"] == "name-asc" ? "selected" : "")>Tên A -> Z</option>
+                                    <option value="name-desc" @(Request.QueryString["sortBy"] == "name-desc" ? "selected" : "")>Tên Z -> A</option>
+                                </select>
+                            </div>
                         </div>
-                        <button class="apply-button">Xem kết quả</button>
-                    </div>
+                       
+                        <button type="submit">Áp dụng bộ lọc</button>
+                    </form>
                 </div>
-                <div class="dropdown">
-                    <button class="dropdown-toggle">
-                        Hãng
-                    </button>
-                    <div class="dropdown-menu">
-                        <button class="option">ACER</button>
-                        <button class="option">Không thương hiệu</button>
-                        <button class="apply-button">Xem kết quả</button>
-                    </div>
-                </div>
-            </div>
-            <div class="sort-wrapper">
-                <label for="sort-by">Sắp xếp theo</label>
-                <select id="sort-by">
-                    <option value="newest">Mới nhất</option>
-                    <option value="price-asc">Giá: thấp -> cao</option>
-                    <option value="price-desc">Giá: cao -> thấp</option>
-                    <option value="most-viewed">Xem nhiều nhất</option>
-                    <option value="most-reviewed">Nhiều nhận xét</option>
-                    <option value="highest-rated">Đánh giá cao nhất</option>
-                    <option value="name-asc">Tên A->Z</option>
-                </select>
             </div>
         </div>
         <div class="container">
@@ -214,20 +303,22 @@
                             var x = imgne?.url ?? "https://images.unsplash.com/photo-1731453171628-635e49577b59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4fHx8ZW58MHx8fHx8";
                             var discountedPrice = (p.unit_price - p.unit_price * p.discount_percent / 100);
                             <div class="product-item">
-                                <div class="img" style="height: 250px">
-                                    <img src="@x" alt="@p.product_name" />
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-name">@p.product_name</h3>
-                                    <p class="original-price">@p.unit_price.ToString("N0") VND</p>
-                                    <div class="price-discount">
-                                        <p class="product-price">@discountedPrice.ToString("N0") VND</p>
-                                        @if (@p.discount_percent > 0)
-                                        {
-                                            <p class="discount-percentage">-@p.discount_percent %</p>
-                                        }
+                                <a href="@Url.Action("ProductDetail", "Home", new { id = p.id })" class="product-link">
+                                    <div class="img" style="height: 250px">
+                                        <img src="@x" alt="@p.product_name" />
                                     </div>
-                                </div>
+                                    <div class="product-info">
+                                        <h3 class="product-name">@p.product_name</h3>
+                                        <p class="original-price">@p.unit_price.ToString("N0") VND</p>
+                                        <div class="price-discount">
+                                            <p class="product-price">@discountedPrice.ToString("N0") VND</p>
+                                            @if (@p.discount_percent > 0)
+                                            {
+                                                <p class="discount-percentage">-@p.discount_percent %</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         }
                     </div>

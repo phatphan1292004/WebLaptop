@@ -20,7 +20,7 @@
                         <p>Tổng doanh thu</p>
                         <div class="percentage up">↑ 6.71%</div>
                     </div>
-                    <div class="value">107950.00</div>
+                    <div class="value">@String.Format("{0:N0} VND", Model.TotalRevenue)</div>
                 </div>
 
                 <div class="bottom-card">
@@ -42,7 +42,7 @@
                         <p>Số đơn hàng</p>
                         <div class="percentage down">↓ 3.26%</div>
                     </div>
-                    <div class="value">16</div>
+                    <div class="value">@Model.TotalOrders</div>
                 </div>
 
                 <div class="bottom-card">
@@ -64,7 +64,7 @@
                         <p>Số khách hàng</p>
                         <div class="percentage down">↓ 2.71%</div>
                     </div>
-                    <div class="value">5</div>
+                    <div class="value">@Model.TotalCustomers</div>
                 </div>
 
                 <div class="bottom-card">
@@ -190,6 +190,48 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Sử dụng JsonConvert.SerializeObject thay vì Json.Serialize
+        const customerData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.CustomerTypeDistribution));
+
+        const labels = customerData.map(ct => ct.Type); // Lấy loại khách hàng
+        const data = customerData.map(ct => ct.Count); // Lấy số lượng khách hàng từng loại
+
+        const ctx = document.getElementById('customerPieChart').getContext('2d');
+
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels, // Loại khách hàng (VIP, Thường xuyên, Mới)
+                datasets: [{
+                    label: 'Phân loại khách hàng',
+                    data: data, // Số lượng khách hàng từng loại
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)', // Hồng nhạt
+                        'rgba(54, 162, 235, 0.6)', // Xanh nhạt
+                        'rgba(255, 206, 86, 0.6)'  // Vàng nhạt
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',   // Viền hồng đậm
+                        'rgba(54, 162, 235, 1)',   // Viền xanh đậm
+                        'rgba(255, 206, 86, 1)'    // Viền vàng đậm
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    },
+                },
+            }
+        });
+    });
+</script>
 
 
 

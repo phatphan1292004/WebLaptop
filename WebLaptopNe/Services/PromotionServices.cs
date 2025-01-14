@@ -135,7 +135,11 @@ namespace WebLaptopNe.Services
 
             return new JsonResult
             {
-                Data = promotion,
+                Data = new
+                {
+                    success = true,
+                    data = promotion
+                },
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
@@ -143,6 +147,14 @@ namespace WebLaptopNe.Services
         // Cập nhật chương trình khuyến mãi
         public JsonResult UpdatePromotion(promotion model)
         {
+            if (model == null || model.id <= 0)
+            {
+                return new JsonResult
+                {
+                    Data = new { success = false, message = "Dữ liệu không hợp lệ." },
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
+            }
             var existingPromotion = db.promotions.FirstOrDefault(p => p.id == model.id);
             if (existingPromotion == null)
             {

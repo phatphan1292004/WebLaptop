@@ -93,4 +93,37 @@ window.addEventListener("load", function () {
       ],
     });
   });
+
+            // Lấy tất cả các timer trên trang
+            const timers = document.querySelectorAll(".countdown-timer");
+
+        timers.forEach(function (timer) {
+                const endDate = new Date(timer.getAttribute("data-enddate")); // Lấy ngày kết thúc từ data-enddate
+
+        function updateCountdown() {
+                    const now = new Date();
+        const timeLeft = endDate - now;
+
+                    if (timeLeft > 0) {
+                        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        timer.querySelector(".days").textContent = days.toString().padStart(2, "0");
+        timer.querySelector(".hours").textContent = hours.toString().padStart(2, "0");
+        timer.querySelector(".minutes").textContent = minutes.toString().padStart(2, "0");
+        timer.querySelector(".seconds").textContent = seconds.toString().padStart(2, "0");
+                    } else {
+            timer.innerHTML = "<p>Đã kết thúc</p>"; // Hiển thị thông báo khi hết thời gian
+                    }
+                }
+
+        // Cập nhật timer mỗi giây
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+            });
 });
+
+
+

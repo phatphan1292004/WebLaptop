@@ -48,7 +48,7 @@
                     <a class="info-item" href="@Url.Action("ViewCart", "Cart")">
                         <i class="fas fa-shopping-cart"></i>
                         <span>Giỏ hàng</span>
-                        <p>(<span class="quantity-product">@ViewBag.CartQuantity</span>)</p>
+                        @*<p>(<span class="quantity-product">@ViewBag.CartQuantity</span>)</p>*@
                     </a>
 
                     @{
@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="dropdown-footer">
                                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                                        <a href="index.html">Đăng xuất</a>
+                                        <a href="@Url.Action("Logout", "Login")">Đăng xuất</a>
                                     </div>
                                 </div>
                             </div>

@@ -17,7 +17,7 @@
             </div>
             <div class="stat-text">
                 <h3>Tổng khách hàng trong tháng</h3>
-                <span id="monthly-total-customers">0</span>
+                <span id="monthly-total-customers"></span>
                 <!-- Đổi id -->
             </div>
         </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="stat-text">
                 <h3>Khách hàng mới</h3>
-                <span id="new-customers-today">0</span>
+                <span id="new-customers-today"></span>
                 <!-- Đổi id -->
             </div>
         </div>
@@ -39,7 +39,7 @@
             </div>
             <div class="stat-text">
                 <h3>Khách hàng thường xuyên</h3>
-                <span id="regular-customers">0/5</span>
+                <span id="regular-customers"></span>
                 <!-- Đổi id -->
             </div>
         </div>
@@ -50,34 +50,15 @@
             </div>
             <div class="stat-text">
                 <h3>Phản hồi từ khách hàng</h3>
-                <span id="customer-feedback-count">0 đánh giá</span>
+                <span id="customer-feedback-count"></span>
                 <!-- Đổi id -->
             </div>
         </div>
     </div>
 
-    <div class="header-tab">
-        <div class="search-container">
-            <input type="text"
-                   id="customer-search"
-                   placeholder="Tìm kiếm khách hàng..." />
-            <button id="search-btn-cus">Tìm kiếm</button>
-        </div>
-
-        <div class="sort-dropdown">
-            <select id="sort-select-customer" class="sort-select">
-                <option value="" disabled selected>Chọn</option>
-                <option value="date-desc">Đăng kí gần đây</option>
-            </select>
-            <button id="sort-btn-cus" class="sort-button">
-                <i class="fa-solid fa-sort"></i> Sắp xếp
-            </button>
-        </div>
-    </div>
-
     <!-- Bảng danh sách khách hàng -->
     <div class="tab-container">
-        <table class="customer-table">
+        <table class="customer-table" id="customerTable">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -90,17 +71,6 @@
                 </tr>
             </thead>
             <tbody id="customer-table-body">
-                <!-- <tr>
-                    <td>C001</td>
-                    <td>Nguyễn An</td>
-                    <td>nguyenan@example.com</td>
-                    <td>0123456789</td>
-                    <td>123 Đường Lê Lợi, Quận 1, TP.HCM</td>
-                    <td>15/10/2023</td>
-                    <td>
-                      <button class="view-details">Xem chi tiết</button>
-                    </td>
-                  </tr> -->
             </tbody>
         </table>
     </div>
@@ -191,4 +161,7 @@
         </div>
     </div>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/Content/admin.js/cusAdmin.js"></script>

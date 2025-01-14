@@ -77,6 +77,14 @@ namespace WebLaptopNe.Controllers
 
             if (product != null)
             {
+                // Kiểm tra tồn kho trong product_detail
+                var productDetail = db.product_detail.FirstOrDefault(pd => pd.product_id == productId);
+
+                if (productDetail == null || productDetail.stock_quantity < quantity)
+                {
+                    return Json(new { success = false, message = "Sản phẩm không đủ hàng trong kho." }, JsonRequestBehavior.AllowGet);
+                }
+
                 // Lấy hình ảnh chính của sản phẩm
                 var mainImage = db.product_images.FirstOrDefault(img => img.product_id == productId && img.main_image);
 
@@ -97,6 +105,7 @@ namespace WebLaptopNe.Controllers
 
             return Json(new { success = false, message = "Không tìm thấy sản phẩm." }, JsonRequestBehavior.AllowGet);
         }
+
 
 
         public ActionResult ViewCart()
@@ -226,7 +235,7 @@ namespace WebLaptopNe.Controllers
                 // Tạo đơn hàng mới
                 var newOrder = new ORDER_1
                 {
-                    promotion_id = 1, // Nếu có promotion, bạn có thể thay đổi
+                    promotion_id = 2,
                     user_id = currentUser.id, // ID người dùng từ session
                     created_at = DateTime.Now,
                     total_price = cart.TotalPrice,

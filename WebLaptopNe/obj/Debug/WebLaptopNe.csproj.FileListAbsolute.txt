@@ -74,3 +74,5 @@ D:\Nam3\.Net\WebLaptopNe\WebLaptopNe\bin\EntityFramework.dll
 D:\Nam3\.Net\WebLaptopNe\WebLaptopNe\bin\EntityFramework.SqlServer.dll
 D:\Nam3\.Net\WebLaptopNe\WebLaptopNe\bin\EntityFramework.xml
 D:\Nam3\.Net\WebLaptopNe\WebLaptopNe\bin\EntityFramework.SqlServer.xml
+D:\Nam3\.Net\WebLaptopNe\WebLaptopNe\bin\Newtonsoft.Json.dll
+D:\Nam3\.Net\WebLaptopNe\WebLaptopNe\bin\Newtonsoft.Json.xml
